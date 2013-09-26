@@ -6,3 +6,4 @@ The English Editor II is an XML editor for BeOS. It also handles email and Usene
 The "Tab" key is the "tag" key--use it to insert new XML tags (such as "bold", "italic", etc.) or change the tag-names of existing ones.
 
 Sources obtained from http://www.folta.net/steve/EnglishEditorII/
+"Sources are made available under an MIT-style license."
