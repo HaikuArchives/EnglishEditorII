@@ -7,3 +7,4 @@ The "Tab" key is the "tag" key--use it to insert new XML tags (such as "bold", "
 
 Sources obtained from http://www.folta.net/steve/EnglishEditorII/
 "Sources are made available under an MIT-style license."
+NOTE: Project requires Castle Yankee to generate the sources.
