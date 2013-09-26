@@ -1,0 +1,118 @@
+<change-log>
+<title> The English Editor II Change Log </title>
+
+<change-section-head> Changes </change-section-head>
+
+<change-date> 2000.6.3 </change-date>
+<change>
+	Added BlockElementSelection::ReplaceContents(), moving the code from AcceptKey().
+	Added CanPaste() and Paste() so it now supports pasting.  Same for InlineElementSelection.
+	Same for BetweenBlocksSelection, except the new method is called InsertText().  Same
+	for GlyphsSelection, except the new method is called ReplaceText().
+</change>
+<change>
+	Made DisplayDirector::Paste() do a refresh cycle.  (A)
+</change>
+
+
+<change-date> 2000.4.20 </change-date>
+<change>
+	Changed MessageParser::Parse() to remove empty texts from empty headers, so
+	that placeholder texts will be used.  (It took two rounds to get the code the way
+	I wanted it.)
+</change>
+
+
+<change-date> 2000.4.19 </change-date>
+<change>
+	Changed System::OutgoingNewsDirectory() to always create
+	"/boot/home/Documents/Usenet Binaries" even if "/boot/home/Documents" doesn't exist.
+</change>
+<change>
+	Fixed uninitialized variables in the MessageFileSource(Document*) ctor, adding
+	"isNewMessageIn" default argument, and making Reply() pass it.  This fixes a bug
+	that caused replies to sometimes not have the "Sent/Unsent" status show up.
+</change>
+<change>
+	Added RefreshAll() methods to DisplayDirector and subclasses.  Made
+	MessageFileSource::Post() and Send() call it so the status control gets updated.
+</change>
+<change>
+	Changed MessageFileSource::AttachedToDirector() to select empty titles.  (2000.4.20.A)
+</change>
+
+
+<change-date> 2000.4.12 </change-date>
+<change>
+	Outgoing mail messages now get their "Subject" and "When" attributes set.  (2000.4.13.A)
+</change>
+<change>
+	Changed ctors of ChangeElementTagNameAction and NewElementAction to take DOMStrings
+	for the tag names instead of string_slices.  This should fix a bug where that put
+	garbage in the tags.  Also made InsertTag() methods of PointSelection and subclasses
+	take the tag name as a DOMString rt a string_slice.  (2000.4.13.B)
+</change>
+<change>
+	Changed TagSelection::AcceptKey() so it doesn't try to call TagEditChanged() if the
+	tag name changed, since the selection and the tag will go away in that case.
+</change>
+<change>
+	Changed BlocksSelection::AcceptKey() so it ignores the tab key.  (2000.4.13.C)
+</change>
+
+
+<change-date> 2000.4.5 </change-date>
+<change>
+	Removed the NewDocWind stuff, which was left over from EE1 and unused.  (2000.04.06.B)
+</change>
+<change>
+	Made outgoing mail go to ~/mail/out, instead of ~/Documents/Mail.  Still need to
+	set "Subject" and "When" attributes (at least) to be nice.
+</change>
+<change>
+	Fixed a bug in WindowDirector::KeyDown(), which needed to detach the action string
+	before deleting the "menuDocSource".  (2000.04.06.C)
+</change>
+
+
+<change-date> 2000.4.3 </change-date>
+<change>
+	Ported to Intel.  (2000.04.06.A)
+</change>
+
+
+<change-date> 2000.3.9 </change-date>
+<change>
+	Added rudimentary (text-only) paste capabilities.  Changed EnglishEditorView::MessageReceived(),
+	and added DisplayDirector::Paste().  Added CanPaste() and Paste() methods to Selection,
+	CharacterSelection, BetweenGlyphsSelection, BetweenWordsSelection, and
+	EmptyPlaceholderSelection.  (A)
+</change>
+
+
+<change-date> 2000.2.27 </change-date>
+<change>
+	Added "Sent/Unsent" indicator for emails.  Changes to StatusControl, DisplayDirector,
+	and MessageFileSource.  (A)
+</change>
+
+
+<change-date> 2000.2.3 </change-date>
+<change>
+	Minor changes due to the renaming/moving of DOMString (in Unified DOM) to String (in
+	Strings).  (A)
+</change>
+
+
+<change-date> 2000.1.9 </change-date>
+<change>
+	Changed file type info to accept any text file (although this doesn't seem to work
+	yet...we'll see if it does after the next reboot.  I did try "mimeset".).  Changed
+	EnglishEditorApp::OpenFile() to handle these as XML files.
+</change>
+<change>
+	Made EnglishEditorApp::RefsReceived() catch InvalidXMLException.
+</change>
+
+
+</change-log>
