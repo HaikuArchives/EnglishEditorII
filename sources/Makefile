@@ -30,6 +30,7 @@ APP_MIME_SIG =
 #	Also note that spaces in folder names do not work well with this Makefile.
 SRCS = Action.cpp \
 	AddCharsAction.cpp \
+	Attr.cpp \
 	BackCharsAction.cpp \
 	BasicLiveAttr.cpp \
 	BasicLiveCDATASection.cpp \
@@ -48,11 +49,16 @@ SRCS = Action.cpp \
 	BlockElementSelection.cpp \
 	BlockableDisplayNode.cpp \
 	BlocksSelection.cpp \
+	CDATASection.cpp \
 	ChangeElementTagNameAction.cpp \
+	CharacterData.cpp \
 	CharacterSelection.cpp \
+	ChildrenNodeList.cpp \
 	Color.cpp \
+	Comment.cpp \
 	CompositeAction.cpp \
 	CompositeDisplayNode.cpp \
+	CompositeNode.cpp \
 	CompositeStylesheet.cpp \
 	Confirmer.cpp \
 	Control.cpp \
@@ -61,7 +67,10 @@ SRCS = Action.cpp \
 	CopyNodesAction.cpp \
 	DOMChangeClient.cpp \
 	DOMEditStylesheet.cpp \
+	DOMException.cpp \
 	DOMLiveNode.cpp \
+	DOMString.cpp \
+	DOMStringIter.cpp \
 	DOMUtils.cpp \
 	DefaultValidator.cpp \
 	DeleteCharsAction.cpp \
@@ -74,16 +83,21 @@ SRCS = Action.cpp \
 	DisplayType.cpp \
 	DisplayableException.cpp \
 	Docs.cpp \
+	Document.cpp \
 	DocumentDisplayNode.cpp \
+	DocumentFragment.cpp \
 	DocumentSource.cpp \
 	EditStylesheet.cpp \
+	Element.cpp \
 	ElementDisplayNode.cpp \
 	ElementHotspot.cpp \
+	EmptyNodeList.cpp \
 	EmptyPlaceholderSelection.cpp \
 	EncloseTextAction.cpp \
 	EnglishEditorApp.cpp \
 	EnglishEditorView.cpp \
 	EnglishEditorWind.cpp \
+	EntityReference.cpp \
 	Error.cpp \
 	FindDestinationContext.cpp \
 	FindHotspotContext.cpp \
@@ -110,6 +124,7 @@ SRCS = Action.cpp \
 	InternalException.cpp \
 	IntroDocSource.cpp \
 	IntroDocWind.cpp \
+	InvalidXMLException.cpp \
 	Keys.cpp \
 	LineBreak.cpp \
 	LiveAttr.cpp \
@@ -130,17 +145,23 @@ SRCS = Action.cpp \
 	Messages.cpp \
 	MoveCharsAction.cpp \
 	MoveNodesAction.cpp \
+	NamedNodeMap.cpp \
 	NativeView.cpp \
 	NewElementAction.cpp \
 	NewLeafBlockAction.cpp \
 	NewTextAction.cpp \
+	Node.cpp \
+	NodeList.cpp \
 	NodeTypeList.cpp \
 	NullAction.cpp \
 	OSException.cpp \
 	PlaceholderTextDisplayNode.cpp \
 	PointSelection.cpp \
 	PreSpace.cpp \
+	Preferences.cpp \
 	Prefs.cpp \
+	PrefsChangeClient.cpp \
+	ProcessingInstruction.cpp \
 	QuoterDict.cpp \
 	Rectangle.cpp \
 	Region.cpp \
@@ -171,6 +192,9 @@ SRCS = Action.cpp \
 	SplitElementAction.cpp \
 	SplitTextAction.cpp \
 	StatusControl.cpp \
+	StoredNamedNodeMap.cpp \
+	StoredNodeList.cpp \
+	String.cpp \
 	StyleParser.cpp \
 	StyleScriptable.cpp \
 	System.cpp \
@@ -178,6 +202,7 @@ SRCS = Action.cpp \
 	TagDocumentSource.cpp \
 	TagEditor.cpp \
 	TagSelection.cpp \
+	Text.cpp \
 	TextDisplayNode.cpp \
 	TextFileWriter.cpp \
 	TextSpan.cpp \
@@ -191,8 +216,12 @@ SRCS = Action.cpp \
 	Word.cpp \
 	XMLFileSource.cpp \
 	XMLFileWriter.cpp \
+	XMLParser.cpp \
 	XMLStringWriter.cpp \
-	XMLWriter.cpp
+	XMLWriter.cpp \
+	qstring.cpp \
+	string_slice.cpp \
+	string_storage.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.
