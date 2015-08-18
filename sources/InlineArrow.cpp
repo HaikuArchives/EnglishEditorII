@@ -3,7 +3,7 @@
 #include "InlineArrow.h"
 #include "View.h"
 
-const Color InlineArrow::arrowColor = { 0, 0xBB, 255, 255 };
+const rgb_color InlineArrow::arrowColor = { 0, 0xBB, 255, 255 };
 const int InlineArrow::arrowheadWidth = 8;
 const int InlineArrow::arrowheadHeight = 6;
 const int InlineArrow::arrowLineWidth = 2;

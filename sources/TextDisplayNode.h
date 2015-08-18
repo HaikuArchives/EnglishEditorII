@@ -6,7 +6,6 @@
 #include "InlineableDisplayNode.h"
 #include "DOMChangeClient.h"
 #include "CoordPoint.h"
-#include "Color.h"
 
 class Text;
 class Text;
@@ -62,7 +61,7 @@ protected:
 	Text*     	text;
 	GlyphList*	glyphs;
 	Font*     	font;
-	Color     	color;
+	rgb_color     	color;
 	bool      	isPreSpace;
 };
 

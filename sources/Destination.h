@@ -5,7 +5,6 @@
 
 #include "Rectangle.h"
 #include "CoordPoint.h"
-#include "Color.h"
 
 class Selection;
 class View;
@@ -22,7 +21,7 @@ public:
 
 protected:
 	Selection*        	selection;
-	static const Color	arrowColor;
+	static const rgb_color	arrowColor;
 	static const float	arrowheadWidth;
 	static const float	arrowheadHeight;
 	static const float	arrowLineWidth;

@@ -8,7 +8,6 @@
 #include "View.h"
 #include "Font.h"
 #include "Shape.h"
-#include "Color.h"
 
 const int GlyphsHilite::lineWidth = 3;
 const int GlyphsHilite::xOutset = 2;
@@ -21,7 +20,7 @@ const int GlyphsHilite::tagYInset = 10;
 const int GlyphsHilite::lineSpill = lineWidth - 1;
 
 
-GlyphsHilite::GlyphsHilite(GlyphRef firstGlyphIn, GlyphRef lastGlyphIn, Color colorIn)
+GlyphsHilite::GlyphsHilite(GlyphRef firstGlyphIn, GlyphRef lastGlyphIn, rgb_color colorIn)
 	: firstGlyph(firstGlyphIn), lastGlyph(lastGlyphIn), color(colorIn)
 {
 }
@@ -35,7 +34,7 @@ void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
 	view->PushState();
 	view->SetPenSize(lineWidth);
 /***
-	Color color = Selection::selectionColor;
+	rgb_color color = Selection::selectionColor;
 	color.alpha = 128;
 ***/
 	view->SetDrawingMode(AlphaDrawingMode);

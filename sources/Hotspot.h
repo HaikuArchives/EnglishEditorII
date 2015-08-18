@@ -5,7 +5,6 @@
 
 #include "CoordPoint.h"
 #include "Rectangle.h"
-#include "Color.h"
 
 class View;
 class DisplayDirector;
@@ -20,7 +19,7 @@ public:
 	void             	FadeDocument(View* view, CoordPoint origin);
 
 protected:
-	static const Color	hotspotColor;
+	static const rgb_color	hotspotColor;
 };
 
 

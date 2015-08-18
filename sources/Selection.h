@@ -5,7 +5,6 @@
 
 #include "CoordPoint.h"
 #include "Rectangle.h"
-#include "Color.h"
 #include "DOMString.h"
 #include "string_slice.h"
 
@@ -34,7 +33,7 @@ public:
 	virtual CoordPoint	DragStartPoint(CoordPoint destPoint);
 	CoordPoint        	BlockOrigin(DisplayNode* node);
 
-	static const Color	selectionColor;
+	static const rgb_color	selectionColor;
 };
 
 

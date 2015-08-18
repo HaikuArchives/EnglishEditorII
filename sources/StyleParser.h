@@ -4,13 +4,12 @@
 #define _H_StyleParser_
 
 #include "DOMString.h"
-#include "Color.h"
 
 class StyleScriptable;
 
 class StyleParser {
 public:
-	static Color           	ParseColor(DOMString stringIn);
+	static rgb_color           	ParseColor(DOMString stringIn);
 	static unsigned long   	ParseHex(string_slice str);
 	static long            	ParseInt(string_slice str);
 	static StyleScriptable*	ParseObj(DOMString str);

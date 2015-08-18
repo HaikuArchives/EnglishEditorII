@@ -4,7 +4,6 @@
 #define _H_MenuDirector_
 
 #include "DisplayDirector.h"
-#include "Color.h"
 
 class WindowDirector;
 class Element;
@@ -52,10 +51,10 @@ protected:
 	static const int  	borderWidth;
 
 public:
-	static const Color	borderColor;
+	static const rgb_color	borderColor;
 
 protected:
-	static Color      	bgndColor;
+	static rgb_color      	bgndColor;
 	static const int  	hMargin;
 	static const int  	vMargin;
 };

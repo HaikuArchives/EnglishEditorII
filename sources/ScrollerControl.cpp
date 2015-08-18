@@ -6,7 +6,7 @@
 
 const int ScrollerControl::width = 8;
 const int ScrollerControl::height = 80;
-Color ScrollerControl::thumbColor = { 0xD5, 0xE5, 0xFF, 255 };
+rgb_color ScrollerControl::thumbColor = { 0xD5, 0xE5, 0xFF, 255 };
 
 
 ScrollerControl::ScrollerControl(WindowDirector* directorIn)
@@ -37,7 +37,7 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	view->PushState();
 	view->SetDrawingMode(AlphaDrawingMode);
 	Rectangle rect = GetRect();
-	Color frameColor = controlColor;
+	rgb_color frameColor = controlColor;
 	frameColor.alpha = alpha;
 
 	// draw the thumb
@@ -50,7 +50,7 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	view->SetHighColor(frameColor);
 	view->StrokeRect(thumbRect);
 	thumbRect.InsetBy(1, 1);
-	Color curThumbColor = thumbColor;
+	rgb_color curThumbColor = thumbColor;
 	curThumbColor.alpha = alpha;
 	view->SetHighColor(curThumbColor);
 	view->FillRect(thumbRect);

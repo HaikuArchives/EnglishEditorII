@@ -4,29 +4,29 @@
 #include "StyleScriptable.h"
 
 
-Color StyleParser::ParseColor(DOMString stringIn)
+rgb_color StyleParser::ParseColor(DOMString stringIn)
 {
-	static const Color aqua = { 0, 255, 255, 255 };
-	static const Color black = { 0, 0, 0, 255 };
-	static const Color blue = { 0, 0, 255, 255 };
-	static const Color fuchsia = { 255, 0, 255, 255 };
-	static const Color gray = { 128, 128, 128, 255 };
-	static const Color green = { 0, 128, 0, 255 };
-	static const Color lime = { 0, 255, 0, 255 };
-	static const Color maroon = { 128, 0, 0, 255 };
-	static const Color navy = { 0, 0, 127, 255 };
-	static const Color olive = { 127, 127, 0, 255 };
-	static const Color purple = { 127, 0, 127, 255 };
-	static const Color red = { 255, 0, 0, 255 };
-	static const Color silver = { 192, 192, 192, 255 };
-	static const Color teal = { 0, 127, 127, 255 };
-	static const Color yellow = { 255, 255, 0, 255 };
-	static const Color white = { 255, 255, 255, 255 };
+	static const rgb_color aqua = { 0, 255, 255, 255 };
+	static const rgb_color black = { 0, 0, 0, 255 };
+	static const rgb_color blue = { 0, 0, 255, 255 };
+	static const rgb_color fuchsia = { 255, 0, 255, 255 };
+	static const rgb_color gray = { 128, 128, 128, 255 };
+	static const rgb_color green = { 0, 128, 0, 255 };
+	static const rgb_color lime = { 0, 255, 0, 255 };
+	static const rgb_color maroon = { 128, 0, 0, 255 };
+	static const rgb_color navy = { 0, 0, 127, 255 };
+	static const rgb_color olive = { 127, 127, 0, 255 };
+	static const rgb_color purple = { 127, 0, 127, 255 };
+	static const rgb_color red = { 255, 0, 0, 255 };
+	static const rgb_color silver = { 192, 192, 192, 255 };
+	static const rgb_color teal = { 0, 127, 127, 255 };
+	static const rgb_color yellow = { 255, 255, 0, 255 };
+	static const rgb_color white = { 255, 255, 255, 255 };
 
 	string_slice str = stringIn;
 	str = str.trim();
 	if (str.startsWith("#")) {
-		Color color;
+		rgb_color color;
 		str.eraseFirst(1);
 		if (str.length() == 6) {
 			color.red = ParseHex(str.substr(0, 2));
@@ -44,7 +44,7 @@ Color StyleParser::ParseColor(DOMString stringIn)
 			}
 		}
 	else if (str.startsWith("rgb(")) {
-		Color color;
+		rgb_color color;
 		str = str.substr(4, str.length() - 5);	// get rid of "rgb(" and ")"
 		string_slice component = str.separate(",", &str).trim();
 		color.red = ParseColorComponent(component);
@@ -56,7 +56,7 @@ Color StyleParser::ParseColor(DOMString stringIn)
 		return color;
 		}
 	else if (str.startsWith("rgba(")) {
-		Color color;
+		rgb_color color;
 		str = str.substr(5, str.length() - 6);	// get rid of "rgba(" and ")"
 		string_slice component = str.separate(",", &str).trim();
 		color.red = ParseColorComponent(component);

@@ -4,7 +4,7 @@
 #include "BlockableDisplayNode.h"
 #include "Tweex.h"
 
-const Color Selection::selectionColor = { 0, 0xBB, 255, 128 };
+const rgb_color Selection::selectionColor = { 0, 0xBB, 255, 128 };
 
 
 Selection::~Selection()

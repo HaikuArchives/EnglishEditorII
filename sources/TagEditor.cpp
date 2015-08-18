@@ -24,9 +24,9 @@ const int TagEditor::xOutset = 2;	// was 8
 const int TagEditor::yOutset = -1;	// was 2
 const int TagEditor::cornerRadius = 8;
 const int TagEditor::emptyWidth = 10;
-Color TagEditor::bgndColor = { 255, 255, 255, 0 };
+rgb_color TagEditor::bgndColor = { 255, 255, 255, 0 };
 int TagEditor::bgndAlpha = 192;
-Color TagEditor::selectedColor = Selection::selectionColor;
+rgb_color TagEditor::selectedColor = Selection::selectionColor;
 	// purple: 220, 0, 255
 	// darker blue: 0, 108, 192
 
@@ -130,7 +130,7 @@ void TagEditor::Draw(Rectangle updateRect)
 
 	// clear and draw the outline
 	CoordPoint origin = windowDirector->DocToView(CoordPoint(0, 0));
-	Color bgndAlphaColor = bgndColor;
+	rgb_color bgndAlphaColor = bgndColor;
 	bgndAlphaColor.alpha = bgndAlpha;
 	drawView->MovePenTo(origin);
 	drawView->SetDrawingMode(AlphaDrawingMode);
@@ -141,7 +141,7 @@ void TagEditor::Draw(Rectangle updateRect)
 	drawView->StrokeShape(&shape);
 
 	// draw the document
-	static const Color blackColor = { 0, 0, 0, 255 };
+	static const rgb_color blackColor = { 0, 0, 0, 255 };
 	drawView->SetHighColor(blackColor);
 	drawView->SetDrawingMode(CopyDrawingMode);
 	int hOrigin = (int) (origin.x + bounds.left + lineWidth + xOutset);

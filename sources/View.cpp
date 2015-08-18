@@ -31,13 +31,13 @@ void View::MovePenTo(CoordPoint point)
 }
 
 
-void View::SetHighColor(Color color)
+void View::SetHighColor(rgb_color color)
 {
 	view->SetHighColor(color);
 }
 
 
-void View::SetLowColor(Color color)
+void View::SetLowColor(rgb_color color)
 {
 	view->SetLowColor(color);
 }

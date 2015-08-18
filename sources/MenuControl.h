@@ -4,7 +4,6 @@
 #define _H_MenuControl_
 
 #include "Control.h"
-#include "Color.h"
 
 class WindowDirector;
 class Font;
@@ -22,7 +21,7 @@ protected:
 	Font*             	font;
 	static const int  	xPos;
 	static const int  	yPos;
-	static Color      	color;
+	static rgb_color      	color;
 	static const int  	diameter;
 	static const int  	lineWidth;
 	static const char*	asterisk;

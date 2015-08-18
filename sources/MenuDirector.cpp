@@ -20,8 +20,8 @@ const int MenuDirector::stemHeight = 0;
 const int MenuDirector::stemWidth = 0;
 const int MenuDirector::cornerRadius = 8;
 const int MenuDirector::borderWidth = 3;
-const Color MenuDirector::borderColor = StyleParser::ParseColor("rgba(0, 255, 0, 128)");
-Color MenuDirector::bgndColor = { 255, 255, 255, 192 };
+const rgb_color MenuDirector::borderColor = StyleParser::ParseColor("rgba(0, 255, 0, 128)");
+rgb_color MenuDirector::bgndColor = { 255, 255, 255, 192 };
 const int MenuDirector::hMargin = 12;
 const int MenuDirector::vMargin = 8;
 
@@ -84,7 +84,7 @@ void MenuDirector::Draw(Rectangle updateRect)
 	drawView->FillShape(&shape);
 
 	// draw the document
-	static const Color blackColor = { 0, 0, 0, 255 };
+	static const rgb_color blackColor = { 0, 0, 0, 255 };
 	drawView->SetHighColor(blackColor);
 	drawView->SetDrawingMode(CopyDrawingMode);
 	contentRect = DocRect();

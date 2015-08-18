@@ -49,7 +49,6 @@ SRCS = Action.cpp \
 	CharacterData.cpp \
 	CharacterSelection.cpp \
 	ChildrenNodeList.cpp \
-	Color.cpp \
 	Comment.cpp \
 	CompositeAction.cpp \
 	CompositeDisplayNode.cpp \

@@ -5,7 +5,6 @@
 
 #include "CoordPoint.h"
 #include "Rectangle.h"
-#include "Color.h"
 
 class View;
 
@@ -20,7 +19,7 @@ protected:
 	CoordPoint        	toPoint;
 	bool              	loops;
 	bool              	arrowPointsDown;
-	static const Color	arrowColor;
+	static const rgb_color	arrowColor;
 	static const int  	arrowheadWidth;
 	static const int  	arrowheadHeight;
 	static const int  	arrowLineWidth;

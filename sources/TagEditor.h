@@ -5,7 +5,6 @@
 
 #include "DisplayDirector.h"
 #include "DOMString.h"
-#include "Color.h"
 
 class WindowDirector;
 class TagSelection;
@@ -51,9 +50,9 @@ protected:
 	static const int	yOutset;
 	static const int	cornerRadius;
 	static const int	emptyWidth;
-	static Color    	bgndColor;
+	static rgb_color    	bgndColor;
 	static int      	bgndAlpha;
-	static Color    	selectedColor;
+	static rgb_color    	selectedColor;
 };
 
 

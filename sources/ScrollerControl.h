@@ -4,7 +4,6 @@
 #define _H_ScrollerControl_
 
 #include "Control.h"
-#include "Color.h"
 
 class WindowDirector;
 
@@ -23,7 +22,7 @@ public:
 	static const int	height;
 
 protected:
-	static Color    	thumbColor;
+	static rgb_color    	thumbColor;
 };
 
 

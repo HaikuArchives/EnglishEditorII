@@ -4,7 +4,7 @@
 #include "StyleParser.h"
 #include "View.h"
 
-const Color Hotspot::hotspotColor = StyleParser::ParseColor("rgba(255, 130, 0, 128)");
+const rgb_color Hotspot::hotspotColor = StyleParser::ParseColor("rgba(255, 130, 0, 128)");
 
 
 Hotspot::~Hotspot()
@@ -17,8 +17,8 @@ void Hotspot::FadeDocument(View* view, CoordPoint origin)
 	// I've decided I don't like this
 	return;
 
-	static const Color fadeColor = { 255, 255, 255, 128 };
-//***	static const Color fadeColor = { 255, 255, 255, 96 };
+	static const rgb_color fadeColor = { 255, 255, 255, 128 };
+//***	static const rgb_color fadeColor = { 255, 255, 255, 96 };
 		// nicer, but only works at 32-bit
 
 	view->PushState();

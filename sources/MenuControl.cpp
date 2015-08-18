@@ -8,7 +8,7 @@
 
 const int MenuControl::xPos = 10;
 const int MenuControl::yPos = 30;
-Color MenuControl::color = { 128, 192, 0, 255 };
+rgb_color MenuControl::color = { 128, 192, 0, 255 };
 const int MenuControl::diameter = 12;
 const int MenuControl::lineWidth = 3;
 const char* MenuControl::asterisk = "*";
@@ -66,10 +66,10 @@ void MenuControl::Draw(DisplayDirector* directorIn)
 	view->PushState();
 	view->SetDrawingMode(AlphaDrawingMode);
 	view->SetPenSize(lineWidth);
-	Color white = { 255, 255, 255, 255 };
+	rgb_color white = { 255, 255, 255, 255 };
 	view->SetLowColor(white);	// didn't help
-//***	Color alphaColor = color;
-	Color alphaColor = MenuDirector::borderColor;
+//***	rgb_color alphaColor = color;
+	rgb_color alphaColor = MenuDirector::borderColor;
 	alphaColor.alpha = alpha;
 
 	// calc the ellipse

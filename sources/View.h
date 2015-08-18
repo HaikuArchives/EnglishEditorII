@@ -6,7 +6,6 @@
 #include "CoordPoint.h"
 #include "Rectangle.h"
 #include "Region.h"
-#include "Color.h"
 #include "string_slice.h"
 #include <View.h>
 
@@ -49,8 +48,8 @@ public:
 	View(NativeView* viewIn);
 	void        	MovePenTo(int x, int y);
 	void        	MovePenTo(CoordPoint point);
-	void        	SetHighColor(Color color);
-	void        	SetLowColor(Color color);
+	void        	SetHighColor(rgb_color color);
+	void        	SetLowColor(rgb_color color);
 	void        	SetFont(Font* font);
 	void        	SetDrawingMode(int drawingMode);
 	void        	SetPenSize(int penSize);

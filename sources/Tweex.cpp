@@ -57,7 +57,7 @@ int Tweex::GetInt(string_slice tweakName)
 }
 
 
-Color Tweex::GetColor(string_slice tweakName)
+rgb_color Tweex::GetColor(string_slice tweakName)
 {
 	string_slice colorStr = GetString(tweakName);
 	return StyleParser::ParseColor(colorStr);

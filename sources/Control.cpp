@@ -5,7 +5,7 @@
 #include "View.h"
 #include "CoordPoint.h"
 
-const Color Control::controlColor = { 0, 0xBA, 255, 255 };
+const rgb_color Control::controlColor = { 0, 0xBA, 255, 255 };
 const float Control::visibleZone = 64;
 
 

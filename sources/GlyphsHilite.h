@@ -6,7 +6,6 @@
 #include "GlyphRef.h"
 #include "CoordPoint.h"
 #include "Rectangle.h"
-#include "Color.h"
 #include "Selection.h"
 
 class View;
@@ -14,7 +13,7 @@ class View;
 class GlyphsHilite {
 public:
 	GlyphsHilite(GlyphRef firstGlyphIn, GlyphRef lastGlyphIn,
-             Color colorIn = Selection::selectionColor);
+             rgb_color colorIn = Selection::selectionColor);
 	void      	Draw(View* view, CoordPoint origin, Rectangle tagBounds = Rectangle());
 	Rectangle 	Bounds();
 	bool      	IsVisible(Rectangle pageRect);
@@ -25,7 +24,7 @@ public:
 protected:
 	GlyphRef          	firstGlyph;
 	GlyphRef          	lastGlyph;
-	Color             	color;
+	rgb_color             	color;
 	static const int  	lineWidth;
 	static const int  	xOutset;
 	static const float	yOutset;

@@ -30,7 +30,7 @@ void VMarginControl::Draw(DisplayDirector* directorIn)
 	View* view = director->DrawingView();
 	view->PushState();
 	view->SetDrawingMode(AlphaDrawingMode);
-	Color alphaColor = controlColor;
+	rgb_color alphaColor = controlColor;
 	alphaColor.alpha = curAlpha;
 	view->SetHighColor(alphaColor);
 

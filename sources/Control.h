@@ -4,7 +4,6 @@
 #define _H_Control_
 
 #include "Rectangle.h"
-#include "Color.h"
 
 class DisplayDirector;
 
@@ -17,7 +16,7 @@ public:
 	int              	CurAlpha(DisplayDirector* director);
 
 protected:
-	static const Color	controlColor;
+	static const rgb_color	controlColor;
 	static const float	visibleZone;
 };
 
