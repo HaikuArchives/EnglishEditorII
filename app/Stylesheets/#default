@@ -1,0 +1,146 @@
+<!-- the default stylesheet -->
+
+<edit-styles>
+
+<element name="#default" display="block"
+		margin-top="0px" margin-bottom="0px" margin-left="0px" margin-right="0px"
+		font-family="Dutch801 Rm BT" font-size="13pt" font-style="normal" font-weight="normal"
+		line-height="normal"
+		color="#000000" text-align="left" text-indent="0px" text-decoration="none">
+</element>
+
+
+<element name="#placeholder-text" display="inline"
+	color="silver"
+/>
+<element name="placeholder-block"
+	display="block"
+	color = "silver"
+/>
+
+<!-- because HTML/XHTML elements are pretty common, we keep them here in the default
+     stylesheet -->
+
+<!-- block elements -->
+
+<element name="title"
+	display="block"
+	font-family="Swis721 BT" font-size="18pt" font-weight="bold"
+	placeholder-text="Title"
+/>
+<!-- font-size was 1.5em -->
+
+<element name="head" display="block" margin-bottom="0.5em">
+	<transform>
+		<include-first-child name="title"/>
+	</transform>
+</element>
+<element name="body"
+	display="block"
+/>
+<element name="p"
+	display="block" margin-bottom="1em" display-tag="false"
+/>
+<element name="h1" display="block" margin-top="0.75em" margin-bottom="0.25em"
+	font-family="Swis721 BT" font-size="1.5em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="h2" display="block" margin-top="0.75em" margin-bottom="0.25em"
+	font-family="Swis721 BT" font-size="1.25em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="h3" display="block" margin-top="0.75em" margin-bottom="0.25em"
+	font-family="Swis721 BT" font-size="1.2em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="h4" display="block" margin-top="0.75em" margin-bottom="0.25em"
+	font-family="Swis721 BT" font-size="1.15em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="h5" display="block" margin-top="0.75em" margin-bottom="0.25em"
+	font-family="Swis721 BT" font-size="1.1em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="h6" display="block" margin-top="0.75em" margin-bottom="0.15em"
+	font-family="Swis721 BT" font-size="1em" font-weight="bold"
+	placeholder-text="Heading"
+/>
+<element name="div" display="block" />
+<element name="meta" display="none" />
+<element name="blockquote"
+	display="block"
+	margin-left="2em" margin-right="2em" margin-bottom="1em"
+	font-size="0.925em"
+	placeholder-text="Quote"
+/>
+<element name="table"
+	display="block"
+/>
+<element name="tr"
+	display="block"
+/>
+<element name="center"
+	display="block"
+	text-align="center"
+/>
+<element name="hr"
+	display="block"
+/>
+<element name="dt"
+	display="block"
+	font-family="Swis721 BT" font-weight="bold"
+	margin-top="0.5em"
+/>
+<element name="dd"
+	display="block"
+	margin-left="1em"
+/>
+<element name="pre"
+	display="block"
+	white-space="pre"
+	font-family="Courier10 BT" font-size="12pt"
+/>
+
+<!-- inline elements -->
+<element name="i" display="inline" font-style="italic" placeholder-text="italic text" />
+<element name="cite" display="inline" font-style="italic" placeholder-text="citation" />
+<element name="b" display="inline" font-weight="bold" placeholder-text="bold text" />
+<element name="span" display="inline" />
+<element name="a" display="inline"
+	color="rgb(0, 0, 192)" link="attr(href)"
+/>
+<element name="abbr" display="inline" placeholder-text="abbreviation" />
+<element name="acronym" display="inline" placeholder-text="acronym" />
+<element name="big" display="inline" font-size="1.1em" placeholder-text="big text" />
+<element name="small" display="inline" font-size="0.9em" placeholder-text="small text" />
+<element name="smaller" display="inline" font-size="0.76em" placeholder-text="small text" />
+<element name="code" display="inline" font-family="Courier10 BT" placeholder-text="code" />
+<element name="ins" display="inline" placeholder-text="inserted text" />
+<element name="del" display="inline" color="red" placeholder-text="deleted text" />
+<element name="em" display="inline" font-style="italic" placeholder-text="emphasized text" />
+<element name="strong" display="inline" font-weight="bold" placeholder-text="strong text" />
+<element name="dfn" display="inline" />
+<element name="samp" display="inline" font-family="Courier10 BT" placeholder-text="sample text" />
+<element name="kbd" display="inline" font-family="Courier10 BT" placeholder-text="keyboard text" />
+<element name="var" display="inline" font-family="Courier10 BT" placeholder-text="variable" />
+<element name="font" display="inline" />
+<element name="td" display="inline" />
+<element name="th" display="inline" font-weight="bold" />
+
+
+<!-- English-style selections (mostly equivalent of more-terse HTML versions) -->
+<element name="italic" display="inline" font-style="italic" placeholder-text="italic text" />
+<element name="bold" display="inline" font-weight="bold" placeholder-text="bold text" />
+<element name="para" display="block" margin-bottom="1em" />
+<element name="paragraph" display="block" margin-bottom="1em" />
+<element name="heading" display="block" margin-top="0.75em" margin-bottom="0px"
+	font-family="Swis721 BT" font-size="1.2em" font-weight="bold"
+	placeholder-text="Heading" 
+/>	<!-- = h3 -->
+<element name="red" display="inline" color="red" placeholder-text="red text" />
+<element name="green" display="inline" color="green" placeholder-text="green text" />
+<element name="blue" display="inline" color="blue" placeholder-text="blue text" />
+
+
+
+</edit-styles>

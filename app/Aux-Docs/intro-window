@@ -1,0 +1,13 @@
+<intro-window>
+
+<new-document action="app.NewDocument(XHTML Document)">
+	Document (Web-ready)
+</new-document>
+<new-document action="app.NewMessage(Email Message)">
+	Email Message
+</new-document>
+<new-document action="app.NewMessage(News Message)">
+	Usenet Article
+</new-document>
+
+</intro-window>

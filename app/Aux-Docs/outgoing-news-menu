@@ -1,0 +1,21 @@
+<window-menu>
+
+<menu-item action="Undo()">Undo</menu-item>
+<menu-item action="Redo()">Redo</menu-item>
+<menu-item action="Save()">Save</menu-item>
+<menu-item action="doc-source.Post()">Post</menu-item>
+
+<hr/>
+
+<menu-item action="Copy()">Copy</menu-item>
+<menu-item action="Paste()" key="Cmd-V">
+	Paste <small><code>[Cmd-V]</code></small>
+</menu-item>
+
+<hr/>
+
+<long-menu-item action="SavePosition()">
+Use this window's position for new windows.
+</long-menu-item>
+
+</window-menu>

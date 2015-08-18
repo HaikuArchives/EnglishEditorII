@@ -1,0 +1,51 @@
+<edit-styles>
+
+<element name="intro-window"
+	display="block"
+	text-align="center"
+/>
+
+<element name="about-section"
+	display="block"
+	margin-bottom="1em"
+/>
+
+<element name="app-name"
+	display="block"
+	font-family="Swis721 BT" font-size="18pt" font-weight="bold"
+/>
+
+<element name="pre-version"
+	display="block"
+	font-family="Swis721 BT" font-size="12pt" font-weight="bold"
+	color="red"
+/>
+
+<element name="version"
+	display="block"
+	font-family="Swis721 BT" font-size="12pt" font-weight="bold"
+/>
+
+<element name="copyright"
+	display="block"
+/>
+
+<element name="credits"
+	display="block"
+	font-size="10pt"
+/>
+
+<element name="build-date"
+	display="block"
+	font-size="10pt"
+/>
+
+<element name="new-document"
+	display="block"
+	font-family="Swis721 BT" font-weight="bold"
+	color = "blue"
+	action="attr(action)"
+/>
+
+
+</edit-styles>

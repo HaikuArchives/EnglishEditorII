@@ -1,0 +1,50 @@
+<edit-styles>
+
+<element name="title" font-size="16pt" placeholder-text="Subject" />
+
+<element name="from" display="block" font-size="10pt">
+	<display-contents>
+		<display-element display="inline" font-family="Swis721 BT" color="rgb(20%,40%,20%)">From: </display-element>
+		<display-element display="inline"><all-contents/></display-element>
+	</display-contents>
+</element>
+
+<element name="date" display="block" font-size="10pt">
+	<display-contents>
+		<display-element display="inline" font-family="Swis721 BT" color="rgb(20%,40%,20%)">Date: </display-element>
+		<display-element display="inline"><all-contents/></display-element>
+	</display-contents>
+</element>
+
+<element name="to" display="block" font-size="10pt" placeholder-text="to">
+	<display-contents>
+		<display-element display="inline" font-family="Swis721 BT" color="rgb(20%,40%,20%)">To: </display-element>
+		<display-element display="inline"><all-contents/></display-element>
+	</display-contents>
+</element>
+
+<element name="newsgroups" display="block" font-size="10pt" placeholder-text="newsgroups">
+	<display-contents>
+		<display-element display="inline" font-family="Swis721 BT" color="rgb(20%,40%,20%)">Newsgroups: </display-element>
+		<display-element display="inline"><all-contents/></display-element>
+	</display-contents>
+</element>
+
+<element name="message-id" display="none" />
+<element name="references" display="none" />
+
+<element name="attribution" display="block" font-style="italic" />
+
+<!-- augment "blockquote" with special-split -->
+<element name="blockquote"
+	special-split="p"
+/>
+
+<element name="signature"
+	display="block"
+	font-family="Swis721 BT"
+	font-size="0.85em"
+	color="rgb(0%,20%,0%)"
+/>
+
+</edit-styles>

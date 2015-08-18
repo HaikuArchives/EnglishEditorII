@@ -6,6 +6,7 @@
 
 # The name of the binary.
 NAME = EnglishEditorII
+TARGET_DIR = ../app
 
 # The type of binary, must be one of:
 #	APP:	Application

@@ -1,0 +1,8 @@
+<edit-styles>
+
+<element name="tag-name"
+	font-family="Courier10 BT" font-weight="normal" font-size="10pt"
+	color="green"
+/>
+
+</edit-styles>

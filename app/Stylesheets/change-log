@@ -1,0 +1,21 @@
+<edit-styles>
+
+<!-- change log -->
+<!--
+<element name="change-log" display="block"
+		margin-top="0px" margin-bottom="0px" margin-left="0px" margin-right="0px"
+		font-family="Dutch801 Rm BT" font-size="13pt" font-style="normal" font-weight="normal"
+		line-height="normal"
+		color="#000000" text-align="left" text-indent="0px" text-decoration="none"/>
+-->
+<element name="change-date" display="block" margin-top="1em"
+	font-style="italic"
+/>
+<element name="change" display="block" margin-left="1em" margin-bottom="0.5em"/>
+<element name="change-section-head" display="block"
+	font-family="Swis721 BT" font-weight="bold" font-size="1.2em"
+	margin-top="1em" margin-bottom="0.25em"
+/>
+<element name="deficiency" display="block" margin-left="1em" margin-bottom="0.75em"/>
+
+</edit-styles>

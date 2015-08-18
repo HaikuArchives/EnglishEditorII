@@ -1,0 +1,32 @@
+<edit-styles>
+
+<element name="menu-item"
+	display="block"
+	font-family="Swis721 BT" font-weight="bold" font-size="13pt"
+	margin-bottom="0em"
+	action="if(director.window-director.actionAllowed(attr(action)), attr(action),)"
+	color="if(director.window-director.actionAllowed(attr(action)), green, rgb(60%,60%,60%))"
+/>
+
+<element name="long-menu-item"
+	display="block"
+	font-family="Swis721 BT" font-weight="bold" font-size="11pt"
+	margin-bottom="0em"
+	action="if(director.window-director.actionAllowed(attr(action)), attr(action),)"
+	color="if(director.window-director.actionAllowed(attr(action)), green, rgb(60%,60%,60%))"
+/>
+
+<element name="submenu-header"
+	display="block"
+	font-family="Swis721 BT" font-weight="bold" font-size="13pt"
+/>
+
+<element name="sub-item"
+	display="block"
+	margin-left="1em"
+	font-family="Swis721 BT" font-weight="bold" font-size="11pt"
+	action="if(director.window-director.actionAllowed(attr(action)), attr(action),)"
+	color="if(director.window-director.actionAllowed(attr(action)), green, rgb(60%,60%,60%))"
+/>
+
+</edit-styles>
