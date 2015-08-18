@@ -6,9 +6,9 @@
 #include "DocumentSource.h"
 #include "WindowDirector.h"
 #include "View.h"
-#include "NativeView.h"
 #include "Preferences.h"
 #include "qstring.h"
+
 #include <Screen.h>
 
 static const BRect frameRect(40, 60, 620, 660);
@@ -66,14 +66,13 @@ void EnglishEditorWind::Init(DocumentSource* docSource)
 	// do this *after* setting up the frame so it doesn't have to resize
 	BRect editViewFrame = Frame();
 	editViewFrame.OffsetTo(0, 0);
-	NativeView* editView =
-		new NativeView(editViewFrame, "EnglishEditorView", B_FOLLOW_ALL_SIDES,
-		               B_WILL_DRAW | B_FRAME_EVENTS);
+	EnglishEditorView* editView = new EnglishEditorView(editViewFrame,
+		"EnglishEditorView", B_FOLLOW_ALL_SIDES, B_WILL_DRAW | B_FRAME_EVENTS);
 	AddChild(editView);
 	editView->MakeFocus();
 
 	// make the director
-	director = new WindowDirector(docSource, new EnglishEditorView(editView), this);
+	director = new WindowDirector(docSource, editView, this);
 }
 
 

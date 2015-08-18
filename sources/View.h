@@ -10,53 +10,40 @@
 #include "string_slice.h"
 #include <View.h>
 
-class NativeView;
 class Font;
 class Bitmap;
 class BMessage;
 class Shape;
 
-class View {
+class View : public BView {
 public:
-	View(NativeView* viewIn);
-	void        	MovePenTo(int x, int y);
-	void        	MovePenTo(BPoint point);
-	void        	SetHighColor(rgb_color color);
-	void        	SetLowColor(rgb_color color);
+					View(BRect frame, const char* name, uint32 resizingMode,
+						 uint32 flags);
 	void        	SetFont(Font* font);
 	void        	SetDrawingMode(int drawingMode);
-	void        	SetPenSize(int penSize);
-	void        	ConstrainClippingRegion(BRegion* region);
-	void        	PushState();
-	void        	PopState();
 	void        	DrawString(string_slice str);
 	void        	DrawString(string_slice str, int x, int y);
 	void        	ClearRect(BRect rect);
-	void        	StrokeRect(BRect rect);
-	void        	FillRect(BRect rect);
-	void        	StrokeLine(BPoint startPt, BPoint endPt);
-	void        	StrokeBezier(BPoint points[4]);
 	void        	StrokeShape(Shape* shape);
 	void        	FillShape(Shape* shape);
-	void        	StrokeEllipse(BRect rect);
-	void        	FillEllipse(BRect rect);
 	void        	DrawBitmap(Bitmap* bitmap, BRect rect);
-	void        	Sync();
 	void        	Lock();
 	void        	Unlock();
 	void        	SendMessage(BMessage* message);
 	void        	MouseTrackingPause();
-	BPoint  	GetMousePoint();
+	BPoint  		GetMousePoint();
 	int         	GetMouseButtons();
-	virtual void	Draw(BRect updateRect);
+
 	virtual void	MouseDown(int x, int y);
+	virtual void	MouseDown(BPoint point);
+	virtual void	CleanMessageQueue();
+
 	virtual void	KeyDown(string_slice key);
+	virtual void	KeyDown(const char* bytes, int32 numBytes);
+
 	virtual void	MouseMoved(int transitType);
-	virtual void	FrameResized(int newWidth, int newHeight);
-	virtual void	MessageReceived(BMessage* message);
-	int         	Width();
-	int         	Height();
-	BRect   	Bounds();
+	virtual void	MouseMoved(BPoint point, uint32 transit, const BMessage* message);
+
 	long        	GetColorSpace();
 	int         	CurClicks();
 	int         	CurModifiers();
@@ -64,7 +51,6 @@ public:
 	void        	SetCurModifiers(int newCurModifiers);
 
 protected:
-	NativeView*	view;
 	int        	curClicks;
 	int        	curModifiers;
 };

@@ -2,18 +2,16 @@
 
 #include "Bitmap.h"
 #include "View.h"
-#include "NativeView.h"
 
 
 
 Bitmap::Bitmap(int width, int height, long colorSpace)
 {
 	bitmap = new BBitmap(BRect(0, 0, width, height), (color_space) colorSpace, true);
-	NativeView* nativeView =
-		new NativeView(BRect(0, 0, width, height), "bitmap view",
+	view =
+		new View(BRect(0, 0, width, height), "bitmap view",
 	                   B_FOLLOW_ALL_SIDES, B_WILL_DRAW | B_FRAME_EVENTS);
-	bitmap->AddChild(nativeView);
-	view = new View(nativeView);
+	bitmap->AddChild(view);
 }
 
 

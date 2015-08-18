@@ -121,7 +121,6 @@ SRCS = Action.cpp \
 	MessageParser.cpp \
 	MoveCharsAction.cpp \
 	MoveNodesAction.cpp \
-	NativeView.cpp \
 	NewElementAction.cpp \
 	NewLeafBlockAction.cpp \
 	NewTextAction.cpp \

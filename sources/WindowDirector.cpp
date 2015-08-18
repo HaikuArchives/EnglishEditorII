@@ -56,7 +56,7 @@ WindowDirector::WindowDirector(DocumentSource* docSourceIn, EnglishEditorView* v
 	view->SetDirector(this);
 
 	// make the bitmap
-	bitmap = new Bitmap(view->Width(), view->Height(), view->GetColorSpace());
+	bitmap = new Bitmap(view->Bounds().Width(), view->Bounds().Height(), view->GetColorSpace());
 
 	// controls
 	scrollerControl = new ScrollerControl(this);
@@ -241,15 +241,15 @@ void WindowDirector::KeyDown(string_slice key)
 
 	// scrolling keys
 	else if (key == Keys::PageUpKey)
-		SetScrollTarget(scrollTarget - (view->Height() - 2*vMargin - PageScrollOverlap));
+		SetScrollTarget(scrollTarget - (view->Bounds().Height() - 2*vMargin - PageScrollOverlap));
 	else if (key == spaceKey && selection == NULL) {
 		if (docSource->CanCloseOnSpacebar() && scrollPos == LastScrollPos())
 			wind->RequestClose();
 		else
-			SetScrollTarget(scrollTarget + (view->Height() - 2*vMargin - PageScrollOverlap));
+			SetScrollTarget(scrollTarget + (view->Bounds().Height() - 2*vMargin - PageScrollOverlap));
 		}
 	else if (key == Keys::PageDownKey)
-		SetScrollTarget(scrollTarget + (view->Height() - 2*vMargin - PageScrollOverlap));
+		SetScrollTarget(scrollTarget + (view->Bounds().Height() - 2*vMargin - PageScrollOverlap));
 	else if (key == Keys::HomeKey)
 		SetScrollTarget(-0.5 * GetDocumentHeight());
 	else if (key == Keys::EndKey)
@@ -400,10 +400,10 @@ void WindowDirector::ScreenChanged()
 	View* bitmapView = bitmap->GetView();
 	long newColorSpace = view->GetColorSpace();
 	long oldColorSpace = bitmap->GetColorSpace();
-	int oldWidth = bitmapView->Width();
-	int newWidth = view->Width();
-	int oldHeight = bitmapView->Height();
-	int newHeight = view->Height();
+	float oldWidth = bitmapView->Bounds().Width();
+	float newWidth = view->Bounds().Width();
+	float oldHeight = bitmapView->Bounds().Height();
+	float newHeight = view->Bounds().Height();
 	bitmap->Unlock();
 
 	// if nothing's changed, kick out
@@ -411,10 +411,10 @@ void WindowDirector::ScreenChanged()
 		return;
 
 	// rebuild the bitmap
-	int maxWidth = oldWidth;
+	float maxWidth = oldWidth;
 	if (newWidth > maxWidth)
 		maxWidth = newWidth;
-	int maxHeight = oldHeight;
+	float maxHeight = oldHeight;
 	if (newHeight > maxHeight)
 		maxHeight = newHeight;
 	delete bitmap;
@@ -655,7 +655,7 @@ void WindowDirector::ScrollDocumentTo(int newScrollPos)
 	if (scrollPos < 0)
 		scrollPos = 0;
 	else {
-		float scrollStop = docDisplayNode->Height() - (view->Height() - 2 * vMargin);
+		float scrollStop = docDisplayNode->Height() - (view->Bounds().Height() - 2 * vMargin);
 		if (scrollStop < 0)
 			scrollStop = 0;
 		if (scrollPos > scrollStop)
@@ -677,7 +677,7 @@ void WindowDirector::ScrollMessageReceived()
 
 int WindowDirector::LastScrollPos()
 {
-	float lastScrollPos = docDisplayNode->Height() - (view->Height() - 2 * vMargin);
+	float lastScrollPos = docDisplayNode->Height() - (view->Bounds().Height() - 2 * vMargin);
 	if (lastScrollPos < 0)
 		lastScrollPos = 0;
 	return (int) lastScrollPos;
@@ -786,7 +786,7 @@ Validator* WindowDirector::GetValidator()
 
 int WindowDirector::DisplayWidth()
 {
-	return view->Width() - 2 * hMargin;
+	return view->Bounds().Width() - 2 * hMargin;
 }
 
 

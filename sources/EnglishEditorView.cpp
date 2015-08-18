@@ -8,8 +8,10 @@
 
 
 
-EnglishEditorView::EnglishEditorView(NativeView* nativeView)
-	: View(nativeView), director(NULL)
+EnglishEditorView::EnglishEditorView(BRect frame, const char* name, uint32 resizingMode, uint32 flags)
+	:
+	View(frame, name, resizingMode, flags),
+	director(NULL)
 {
 }
 

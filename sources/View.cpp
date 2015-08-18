@@ -1,177 +1,89 @@
 /* View.cpp */
 
 #include "View.h"
-#include "NativeView.h"
 #include "Font.h"
 #include "Bitmap.h"
 #include <Message.h>
 #include "Shape.h"
 #include <Window.h>
 #include <Messenger.h>
+#include <MessageQueue.h>
 #include <Screen.h>
 
 
 
-View::View(NativeView* viewIn)
-	: view(viewIn), curClicks(0), curModifiers(0)
+View::View(BRect frame, const char* name, uint32 resizingMode, uint32 flags)
+	:
+	BView(frame, name, resizingMode, flags),
+	curClicks(0),
+	curModifiers(0)
 {
-	view->SetView(this);
-}
-
-
-void View::MovePenTo(int x, int y)
-{
-	view->MovePenTo(x, y);
-}
-
-
-void View::MovePenTo(BPoint point)
-{
-	view->MovePenTo(point);
-}
-
-
-void View::SetHighColor(rgb_color color)
-{
-	view->SetHighColor(color);
-}
-
-
-void View::SetLowColor(rgb_color color)
-{
-	view->SetLowColor(color);
 }
 
 
 void View::SetFont(Font* font)
 {
-	view->SetFont(font->NativeFont());
+	BView::SetFont(font->NativeFont());
 }
 
 
 void View::SetDrawingMode(int drawingMode)
 {
-	view->SetDrawingMode((drawing_mode) drawingMode);
-}
-
-
-void View::SetPenSize(int penSize)
-{
-	view->SetPenSize(penSize);
-}
-
-
-void View::ConstrainClippingRegion(BRegion* region)
-{
-	view->ConstrainClippingRegion(region);
-}
-
-
-void View::PushState()
-{
-	view->PushState();
-}
-
-
-void View::PopState()
-{
-	view->PopState();
+	BView::SetDrawingMode((drawing_mode) drawingMode);
 }
 
 
 void View::DrawString(string_slice str)
 {
-	view->DrawString(str.begin(), str.length());
+	BView::DrawString(str.begin(), str.length());
 }
 
 
 void View::DrawString(string_slice str, int x, int y)
 {
-	view->DrawString(str.begin(), str.length(), BPoint(x, y));
+	BView::DrawString(str.begin(), str.length(), BPoint(x, y));
 }
 
 
 void View::ClearRect(BRect rect)
 {
-	view->FillRect(rect, B_SOLID_LOW);
-}
-
-
-void View::StrokeRect(BRect rect)
-{
-	view->StrokeRect(rect);
-}
-
-
-void View::FillRect(BRect rect)
-{
-	view->FillRect(rect);
-}
-
-
-void View::StrokeLine(BPoint startPt, BPoint endPt)
-{
-	view->StrokeLine(startPt, endPt);
-}
-
-
-void View::StrokeBezier(BPoint points[4])
-{
-	view->StrokeBezier(points);
+	BView::FillRect(rect, B_SOLID_LOW);
 }
 
 
 void View::StrokeShape(Shape* shape)
 {
-	view->StrokeShape(shape->NativeShape());
+	BView::StrokeShape(shape->NativeShape());
 }
 
 
 void View::FillShape(Shape* shape)
 {
-	view->FillShape(shape->NativeShape());
-}
-
-
-void View::StrokeEllipse(BRect rect)
-{
-	view->StrokeEllipse(rect);
-}
-
-
-void View::FillEllipse(BRect rect)
-{
-	view->FillEllipse(rect);
+	BView::FillShape(shape->NativeShape());
 }
 
 
 void View::DrawBitmap(Bitmap* bitmap, BRect rect)
 {
-	view->DrawBitmap(bitmap->NativeBitmap(), rect, rect);
-}
-
-
-void View::Sync()
-{
-	view->Sync();
+	BView::DrawBitmap(bitmap->NativeBitmap(), rect, rect);
 }
 
 
 void View::Lock()
 {
-	view->Window()->Lock();
+	Window()->Lock();
 }
 
 
 void View::Unlock()
 {
-	view->Window()->Unlock();
+	Window()->Unlock();
 }
 
 
 void View::SendMessage(BMessage* message)
 {
-	BMessenger(view).SendMessage(message);
+	BMessenger(this).SendMessage(message);
 }
 
 
@@ -185,7 +97,7 @@ BPoint View::GetMousePoint()
 {
 	BPoint cursor;
 	uint32 buttons;
-	view->GetMouse(&cursor, &buttons, false);
+	GetMouse(&cursor, &buttons, false);
 	return cursor;
 }
 
@@ -194,13 +106,8 @@ int View::GetMouseButtons()
 {
 	BPoint cursor;
 	uint32 buttons;
-	view->GetMouse(&cursor, &buttons, true);
+	GetMouse(&cursor, &buttons, true);
 	return buttons;
-}
-
-
-void View::Draw(BRect updateRect)
-{
 }
 
 
@@ -219,38 +126,9 @@ void View::MouseMoved(int transitType)
 }
 
 
-void View::FrameResized(int newWidth, int newHeight)
-{
-}
-
-
-void View::MessageReceived(BMessage* message)
-{
-	view->BView::MessageReceived(message);
-}
-
-
-int View::Width()
-{
-	return (int) view->Bounds().Width();
-}
-
-
-int View::Height()
-{
-	return (int) view->Bounds().Height();
-}
-
-
-BRect View::Bounds()
-{
-	return view->Bounds();
-}
-
-
 long View::GetColorSpace()
 {
-	return BScreen(view->Window()).ColorSpace();
+	return BScreen(Window()).ColorSpace();
 }
 
 
@@ -277,4 +155,39 @@ void View::SetCurModifiers(int newCurModifiers)
 	curModifiers = newCurModifiers;
 }
 
+// #pragma mark - Wrappers
 
+void View::KeyDown(const char* bytes, int32 numBytes)
+{
+	BView::KeyDown(bytes, numBytes);
+	SetCurModifiers(Window()->CurrentMessage()->FindInt32("modifiers"));
+	KeyDown(string_slice(bytes, bytes + numBytes));
+}
+
+void View::MouseDown(BPoint point)
+{
+	BView::MouseDown(point);
+	BMessage* curMessage = Window()->CurrentMessage();
+	SetCurClicks(curMessage->FindInt32("clicks"));
+	SetCurModifiers(curMessage->FindInt32("modifiers"));
+	MouseDown(point.x, point.y);
+}
+
+void View::MouseMoved(BPoint point, uint32 transit, const BMessage* message)
+{
+	BView::MouseMoved(point, transit, message);
+	CleanMessageQueue();
+	MouseMoved(transit);
+}
+
+void View::CleanMessageQueue()
+{
+	// remove all mouse-moved messages to avoid queue poisoning
+	BMessageQueue* messageQueue = Window()->MessageQueue();
+	while (true) {
+		BMessage* message = messageQueue->FindMessage(B_MOUSE_MOVED, 0);
+		if (message == NULL)
+			break;
+		messageQueue->RemoveMessage(message);
+	}
+}

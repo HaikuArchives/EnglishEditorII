@@ -9,7 +9,7 @@ class WindowDirector;
 
 class EnglishEditorView : public View {
 public:
-	EnglishEditorView(NativeView* nativeView);
+	EnglishEditorView(BRect frame, const char* name, uint32 resizingMode, uint32 flags);
 	void	Draw(BRect updateRect);
 	void	MouseDown(int x, int y);
 	void	KeyDown(string_slice key);
