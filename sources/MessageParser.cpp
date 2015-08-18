@@ -71,7 +71,7 @@ void MessageParser::Parse()
 			headerTag = "newsgroups";
 		else if (headerName == "To")
 			headerTag = "to";
-		else if (headerName == "Message-ID")
+		else if (headerName == "BMessage-ID")
 			headerTag = "message-id";
 		else if (headerName == "References")
 			headerTag = "references";

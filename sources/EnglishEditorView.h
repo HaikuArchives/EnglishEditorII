@@ -15,7 +15,7 @@ public:
 	void	KeyDown(string_slice key);
 	void	MouseMoved(int transitType);
 	void	FrameResized(int newWidth, int newHeight);
-	void	MessageReceived(Message* message);
+	void	MessageReceived(BMessage* message);
 	void	SetDirector(WindowDirector* newDirector);
 
 protected:

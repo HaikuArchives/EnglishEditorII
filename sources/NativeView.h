@@ -6,7 +6,7 @@
 #include <View.h>
 
 class View;
-class Message;
+class BMessage;
 
 class NativeView : public BView {
 public:

@@ -121,7 +121,6 @@ SRCS = Action.cpp \
 	MenuControl.cpp \
 	MenuDirector.cpp \
 	MergeElementsAction.cpp \
-	Message.cpp \
 	MessageFileSource.cpp \
 	MessageFileWriter.cpp \
 	MessageParser.cpp \

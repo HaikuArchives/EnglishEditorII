@@ -2,7 +2,7 @@
 
 #include "NativeView.h"
 #include "View.h"
-#include "Message.h"
+#include <Message.h>
 #include <Window.h>
 #include <MessageQueue.h>
 
@@ -57,7 +57,7 @@ void NativeView::MouseMoved(BPoint point, uint32 transit, const BMessage* messag
 
 void NativeView::MessageReceived(BMessage* nativeMessage)
 {
-	Message message(nativeMessage);
+	BMessage message(nativeMessage);
 	view->MessageReceived(&message);
 }
 

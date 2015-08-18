@@ -2,7 +2,7 @@
 
 #include "EnglishEditorView.h"
 #include "WindowDirector.h"
-#include "Message.h"
+#include <Message.h>
 #include "Messages.h"
 #include "InternalException.h"
 
@@ -46,7 +46,7 @@ void EnglishEditorView::FrameResized(int newWidth, int newHeight)
 }
 
 
-void EnglishEditorView::MessageReceived(Message* message)
+void EnglishEditorView::MessageReceived(BMessage* message)
 {
 	switch (message->What()) {
 		case ScrollStepMessage:

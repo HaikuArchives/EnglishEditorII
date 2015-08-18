@@ -13,7 +13,7 @@
 class NativeView;
 class Font;
 class Bitmap;
-class Message;
+class BMessage;
 class Shape;
 
 class View {
@@ -44,7 +44,7 @@ public:
 	void        	Sync();
 	void        	Lock();
 	void        	Unlock();
-	void        	SendMessage(Message* message);
+	void        	SendMessage(BMessage* message);
 	void        	MouseTrackingPause();
 	BPoint  	GetMousePoint();
 	int         	GetMouseButtons();
@@ -53,7 +53,7 @@ public:
 	virtual void	KeyDown(string_slice key);
 	virtual void	MouseMoved(int transitType);
 	virtual void	FrameResized(int newWidth, int newHeight);
-	virtual void	MessageReceived(Message* message);
+	virtual void	MessageReceived(BMessage* message);
 	int         	Width();
 	int         	Height();
 	BRect   	Bounds();

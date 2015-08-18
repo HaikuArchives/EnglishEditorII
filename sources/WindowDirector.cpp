@@ -25,7 +25,7 @@
 #include "XMLFileSource.h"
 #include "Confirmer.h"
 #include <Region.h>
-#include "Message.h"
+#include <Message.h>
 #include "System.h"
 #include "Messages.h"
 #include "Keys.h"
@@ -639,7 +639,7 @@ void WindowDirector::ContinueScrolling()
 	// through the queue?).  Avoid this by making sure we don't send a second scroll-continuation
 	// message if there's already in the queue.
 	if (!scrollMessagePending) {
-		Message scrollStepMessage(ScrollStepMessage);
+		BMessage scrollStepMessage(ScrollStepMessage);
 		view->SendMessage(&scrollStepMessage);
 		scrollMessagePending = true;
 		}

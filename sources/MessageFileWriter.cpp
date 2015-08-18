@@ -49,7 +49,7 @@ void MessageFileWriter::Write()
 		else if (tagName == "to")
 			headerName = "To: ";
 		else if (tagName == "message-id")
-			headerName = "Message-ID: ";
+			headerName = "BMessage-ID: ";
 		else if (tagName == "references")
 			headerName = "References: ";
 

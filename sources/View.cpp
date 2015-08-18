@@ -4,7 +4,7 @@
 #include "NativeView.h"
 #include "Font.h"
 #include "Bitmap.h"
-#include "Message.h"
+#include <Message.h>
 #include "Shape.h"
 #include <Window.h>
 #include <Messenger.h>
@@ -169,7 +169,7 @@ void View::Unlock()
 }
 
 
-void View::SendMessage(Message* message)
+void View::SendMessage(BMessage* message)
 {
 	BMessenger(view).SendMessage(message->NativeMessage());
 }
@@ -224,7 +224,7 @@ void View::FrameResized(int newWidth, int newHeight)
 }
 
 
-void View::MessageReceived(Message* message)
+void View::MessageReceived(BMessage* message)
 {
 	view->BView::MessageReceived(message->NativeMessage());
 }
