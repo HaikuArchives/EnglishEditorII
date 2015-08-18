@@ -32,8 +32,8 @@ int main(void)
 	PROFILE_INIT(200);
 #endif
 
-	EnglishEditorApp app;
-	app.Run();
+	EnglishEditorApp* app = new EnglishEditorApp;
+	app->Run();
 
 #if __profile__
 	PROFILE_DUMP("/boot/Development/English Editor II/profile.dump");
@@ -46,7 +46,7 @@ int main(void)
 
 EnglishEditorApp::EnglishEditorApp()
 	: BApplication("application/x-vnd.SteveFolta.EnglishEditorII"),
-	  haveOpenedFiles(false), openFilePanel(NULL), newDocWind(NULL), introWind(NULL)
+	  haveOpenedFiles(false), newDocWind(NULL), introWind(NULL)
 {
 }
 
@@ -54,8 +54,6 @@ EnglishEditorApp::EnglishEditorApp()
 EnglishEditorApp::~EnglishEditorApp()
 {
 	delete Prefs();
-
-	delete openFilePanel;
 }
 
 
@@ -140,7 +138,7 @@ void EnglishEditorApp::OpenFile(BFile* file, const BEntry* entry, BMessage* mess
 	// open a wind, using the correct DocumentSource as determined from the MIME type
 	if (mimeType == "text/xml" || mimeType == "text/xhtml")
 		new EnglishEditorWind(new XMLFileSource(filePath.Path()));
-	else if (mimeType == "text/x-email" || mimeType == "text/x-news" || 
+	else if (mimeType == "text/x-email" || mimeType == "text/x-news" ||
 	         mimeType == "message/news") {
 		new EnglishEditorWind(new MessageFileSource(filePath.Path()));
 		}

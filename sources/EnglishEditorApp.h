@@ -10,7 +10,6 @@ class BFile;
 class BMessage;
 class BEntry;
 class BWindow;
-class BFilePanel;
 class NewDocWind;
 class EnglishEditorWind;
 
@@ -28,7 +27,6 @@ public:
 
 protected:
 	bool              	haveOpenedFiles;
-	BFilePanel*       	openFilePanel;
 	NewDocWind*       	newDocWind;
 	EnglishEditorWind*	introWind;
 };
