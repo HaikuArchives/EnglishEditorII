@@ -42,12 +42,6 @@ void EnglishEditorView::MouseMoved(int transitType)
 }
 
 
-void EnglishEditorView::FrameResized(int newWidth, int newHeight)
-{
-	/***/
-}
-
-
 void EnglishEditorView::MessageReceived(BMessage* message)
 {
 	switch (message->what) {

@@ -14,7 +14,6 @@ public:
 	void	MouseDown(int x, int y);
 	void	KeyDown(string_slice key);
 	void	MouseMoved(int transitType);
-	void	FrameResized(int newWidth, int newHeight);
 	void	MessageReceived(BMessage* message);
 	void	SetDirector(WindowDirector* newDirector);
 
