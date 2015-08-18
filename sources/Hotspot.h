@@ -3,6 +3,8 @@
 #ifndef _H_Hotspot_
 #define _H_Hotspot_
 
+#include <GraphicsDefs.h>
+
 #include "CoordPoint.h"
 #include "Rectangle.h"
 

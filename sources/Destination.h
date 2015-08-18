@@ -3,6 +3,8 @@
 #ifndef _H_Destination_
 #define _H_Destination_
 
+#include <GraphicsDefs.h>
+
 #include "Rectangle.h"
 #include "CoordPoint.h"
 

@@ -3,6 +3,8 @@
 #ifndef _H_TagEditor_
 #define _H_TagEditor_
 
+#include <GraphicsDefs.h>
+
 #include "DisplayDirector.h"
 #include "DOMString.h"
 

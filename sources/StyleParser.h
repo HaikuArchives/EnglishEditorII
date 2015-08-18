@@ -3,6 +3,8 @@
 #ifndef _H_StyleParser_
 #define _H_StyleParser_
 
+#include <GraphicsDefs.h>
+
 #include "DOMString.h"
 
 class StyleScriptable;

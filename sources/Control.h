@@ -3,6 +3,8 @@
 #ifndef _H_Control_
 #define _H_Control_
 
+#include <GraphicsDefs.h>
+
 #include "Rectangle.h"
 
 class DisplayDirector;

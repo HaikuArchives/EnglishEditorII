@@ -3,6 +3,8 @@
 #ifndef _H_InlineArrow_
 #define _H_InlineArrow_
 
+#include <GraphicsDefs.h>
+
 #include "CoordPoint.h"
 #include "Rectangle.h"
 

@@ -3,6 +3,8 @@
 #ifndef _H_MenuDirector_
 #define _H_MenuDirector_
 
+#include <GraphicsDefs.h>
+
 #include "DisplayDirector.h"
 
 class WindowDirector;

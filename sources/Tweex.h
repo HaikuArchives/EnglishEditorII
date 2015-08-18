@@ -3,6 +3,8 @@
 #ifndef _H_Tweex_
 #define _H_Tweex_
 
+#include <GraphicsDefs.h>
+
 #include "string_slice.h"
 
 class DocumentSource;

@@ -3,6 +3,8 @@
 #ifndef _H_TextDisplayNode_
 #define _H_TextDisplayNode_
 
+#include <GraphicsDefs.h>
+
 #include "InlineableDisplayNode.h"
 #include "DOMChangeClient.h"
 #include "CoordPoint.h"

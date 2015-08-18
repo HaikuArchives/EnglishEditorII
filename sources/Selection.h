@@ -3,6 +3,8 @@
 #ifndef _H_Selection_
 #define _H_Selection_
 
+#include <GraphicsDefs.h>
+
 #include "CoordPoint.h"
 #include "Rectangle.h"
 #include "DOMString.h"
