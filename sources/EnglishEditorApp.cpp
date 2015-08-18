@@ -10,10 +10,10 @@
 #include "IntroDocSource.h"
 #include "System.h"
 #include "Error.h"
+#include "DisplayableException.h"
 #include "InternalException.h"
 #include "InvalidXMLException.h"
 #include "string_slice.h"
-#include <FilePanel.h>
 #include <Entry.h>
 #include <File.h>
 #include <Roster.h>
@@ -28,6 +28,7 @@
 
 int main(void)
 {
+	try {
 #if __profile__
 	PROFILE_INIT(200);
 #endif
@@ -38,6 +39,10 @@ int main(void)
 #if __profile__
 	PROFILE_DUMP("/boot/Development/English Editor II/profile.dump");
 #endif
+	} catch (DisplayableException& e) {
+		e.Display();
+		return 1;
+	}
 
 	return 0;
 }
