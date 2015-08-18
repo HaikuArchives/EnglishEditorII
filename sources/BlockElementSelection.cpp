@@ -54,7 +54,7 @@ void BlockElementSelection::Draw(View* view, CoordPoint origin)
 	view->PushState();
 	view->SetPenSize(lineWidth);
 	view->SetHighColor(Selection::selectionColor);
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 
 	// clip out the tagEditor
 	if (tagEditor) {

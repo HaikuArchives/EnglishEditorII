@@ -15,34 +15,6 @@ class Bitmap;
 class Message;
 class Shape;
 
-// drawing modes
-enum {
-	CopyDrawingMode = B_OP_COPY,
-	AlphaDrawingMode = B_OP_ALPHA
-};
-
-// transit types
-enum {
-	MouseEntering = B_ENTERED_VIEW,
-	MouseInside = B_INSIDE_VIEW,
-	MouseExiting = B_EXITED_VIEW
-};
-
-// modifiers
-enum {
-	ShiftModifier = B_SHIFT_KEY,
-	OptionModifier = B_OPTION_KEY,
-	CommandModifier = B_COMMAND_KEY,
-	ControlModifier = B_CONTROL_KEY
-};
-
-// mouse buttons
-enum {
-	PrimaryMouseButton = B_PRIMARY_MOUSE_BUTTON,
-	SecondaryMouseButton = B_SECONDARY_MOUSE_BUTTON,
-	TertiaryMouseButton = B_TERTIARY_MOUSE_BUTTON
-};
-
 class View {
 public:
 	View(NativeView* viewIn);

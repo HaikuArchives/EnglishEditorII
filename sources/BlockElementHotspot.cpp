@@ -45,7 +45,7 @@ void BlockElementHotspot::Draw(View* view, CoordPoint origin)
 	view->PushState();
 	view->SetPenSize(lineWidth);
 	view->SetHighColor(Hotspot::hotspotColor);
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 
 	// draw
 	Rectangle rect = Bounds();

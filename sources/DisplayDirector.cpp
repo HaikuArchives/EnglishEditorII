@@ -142,7 +142,7 @@ void DisplayDirector::MouseDown(int x, int y)
 		hotspot->Clicked(this);
 
 	// extend the selection
-	else if ((view->CurModifiers() & ShiftModifier) != 0)
+	else if ((view->CurModifiers() & B_SHIFT_KEY) != 0)
 		ExtendSelection();
 
 	// promote or drag the selection
@@ -304,8 +304,8 @@ void DisplayDirector::DragSelection(CoordPoint startPoint)
 		int buttons = view->GetMouseButtons();
 		if (buttons == 0)
 			break;
-		wasRightButton = ((buttons & (SecondaryMouseButton | TertiaryMouseButton)) != 0);
-		optionDown = ((view->CurModifiers() & OptionModifier) != 0);
+		wasRightButton = ((buttons & (B_SECONDARY_MOUSE_BUTTON | B_TERTIARY_MOUSE_BUTTON)) != 0);
+		optionDown = ((view->CurModifiers() & B_OPTION_KEY) != 0);
 		scrolling |= Autoscroll(point);
 		point = ViewToDoc(point);
 		if (point == lastPoint && !scrolling) {

@@ -29,7 +29,7 @@ void HMarginControl::Draw(DisplayDirector* directorIn)
 	// set up view
 	View* view = director->DrawingView();
 	view->PushState();
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 	rgb_color alphaColor = controlColor;
 	alphaColor.alpha = curAlpha;
 	view->SetHighColor(alphaColor);

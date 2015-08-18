@@ -39,7 +39,7 @@ void BlocksSelection::Draw(View* view, CoordPoint origin)
 	view->PushState();
 	view->SetPenSize(lineWidth);
 	view->SetHighColor(Selection::selectionColor);
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 
 	// draw
 	Rectangle rect = Bounds();

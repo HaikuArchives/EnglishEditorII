@@ -261,14 +261,14 @@ void WindowDirector::KeyDown(string_slice key)
 
 	// ESC => undo/redo
 	else if (key == Keys::EscKey) {
-		if ((view->CurModifiers() & ShiftModifier) != 0)
+		if ((view->CurModifiers() & B_SHIFT_KEY) != 0)
 			Redo();
 		else
 			Undo();
 		}
 
 	// command keys
-	else if ((view->CurModifiers() & CommandModifier) != 0) {
+	else if ((view->CurModifiers() & B_COMMAND_KEY) != 0) {
 		switch (*key.begin()) {
 			case 's':
 			case 'S':
@@ -277,7 +277,7 @@ void WindowDirector::KeyDown(string_slice key)
 
 			case 'z':
 			case 'Z':
-				if ((view->CurModifiers() & ShiftModifier) != 0)
+				if ((view->CurModifiers() & B_SHIFT_KEY) != 0)
 					Redo();
 				else
 					Undo();

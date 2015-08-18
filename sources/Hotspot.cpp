@@ -27,7 +27,7 @@ void Hotspot::FadeDocument(View* view, CoordPoint origin)
 	Rectangle bounds = Bounds();
 	bounds.OffsetBy(origin);
 	Rectangle viewBounds = view->Bounds();
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 	view->SetHighColor(fadeColor);
 
 	// draw the four rectangles

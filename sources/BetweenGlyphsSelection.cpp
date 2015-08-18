@@ -257,7 +257,7 @@ bool BetweenGlyphsSelection::CaretOutRight()
 void BetweenGlyphsSelection::SelectForward(DisplayDirector* director)
 {
 	// if the option key is down, select after the secondGlyph
-	if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+	if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 		if (secondGlyph == NULL)
 			SelectPastText(director);
 		else
@@ -280,7 +280,7 @@ void BetweenGlyphsSelection::SelectForward(DisplayDirector* director)
 void BetweenGlyphsSelection::SelectBackward(DisplayDirector* director)
 {
 	// if the option key is down, select before the firstGlyph
-	if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+	if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 		if (firstGlyph == NULL)
 			SelectBeforeText(director);
 		else

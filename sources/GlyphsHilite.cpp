@@ -37,7 +37,7 @@ void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
 	rgb_color color = Selection::selectionColor;
 	color.alpha = 128;
 ***/
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 	view->SetHighColor(color);
 	bool needsShape = false;
 

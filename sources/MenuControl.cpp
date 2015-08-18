@@ -64,7 +64,7 @@ void MenuControl::Draw(DisplayDirector* directorIn)
 	// set up
 	View* view = director->DrawingView();
 	view->PushState();
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 	view->SetPenSize(lineWidth);
 	rgb_color white = { 255, 255, 255, 255 };
 	view->SetLowColor(white);	// didn't help

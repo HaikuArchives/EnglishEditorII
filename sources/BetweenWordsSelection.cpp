@@ -144,7 +144,7 @@ void BetweenWordsSelection::InsertTag(DOMString tagName, DisplayDirector* direct
 
 void BetweenWordsSelection::SelectForward(DisplayDirector* director)
 {
-	if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+	if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 		// skip past the next word
 		Glyph* nextWord = textNode->GlyphAfter(space);
 		if (nextWord == NULL)
@@ -176,7 +176,7 @@ void BetweenWordsSelection::SelectForward(DisplayDirector* director)
 
 void BetweenWordsSelection::SelectBackward(DisplayDirector* director)
 {
-	if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+	if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 		// skip to before the previous word
 		Glyph* prevWord = textNode->GlyphBefore(space);
 		if (prevWord == NULL)

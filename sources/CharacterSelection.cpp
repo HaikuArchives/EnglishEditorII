@@ -69,7 +69,7 @@ void CharacterSelection::AcceptKey(string_slice key, DisplayDirector* director)
 		}
 
 	else if (key == Keys::RightArrowKey) {
-		if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+		if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 			// go past the word
 			SelectPastWord(word, director);
 			}
@@ -87,7 +87,7 @@ void CharacterSelection::AcceptKey(string_slice key, DisplayDirector* director)
 		}
 
 	else if (key == Keys::LeftArrowKey) {
-		if ((director->WindowView()->CurModifiers() & OptionModifier) != 0) {
+		if ((director->WindowView()->CurModifiers() & B_OPTION_KEY) != 0) {
 			// go back past the word
 			SelectBeforeWord(word, director);
 			}

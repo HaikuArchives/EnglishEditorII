@@ -79,14 +79,14 @@ void MenuDirector::Draw(Rectangle updateRect)
 
 	// clear the outline
 	drawView->MovePenTo(CoordPoint(0, 0));
-	drawView->SetDrawingMode(AlphaDrawingMode);
+	drawView->SetDrawingMode(B_OP_ALPHA);
 	drawView->SetHighColor(bgndColor);
 	drawView->FillShape(&shape);
 
 	// draw the document
 	static const rgb_color blackColor = { 0, 0, 0, 255 };
 	drawView->SetHighColor(blackColor);
-	drawView->SetDrawingMode(CopyDrawingMode);
+	drawView->SetDrawingMode(B_OP_COPY);
 	contentRect = DocRect();
 //***	contentRect.InsetBy(hMargin + lineSpill, vMargin + lineSpill);	// restore it to the DocRect()
 	BlockDrawContext
@@ -105,7 +105,7 @@ void MenuDirector::Draw(Rectangle updateRect)
 
 	// draw the outline
 	drawView->MovePenTo(CoordPoint(0, 0));
-	drawView->SetDrawingMode(AlphaDrawingMode);
+	drawView->SetDrawingMode(B_OP_ALPHA);
 	drawView->SetPenSize(borderWidth);
 	drawView->SetHighColor(borderColor);
 	drawView->StrokeShape(&shape);
@@ -279,13 +279,13 @@ DOMString MenuDirector::MakeKeyName(string_slice key, int modifiers)
 	DOMString keyName;
 
 	// modifiers
-	if ((modifiers & CommandModifier) != 0)
+	if ((modifiers & B_COMMAND_KEY) != 0)
 		keyName += "Cmd-";
-	if ((modifiers & OptionModifier) != 0)
+	if ((modifiers & B_OPTION_KEY) != 0)
 		keyName += "Opt-";
-	if ((modifiers & ShiftModifier) != 0)
+	if ((modifiers & B_SHIFT_KEY) != 0)
 		keyName += "Shift-";
-	if ((modifiers & ControlModifier) != 0)
+	if ((modifiers & B_CONTROL_KEY) != 0)
 		keyName += "Ctrl-";
 
 	// keyname proper

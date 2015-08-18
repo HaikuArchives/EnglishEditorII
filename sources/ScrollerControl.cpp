@@ -35,7 +35,7 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	// set up
 	View* view = director->DrawingView();
 	view->PushState();
-	view->SetDrawingMode(AlphaDrawingMode);
+	view->SetDrawingMode(B_OP_ALPHA);
 	Rectangle rect = GetRect();
 	rgb_color frameColor = controlColor;
 	frameColor.alpha = alpha;

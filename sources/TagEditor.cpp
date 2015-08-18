@@ -133,7 +133,7 @@ void TagEditor::Draw(Rectangle updateRect)
 	rgb_color bgndAlphaColor = bgndColor;
 	bgndAlphaColor.alpha = bgndAlpha;
 	drawView->MovePenTo(origin);
-	drawView->SetDrawingMode(AlphaDrawingMode);
+	drawView->SetDrawingMode(B_OP_ALPHA);
 	drawView->SetHighColor(bgndAlphaColor);
 	drawView->FillShape(&shape);
 	drawView->SetPenSize(lineWidth);
@@ -143,7 +143,7 @@ void TagEditor::Draw(Rectangle updateRect)
 	// draw the document
 	static const rgb_color blackColor = { 0, 0, 0, 255 };
 	drawView->SetHighColor(blackColor);
-	drawView->SetDrawingMode(CopyDrawingMode);
+	drawView->SetDrawingMode(B_OP_COPY);
 	int hOrigin = (int) (origin.x + bounds.left + lineWidth + xOutset);
 	int vOrigin = (int) (origin.y + bounds.top + lineWidth + yOutset);
 	BlockDrawContext
