@@ -6,6 +6,11 @@
 #include "StyleScriptable.h"
 #include <Application.h>
 
+class BFile;
+class BMessage;
+class BEntry;
+class BWindow;
+class BFilePanel;
 class NewDocWind;
 class EnglishEditorWind;
 

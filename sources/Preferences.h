@@ -5,7 +5,12 @@
 
 #include <SupportDefs.h>
 #include <GraphicsDefs.h>
+#include <Rect.h>
+#include <Entry.h>
 
+class BMessage;
+class BFile;
+class BList;
 class PrefsChangeClient;
 
 class Preferences {

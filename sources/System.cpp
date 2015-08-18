@@ -8,6 +8,7 @@
 #include "OSException.h"
 #include "InternalException.h"
 #include <E-mail.h>
+#include <Clipboard.h>
 #include <Roster.h>
 #include <Directory.h>
 #include <Entry.h>
@@ -213,7 +214,8 @@ void System::SendMailMessage(String filePathIn, Element* header)
 		throw OSException("Couldn't mark mail message to be sent.", result);
 
 	// send it
-	result = send_queued_mail();
+	//result = send_queued_mail();
+	result = -1; // TODO
 	if (result < 0)
 		throw OSException("Couldn't send the email.", result);
 }

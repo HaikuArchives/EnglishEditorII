@@ -32,12 +32,6 @@ SRCS = Action.cpp \
 	AddCharsAction.cpp \
 	Attr.cpp \
 	BackCharsAction.cpp \
-	BasicLiveAttr.cpp \
-	BasicLiveCDATASection.cpp \
-	BasicLiveDocument.cpp \
-	BasicLiveElement.cpp \
-	BasicLiveEntityReference.cpp \
-	BasicLiveText.cpp \
 	BetweenBlocksDestination.cpp \
 	BetweenBlocksSelection.cpp \
 	BetweenGlyphsDestination.cpp \
@@ -127,13 +121,6 @@ SRCS = Action.cpp \
 	InvalidXMLException.cpp \
 	Keys.cpp \
 	LineBreak.cpp \
-	LiveAttr.cpp \
-	LiveCDATASection.cpp \
-	LiveDocument.cpp \
-	LiveElement.cpp \
-	LiveEntityReference.cpp \
-	LiveText.cpp \
-	LiveXMLNodeFactory.cpp \
 	MarginControl.cpp \
 	MenuControl.cpp \
 	MenuDirector.cpp \
@@ -247,7 +234,7 @@ RSRCS =
 #	- 	if your library does not follow the standard library naming scheme,
 #		you need to specify the path to the library and it's name.
 #		(e.g. for mylib.a, specify "mylib.a" or "path/mylib.a")
-LIBS = be
+LIBS = be mail
 
 #	Specify additional paths to directories following the standard libXXX.so
 #	or libXXX.a naming scheme. You can specify full paths or paths relative
