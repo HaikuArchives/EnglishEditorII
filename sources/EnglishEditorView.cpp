@@ -48,7 +48,7 @@ void EnglishEditorView::FrameResized(int newWidth, int newHeight)
 
 void EnglishEditorView::MessageReceived(BMessage* message)
 {
-	switch (message->What()) {
+	switch (message->what) {
 		case ScrollStepMessage:
 			director->ScrollMessageReceived();
 			break;

@@ -57,8 +57,7 @@ void NativeView::MouseMoved(BPoint point, uint32 transit, const BMessage* messag
 
 void NativeView::MessageReceived(BMessage* nativeMessage)
 {
-	BMessage message(nativeMessage);
-	view->MessageReceived(&message);
+	view->MessageReceived(nativeMessage);
 }
 
 

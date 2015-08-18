@@ -171,7 +171,7 @@ void View::Unlock()
 
 void View::SendMessage(BMessage* message)
 {
-	BMessenger(view).SendMessage(message->NativeMessage());
+	BMessenger(view).SendMessage(message);
 }
 
 
@@ -226,7 +226,7 @@ void View::FrameResized(int newWidth, int newHeight)
 
 void View::MessageReceived(BMessage* message)
 {
-	view->BView::MessageReceived(message->NativeMessage());
+	view->BView::MessageReceived(message);
 }
 
 
