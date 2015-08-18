@@ -3,9 +3,7 @@
 #ifndef _H_string_slice_
 #define _H_string_slice_
 
-#ifndef NULL
-#define NULL	(0L)
-#endif
+#include <string.h>
 
 class string_slice {
 protected:

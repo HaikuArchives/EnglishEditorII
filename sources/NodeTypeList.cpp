@@ -4,9 +4,10 @@
 #include "Node.h"
 #include "Text.h"
 #include "InternalException.h"
+
 #include <vector>
 
-class NodeTypeInternalList : public vector<String> {
+class NodeTypeInternalList : public std::vector<String> {
 public:
 	int	refCount;
 };

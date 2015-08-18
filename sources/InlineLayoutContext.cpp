@@ -4,7 +4,8 @@
 #include "Glyph.h"
 #include "Tab.h"
 #include "Font.h"
-#include <vector.h>
+
+#include <vector>
 
 struct GlyphInfo {
 	Glyph*	glyph;
@@ -16,7 +17,7 @@ struct GlyphInfo {
 	GlyphInfo() : glyph(NULL), width(0), ascent(0) {}	// STL requires this
 };
 
-class GlyphsList : public vector<GlyphInfo> {};
+class GlyphsList : public std::vector<GlyphInfo> {};
 
 enum {
 	AlignLeft,

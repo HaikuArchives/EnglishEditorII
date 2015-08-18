@@ -6,9 +6,10 @@
 #include "BetweenBlocksSelection.h"
 #include "DisplayDirector.h"
 #include "InternalException.h"
+
 #include <vector>
 
-class NewElementsStack : public vector<Node*> {};
+class NewElementsStack : public std::vector<Node*> {};
 
 
 

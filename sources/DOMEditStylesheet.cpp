@@ -8,7 +8,7 @@
 #include "NodeList.h"
 #include <map>
 
-class DOMEditStyleDict : public map<String, Element*> {};
+class DOMEditStyleDict : public std::map<String, Element*> {};
 
 
 

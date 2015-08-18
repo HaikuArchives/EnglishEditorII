@@ -237,7 +237,7 @@ void System::MarkMailMessageRead(String filePathIn)
 	status_t err = node.GetAttrInfo(B_MAIL_ATTR_STATUS, &attrInfo);
 	if (err == B_NO_ERROR) {
 		char* statusStr = new char[attrInfo.size];
-		auto_ptr<char> statusStrDeleter(statusStr);
+		std::auto_ptr<char> statusStrDeleter(statusStr);
 		result = node.ReadAttr(B_MAIL_ATTR_STATUS, B_STRING_TYPE, 0,
 		                       statusStr, attrInfo.size);
 		if (result < 0)

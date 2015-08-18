@@ -9,7 +9,7 @@
 #include "InternalException.h"
 #include <vector>
 
-class LinesList : public vector<string_slice> {};
+class LinesList : public std::vector<string_slice> {};
 
 
 
@@ -317,7 +317,7 @@ Element* MessageParser::StripAttribution(LinesList* lines)
 					break;
 				--len;
 				}
-			
+
 			// check end of line for telltale ":" or "writes" or "wrote"
 			if (line[len-1] == ':')
 				haveAttribution = true;
@@ -431,7 +431,7 @@ void MessageParser::FillBlock(Element* element, LinesList* lines)
 				if (trimmedWord.startsWith("<") && trimmedWord.endsWith(">"))
 					trimmedWord = trimmedWord.substr(1, trimmedWord.length() - 2);
 				bool isEmailAddress = IsEmailAddress(trimmedWord);
-				if (trimmedWord.startsWith("http:") || trimmedWord.startsWith("URL:") || 
+				if (trimmedWord.startsWith("http:") || trimmedWord.startsWith("URL:") ||
 						trimmedWord.startsWith("ftp:") || isEmailAddress) {
 					// it's a URL, make a <a>
 					// finish off the current text

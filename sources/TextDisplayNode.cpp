@@ -29,10 +29,11 @@
 #include "Font.h"
 #include "UTF8Utils.h"
 #include "InternalException.h"
+
 #include <vector>
 #include <typeinfo>
 
-class GlyphList : public vector<Glyph*> {};
+class GlyphList : public std::vector<Glyph*> {};
 
 enum {
 	NoGlyphType,
@@ -244,7 +245,7 @@ Selection* TextDisplayNode::InlineFindSelection(FindSelectionContext* context)
 					return new BetweenGlyphsSelection(this, glyph, nextGlyph, false);
 					}
 				else
-					return new CharacterSelection(this, word, charIndex);				
+					return new CharacterSelection(this, word, charIndex);
 				}
 			// ... a space?
 			Space* space = dynamic_cast<Space*>(glyph);

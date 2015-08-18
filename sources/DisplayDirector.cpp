@@ -22,7 +22,7 @@
 #include "InternalException.h"
 #include <vector>
 
-class SelectionList : public vector<Selection*> {};
+class SelectionList : public std::vector<Selection*> {};
 
 
 

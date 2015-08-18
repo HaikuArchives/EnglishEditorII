@@ -6,7 +6,7 @@
 #include "DOMException.h"
 #include <vector>
 
-class NodesVector : public vector<Node*> {};
+class NodesVector : public std::vector<Node*> {};
 
 
 

@@ -4,11 +4,11 @@
 #include "Node.h"
 #include <map>
 
-class NodeMapMap : public map<String, Node*> {};
+class NodeMapMap : public std::map<String, Node*> {};
 class NodeMapMapIter : public NodeMapMap::iterator {
 public:
 	NodeMapMapIter(const NodeMapMap::iterator& otherIter)
-		: NodeMapMap::iterator(otherIter) {}	
+		: NodeMapMap::iterator(otherIter) {}
 };
 
 

@@ -2,9 +2,10 @@
 
 #include "RemoveNodesAction.h"
 #include "Node.h"
+
 #include <vector>
 
-class RemovedNodesList : public vector<Node*> {};
+class RemovedNodesList : public std::vector<Node*> {};
 
 
 

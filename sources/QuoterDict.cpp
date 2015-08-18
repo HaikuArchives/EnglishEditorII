@@ -21,7 +21,7 @@ struct QuoterItem {
 				{ delete attribution; attribution = newAttribution; }
 };
 
-class QuoterList : public vector<QuoterItem*> {};
+class QuoterList : public std::vector<QuoterItem*> {};
 
 
 

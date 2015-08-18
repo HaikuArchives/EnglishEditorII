@@ -2,10 +2,10 @@
 
 #include "CopyNodesAction.h"
 #include "Node.h"
+
 #include <vector>
 
-class CopiedNodesList : public vector<Node*> {};
-
+class CopiedNodesList : public std::vector<Node*> {};
 
 
 CopyNodesAction::CopyNodesAction(Node* firstNode, Node* lastNode, Node* destParentIn, Node* destBeforeNodeIn)
