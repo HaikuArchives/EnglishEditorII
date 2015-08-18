@@ -11,7 +11,7 @@
 #include "InternalException.h"
 
 
-PlaceholderTextDisplayNode::PlaceholderTextDisplayNode(DOMString placeholderText)
+PlaceholderTextDisplayNode::PlaceholderTextDisplayNode(String placeholderText)
 	: TextDisplayNode(new Text(placeholderText))
 {
 }
@@ -29,7 +29,7 @@ bool PlaceholderTextDisplayNode::IsEmpty()
 }
 
 
-DOMString PlaceholderTextDisplayNode::GetProperty(string_slice propertyName)
+String PlaceholderTextDisplayNode::GetProperty(string_slice propertyName)
 {
 	DisplayDirector* director = GetDisplayDirector();
 	if (director == NULL)
@@ -78,7 +78,7 @@ Selection* PlaceholderTextDisplayNode::InlineFindSelection(FindSelectionContext*
 	if (!firstGlyph.IsValid())
 		return NULL;
 	GlyphRef lastGlyph = LastGlyph();
-	CoordPoint mousePoint(context->mouseX - context->xIndent,
+	BPoint mousePoint(context->mouseX - context->xIndent,
 	                      context->mouseY - context->curY);
 	if (GlyphLoc(firstGlyph) > mousePoint || GlyphLoc(lastGlyph) < mousePoint)
 		return NULL;

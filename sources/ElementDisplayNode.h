@@ -17,7 +17,7 @@ public:
 	bool       	IsDisposable();
 	void       	Load(DisplayDirector* director);
 	void       	UpdateProperties();
-	DOMString  	GetProperty(string_slice propertyName);
+	String  	GetProperty(string_slice propertyName);
 	Element*   	GetElement();
 	Selection* 	GetSelection();
 	Hotspot*   	GetHotspot(DisplayDirector* director);
@@ -25,8 +25,8 @@ public:
 	Node*      	FirstNode();
 	Node*      	LastNode();
 	bool       	CanSelectAcross();
-	DOMString  	GetScriptProperty(DOMString property);
-	DOMString  	FunctionCall(DOMString function, DOMString arg, StyleScriptable* target);
+	String  	GetScriptProperty(String property);
+	String  	FunctionCall(String function, String arg, StyleScriptable* target);
 
 protected:
 	Element*	element;

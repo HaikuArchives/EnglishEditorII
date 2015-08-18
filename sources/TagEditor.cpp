@@ -31,7 +31,7 @@ rgb_color TagEditor::selectedColor = Selection::selectionColor;
 	// darker blue: 0, 108, 192
 
 
-TagEditor::TagEditor(DOMString tagName, TagSelection* ownerIn, WindowDirector* windowDirectorIn)
+TagEditor::TagEditor(String tagName, TagSelection* ownerIn, WindowDirector* windowDirectorIn)
 	: DisplayDirector(NULL),		// docSource will be set up below
 	  windowDirector(windowDirectorIn), owner(ownerIn)
 {
@@ -96,7 +96,7 @@ bool TagEditor::IsSelected()
 }
 
 
-void TagEditor::SetTagName(DOMString newTagName)
+void TagEditor::SetTagName(String newTagName)
 {
 	TagDocumentSource* tagSource = dynamic_cast<TagDocumentSource*>(docSource);
 	if (useAssertions && tagSource == NULL)
@@ -105,14 +105,14 @@ void TagEditor::SetTagName(DOMString newTagName)
 }
 
 
-void TagEditor::Draw(Rectangle updateRect)
+void TagEditor::Draw(BRect updateRect)
 {
 	View* drawView = DrawingView();
 	drawView->PushState();
 
 	// make the outline shape
-	Rectangle bounds = Bounds();
-	Rectangle outlineRect = bounds;
+	BRect bounds = Bounds();
+	BRect outlineRect = bounds;
 	int lineSpill = (lineWidth + 1) / 2;
 	lineSpill -= 1;		//*** fudge factor?
 	outlineRect.InsetBy(lineSpill, lineSpill);
@@ -129,7 +129,7 @@ void TagEditor::Draw(Rectangle updateRect)
 	shape.Close();
 
 	// clear and draw the outline
-	CoordPoint origin = windowDirector->DocToView(CoordPoint(0, 0));
+	BPoint origin = windowDirector->DocToView(BPoint(0, 0));
 	rgb_color bgndAlphaColor = bgndColor;
 	bgndAlphaColor.alpha = bgndAlpha;
 	drawView->MovePenTo(origin);
@@ -157,16 +157,16 @@ void TagEditor::Draw(Rectangle updateRect)
 		bool needsClip = selection->NeedsClip();
 		if (needsClip) {
 			bitmapView->PushState();
-			Rectangle clipRect = DocToView(pageRect);
+			BRect clipRect = DocToView(pageRect);
 			clipRect.left = view->Bounds().left;
 			clipRect.right = view->Bounds().right;
-			Region clipRgn;
+			BRegion clipRgn;
 			clipRgn.Include(clipRect);
 			bitmapView->ConstrainClippingRegion(&clipRgn);
 			}
 ***/
 
-		selection->Draw(drawView, DocToView(CoordPoint(0, 0)));
+		selection->Draw(drawView, DocToView(BPoint(0, 0)));
 
 /***
 		if (needsClip)
@@ -230,28 +230,28 @@ View* TagEditor::WindowView()
 }
 
 
-CoordPoint TagEditor::ViewToDoc(CoordPoint viewPoint)
+BPoint TagEditor::ViewToDoc(BPoint viewPoint)
 {
-	Rectangle bounds = Bounds();
-	CoordPoint origin(bounds.left + lineWidth + xOutset,
+	BRect bounds = Bounds();
+	BPoint origin(bounds.left + lineWidth + xOutset,
 	                  bounds.top + lineWidth + yOutset);
 	return viewPoint - windowDirector->DocToView(origin);
 }
 
 
-CoordPoint TagEditor::DocToView(CoordPoint docPoint)
+BPoint TagEditor::DocToView(BPoint docPoint)
 {
-	Rectangle bounds = Bounds();
-	CoordPoint origin(bounds.left + lineWidth + xOutset,
+	BRect bounds = Bounds();
+	BPoint origin(bounds.left + lineWidth + xOutset,
 	                  bounds.top + lineWidth + yOutset);
 	return docPoint + windowDirector->DocToView(origin);
 }
 
 
-Rectangle TagEditor::ViewToDoc(Rectangle rect)
+BRect TagEditor::ViewToDoc(BRect rect)
 {
-	Rectangle bounds = Bounds();
-	CoordPoint origin(bounds.left + lineWidth + xOutset,
+	BRect bounds = Bounds();
+	BPoint origin(bounds.left + lineWidth + xOutset,
 	                  bounds.top + lineWidth + yOutset);
 	origin = windowDirector->DocToView(origin);
 	rect.OffsetBy(-origin.x, -origin.y);
@@ -259,10 +259,10 @@ Rectangle TagEditor::ViewToDoc(Rectangle rect)
 }
 
 
-Rectangle TagEditor::DocToView(Rectangle rect)
+BRect TagEditor::DocToView(BRect rect)
 {
-	Rectangle bounds = Bounds();
-	CoordPoint origin(bounds.left + lineWidth + xOutset,
+	BRect bounds = Bounds();
+	BPoint origin(bounds.left + lineWidth + xOutset,
 	                  bounds.top + lineWidth + yOutset);
 	origin = windowDirector->DocToView(origin);
 	rect.OffsetBy(origin);
@@ -270,9 +270,9 @@ Rectangle TagEditor::DocToView(Rectangle rect)
 }
 
 
-Rectangle TagEditor::DocRect()
+BRect TagEditor::DocRect()
 {
-	Rectangle docRect = Bounds();
+	BRect docRect = Bounds();
 	docRect.InsetBy(lineWidth + xOutset, lineWidth + yOutset);
 	return windowDirector->DocToView(docRect);
 }
@@ -290,7 +290,7 @@ void TagEditor::FinishRefreshCycle()
 }
 
 
-void TagEditor::RefreshViewRect(Rectangle rect)
+void TagEditor::RefreshViewRect(BRect rect)
 {
 	windowDirector->RefreshViewRect(rect);
 }
@@ -298,7 +298,7 @@ void TagEditor::RefreshViewRect(Rectangle rect)
 
 void TagEditor::RefreshDocAfter(int y)
 {
-	Rectangle rect = Bounds();
+	BRect rect = Bounds();
 	rect.InsetBy(lineWidth + xOutset, lineWidth + yOutset);
 	rect.top += y;
 	windowDirector->RefreshViewRect(rect);
@@ -317,11 +317,11 @@ void TagEditor::DocTypeChanged()
 }
 
 
-Rectangle TagEditor::Bounds()
+BRect TagEditor::Bounds()
 {
 	// first try to get the optimal requested bounds
-	Rectangle specRect = owner->TagSpecRect();
-	Rectangle bounds;
+	BRect specRect = owner->TagSpecRect();
+	BRect bounds;
 	bounds.left = specRect.left;
 	int width = docDisplayNode->MaxLineWidth();
 /***
@@ -344,7 +344,7 @@ Rectangle TagEditor::Bounds()
 }
 
 
-DOMString TagEditor::TagName()
+String TagEditor::TagName()
 {
 	Text* tagText =
 		dynamic_cast<Text*>(docSource->GetDocument()->DocumentElement()->FirstChild());

@@ -18,9 +18,9 @@ BlockElementHotspot::BlockElementHotspot(ElementDisplayNode* displayNodeIn)
 }
 
 
-Rectangle BlockElementHotspot::Bounds()
+BRect BlockElementHotspot::Bounds()
 {
-	Rectangle bounds;
+	BRect bounds;
 	bounds.top = displayNode->Top();
 	bounds.bottom = bounds.top + displayNode->Height();
 	bounds.left = displayNode->LeftSpace();
@@ -30,13 +30,13 @@ Rectangle BlockElementHotspot::Bounds()
 }
 
 
-bool BlockElementHotspot::ContainsPoint(CoordPoint point)
+bool BlockElementHotspot::ContainsPoint(BPoint point)
 {
 	return Bounds().Contains(point);
 }
 
 
-void BlockElementHotspot::Draw(View* view, CoordPoint origin)
+void BlockElementHotspot::Draw(View* view, BPoint origin)
 {
 	// fade the rest of the document
 	FadeDocument(view, origin);
@@ -48,7 +48,7 @@ void BlockElementHotspot::Draw(View* view, CoordPoint origin)
 	view->SetDrawingMode(B_OP_ALPHA);
 
 	// draw
-	Rectangle rect = Bounds();
+	BRect rect = Bounds();
 	rect.InsetBy(lineSpill, lineSpill);
 	Shape shape;
 	shape.MoveTo(rect.left, rect.top + cornerRadius);

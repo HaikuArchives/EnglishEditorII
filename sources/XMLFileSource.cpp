@@ -92,7 +92,7 @@ void XMLFileSource::Save()
 				titleElement = headElement->GetElementByTagName("title");
 			}
 		// if no title, kick out
-		DOMString title;
+		String title;
 		if (titleElement)
 			title = DOMUtils::NodeContents(titleElement);
 		if (title.empty()) {

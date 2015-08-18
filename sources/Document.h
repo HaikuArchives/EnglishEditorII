@@ -17,18 +17,18 @@ class Document : public CompositeNode {
 public:
 	Document();
 	Document(const Document& other, bool deep);
-	DOMString             	NodeName();
-	DOMString             	NodeValue();
+	String             	NodeName();
+	String             	NodeValue();
 	unsigned short        	NodeType();
 	Node*                 	CloneNode(bool deep);
 	virtual Element*      	DocumentElement();
-	Element*              	CreateElement(DOMString tagName);
-	Text*                 	CreateTextNode(DOMString data);
-	Comment*              	CreateComment(DOMString data);
-	CDATASection*         	CreateCDATASection(DOMString data);
-	ProcessingInstruction*	CreateProcessingInstruction(DOMString target, DOMString data);
-	Attr*                 	CreateAttribute(DOMString name);
-	EntityReference*      	CreateEntityReference(DOMString name);
+	Element*              	CreateElement(String tagName);
+	Text*                 	CreateTextNode(String data);
+	Comment*              	CreateComment(String data);
+	CDATASection*         	CreateCDATASection(String data);
+	ProcessingInstruction*	CreateProcessingInstruction(String target, String data);
+	Attr*                 	CreateAttribute(String name);
+	EntityReference*      	CreateEntityReference(String name);
 };
 
 

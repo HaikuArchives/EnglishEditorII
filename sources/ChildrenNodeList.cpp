@@ -34,7 +34,7 @@ unsigned long ChildrenNodeList::Length()
 }
 
 
-NodeList* ChildrenNodeList::GetElementsByTagName(DOMString name)
+NodeList* ChildrenNodeList::GetElementsByTagName(String name)
 {
 	StoredNodeList* results = new StoredNodeList();
 	for (Node* child = parent->FirstChild(); child; child = child->NextSibling()) {
@@ -45,7 +45,7 @@ NodeList* ChildrenNodeList::GetElementsByTagName(DOMString name)
 }
 
 
-Element* ChildrenNodeList::GetElementByTagName(DOMString name)
+Element* ChildrenNodeList::GetElementByTagName(String name)
 {
 	for (Node* child = parent->FirstChild(); child; child = child->NextSibling()) {
 		if (child->NodeType() == ELEMENT_NODE && child->NodeName() == name)

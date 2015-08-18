@@ -2,7 +2,7 @@
 
 #include "OSException.h"
 #include "Error.h"
-#include "DOMString.h"
+#include "String.h"
 #include <string.h>
 
 
@@ -27,7 +27,7 @@ status_t OSException::GetError()
 
 void OSException::Display()
 {
-	DOMString msg = description;
+	String msg = description;
 	if (err != 0) {
 		msg += " (";
 		msg += strerror(err);

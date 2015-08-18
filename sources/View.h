@@ -3,9 +3,10 @@
 #ifndef _H_View_
 #define _H_View_
 
-#include "CoordPoint.h"
-#include "Rectangle.h"
-#include "Region.h"
+#include <Rect.h>
+
+#include <Point.h>
+#include <Region.h>
 #include "string_slice.h"
 #include <View.h>
 
@@ -19,35 +20,35 @@ class View {
 public:
 	View(NativeView* viewIn);
 	void        	MovePenTo(int x, int y);
-	void        	MovePenTo(CoordPoint point);
+	void        	MovePenTo(BPoint point);
 	void        	SetHighColor(rgb_color color);
 	void        	SetLowColor(rgb_color color);
 	void        	SetFont(Font* font);
 	void        	SetDrawingMode(int drawingMode);
 	void        	SetPenSize(int penSize);
-	void        	ConstrainClippingRegion(Region* region);
+	void        	ConstrainClippingRegion(BRegion* region);
 	void        	PushState();
 	void        	PopState();
 	void        	DrawString(string_slice str);
 	void        	DrawString(string_slice str, int x, int y);
-	void        	ClearRect(Rectangle rect);
-	void        	StrokeRect(Rectangle rect);
-	void        	FillRect(Rectangle rect);
-	void        	StrokeLine(CoordPoint startPt, CoordPoint endPt);
-	void        	StrokeBezier(CoordPoint points[4]);
+	void        	ClearRect(BRect rect);
+	void        	StrokeRect(BRect rect);
+	void        	FillRect(BRect rect);
+	void        	StrokeLine(BPoint startPt, BPoint endPt);
+	void        	StrokeBezier(BPoint points[4]);
 	void        	StrokeShape(Shape* shape);
 	void        	FillShape(Shape* shape);
-	void        	StrokeEllipse(Rectangle rect);
-	void        	FillEllipse(Rectangle rect);
-	void        	DrawBitmap(Bitmap* bitmap, Rectangle rect);
+	void        	StrokeEllipse(BRect rect);
+	void        	FillEllipse(BRect rect);
+	void        	DrawBitmap(Bitmap* bitmap, BRect rect);
 	void        	Sync();
 	void        	Lock();
 	void        	Unlock();
 	void        	SendMessage(Message* message);
 	void        	MouseTrackingPause();
-	CoordPoint  	GetMousePoint();
+	BPoint  	GetMousePoint();
 	int         	GetMouseButtons();
-	virtual void	Draw(Rectangle updateRect);
+	virtual void	Draw(BRect updateRect);
 	virtual void	MouseDown(int x, int y);
 	virtual void	KeyDown(string_slice key);
 	virtual void	MouseMoved(int transitType);
@@ -55,7 +56,7 @@ public:
 	virtual void	MessageReceived(Message* message);
 	int         	Width();
 	int         	Height();
-	Rectangle   	Bounds();
+	BRect   	Bounds();
 	long        	GetColorSpace();
 	int         	CurClicks();
 	int         	CurModifiers();

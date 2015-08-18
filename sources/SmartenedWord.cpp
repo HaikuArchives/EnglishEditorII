@@ -8,7 +8,7 @@
 
 
 
-SmartenedWord::SmartenedWord(DOMString wordIn)
+SmartenedWord::SmartenedWord(String wordIn)
 	: Word(wordIn)
 {
 	// smarten the displayWord

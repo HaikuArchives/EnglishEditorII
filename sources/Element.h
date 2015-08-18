@@ -11,22 +11,22 @@ class NamedNodeMap;
 
 class Element : public CompositeNode {
 public:
-	Element(DOMString nameIn);
+	Element(String nameIn);
 	Element(const Element& other, bool deep);
 	~Element();
-	DOMString     	NodeName();
+	String     	NodeName();
 	unsigned short	NodeType();
 	NamedNodeMap* 	Attributes();
 	Node*         	CloneNode(bool deep);
-	DOMString     	TagName();
-	DOMString     	GetAttribute(DOMString name);
-	void          	SetAttribute(DOMString name, DOMString value);
-	Attr*         	GetAttributeNode(DOMString name);
+	String     	TagName();
+	String     	GetAttribute(String name);
+	void          	SetAttribute(String name, String value);
+	Attr*         	GetAttributeNode(String name);
 	Attr*         	SetAttributeNode(Attr* newAttr);
 	Attr*         	RemoveAttributeNode(Attr* oldAttr);
 
 protected:
-	DOMString    	name;
+	String    	name;
 	NamedNodeMap*	attributes;
 };
 

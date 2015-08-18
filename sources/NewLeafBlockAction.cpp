@@ -12,7 +12,7 @@
 
 
 
-NewLeafBlockAction::NewLeafBlockAction(Element* afterElementIn, DOMString tagName)
+NewLeafBlockAction::NewLeafBlockAction(Element* afterElementIn, String tagName)
 	: afterElement(afterElementIn)
 {
 	Document* document = afterElement->OwnerDocument();

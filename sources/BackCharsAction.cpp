@@ -12,7 +12,7 @@ BackCharsAction::BackCharsAction(Text* textIn, int whichCharIn, int numBytes)
 	: text(textIn), whichChar(whichCharIn)
 {
 	// store it into "chars", accounting for multi-byte UTF8 characters
-	DOMString textData = text->Data();
+	String textData = text->Data();
 	if (numBytes == 1) {
 		// asking for deletion of one character; make sure to get all the bytes
 		// of that character
@@ -48,7 +48,7 @@ void BackCharsAction::Do(DisplayDirector* director)
 void BackCharsAction::Undo(DisplayDirector* director)
 {
 	// re-insert the character
-	text->InsertData(whichChar, DOMString(chars));
+	text->InsertData(whichChar, String(chars));
 
 	// move selection
 	TextDisplayNode* displayNode =

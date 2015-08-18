@@ -9,8 +9,8 @@ class DocumentFragment : public CompositeNode {
 public:
 	DocumentFragment();
 	DocumentFragment(const DocumentFragment& other, bool deep);
-	DOMString     	NodeName();
-	DOMString     	NodeValue();
+	String     	NodeName();
+	String     	NodeValue();
 	unsigned short	NodeType();
 	Node*         	CloneNode(bool deep);
 };

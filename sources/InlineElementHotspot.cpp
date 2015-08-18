@@ -21,19 +21,19 @@ InlineElementHotspot::~InlineElementHotspot()
 }
 
 
-Rectangle InlineElementHotspot::Bounds()
+BRect InlineElementHotspot::Bounds()
 {
 	return hilite->Bounds();
 }
 
 
-bool InlineElementHotspot::ContainsPoint(CoordPoint point)
+bool InlineElementHotspot::ContainsPoint(BPoint point)
 {
 	return hilite->ContainsPoint(point);
 }
 
 
-void InlineElementHotspot::Draw(View* view, CoordPoint origin)
+void InlineElementHotspot::Draw(View* view, BPoint origin)
 {
 	// fade the rest of the document
 	FadeDocument(view, origin);

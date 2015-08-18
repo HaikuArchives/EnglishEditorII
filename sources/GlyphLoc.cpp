@@ -13,7 +13,7 @@ GlyphLoc::GlyphLoc(GlyphRef glyphRefIn)
 }
 
 
-bool GlyphLoc::operator<(CoordPoint point)
+bool GlyphLoc::operator<(BPoint point)
 {
 	if (glyphRef.GetGlyph()->GetY() > point.y)
 		return false;
@@ -24,7 +24,7 @@ bool GlyphLoc::operator<(CoordPoint point)
 }
 
 
-bool GlyphLoc::operator>(CoordPoint point)
+bool GlyphLoc::operator>(BPoint point)
 {
 	if (glyphRef.GetGlyph()->GetY() > point.y)
 		return true;
@@ -35,13 +35,13 @@ bool GlyphLoc::operator>(CoordPoint point)
 }
 
 
-bool GlyphLoc::operator<=(CoordPoint point)
+bool GlyphLoc::operator<=(BPoint point)
 {
 	return !(*this > point);
 }
 
 
-bool GlyphLoc::operator>=(CoordPoint point)
+bool GlyphLoc::operator>=(BPoint point)
 {
 	return !(*this < point);
 }

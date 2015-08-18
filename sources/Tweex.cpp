@@ -22,13 +22,13 @@ string_slice Tweex::GetString(string_slice tweakName)
 	// get the document
 	if (docSource == NULL) {
 		try {
-			DOMString filePath = System::AppDirectory();
+			String filePath = System::AppDirectory();
 			filePath += tweexDocName;
 			docSource = new XMLFileSource(filePath);
 			tweexDoc = docSource->GetDocument();
 			}
 		catch (...) {
-			DOMString msg = "Couldn't open \"";
+			String msg = "Couldn't open \"";
 			msg += tweexDocName;
 			msg += "\".  Make sure the program was installed correctly.";
 /***

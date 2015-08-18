@@ -37,7 +37,7 @@ void TagSelection::HideTag(DisplayDirector* director)
 	if (tagEditor == NULL)
 		return;
 
-	Rectangle biggerBounds = Bounds();	// before the tag goes away
+	BRect biggerBounds = Bounds();	// before the tag goes away
 
 	delete tagEditor;
 	tagEditor = NULL;
@@ -94,7 +94,7 @@ void TagSelection::AcceptKey(string_slice key, DisplayDirector* director)
 	// handle keys for the tagEditor
 	if (tagEditor && tagEditor->IsSelected()) {
 		if (key == "\n" || key == "\t") {
-			DOMString newTagName = tagEditor->TagName();
+			String newTagName = tagEditor->TagName();
 			if (newTagName.empty()) {
 				RestoreTag(director);
 				TagEditDone(director);

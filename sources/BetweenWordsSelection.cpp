@@ -82,7 +82,7 @@ void BetweenWordsSelection::AcceptKey(string_slice key, DisplayDirector* directo
 }
 
 
-Selection* BetweenWordsSelection::ExtendTo(CoordPoint point)
+Selection* BetweenWordsSelection::ExtendTo(BPoint point)
 {
 	/***/
 	return this;
@@ -117,9 +117,9 @@ void BetweenWordsSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-CoordPoint BetweenWordsSelection::Point()
+BPoint BetweenWordsSelection::Point()
 {
-	CoordPoint point = BlockOrigin(textNode);
+	BPoint point = BlockOrigin(textNode);
 	Font* font = textNode->CurFont();
 	point.x += space->GetX() + space->Width(font) / 2;
 	point.y += space->GetY() + font->Ascent();
@@ -127,7 +127,7 @@ CoordPoint BetweenWordsSelection::Point()
 }
 
 
-void BetweenWordsSelection::InsertTag(DOMString tagName, DisplayDirector* director)
+void BetweenWordsSelection::InsertTag(String tagName, DisplayDirector* director)
 {
 	CompositeAction* action = new CompositeAction();
 	action->AddAction(new RestoreSelectionAction());

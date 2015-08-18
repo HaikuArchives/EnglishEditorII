@@ -30,10 +30,10 @@ MenuControl::~MenuControl()
 }
 
 
-Rectangle MenuControl::GetRect()
+BRect MenuControl::GetRect()
 {
-	Rectangle rect;
-	Rectangle viewBounds = director->ViewBounds();
+	BRect rect;
+	BRect viewBounds = director->ViewBounds();
 	int lineSpill = (lineWidth + 1) / 2;
 	rect.right = viewBounds.right - xPos + lineSpill;
 	rect.left = rect.right - diameter - 2 * lineSpill;
@@ -42,8 +42,8 @@ Rectangle MenuControl::GetRect()
 	return rect;
 
 /***
-	Rectangle viewBounds = director->ViewBounds();
-	Rectangle rect;
+	BRect viewBounds = director->ViewBounds();
+	BRect rect;
 	rect.right = viewBounds.right - xPos;
 	rect.left = rect.right - font->WidthOf(string_slice(asterisk));
 	rect.top = viewBounds.top + yPos;
@@ -73,8 +73,8 @@ void MenuControl::Draw(DisplayDirector* directorIn)
 	alphaColor.alpha = alpha;
 
 	// calc the ellipse
-	Rectangle rect;
-	Rectangle viewBounds = director->ViewBounds();
+	BRect rect;
+	BRect viewBounds = director->ViewBounds();
 	rect.right = viewBounds.right - xPos;
 	rect.left = rect.right - diameter;
 	rect.top = viewBounds.top + yPos;
@@ -88,7 +88,7 @@ void MenuControl::Draw(DisplayDirector* directorIn)
 	view->SetHighColor(alphaColor);
 	view->StrokeEllipse(rect);
 /***
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	view->SetFont(font);
 	view->DrawString(string_slice(asterisk), rect.left, rect.top + font->Ascent());
 ***/

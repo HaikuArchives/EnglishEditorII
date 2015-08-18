@@ -79,7 +79,7 @@ IntroDocSource::IntroDocSource()
 			if (dirEntry == NULL)
 				break;
 
-			DOMString fileName = dirEntry->d_name;
+			String fileName = dirEntry->d_name;
 			if (fileName.startsWith("."))
 				continue;
 			fileName.detach();

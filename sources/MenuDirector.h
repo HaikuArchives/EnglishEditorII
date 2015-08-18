@@ -12,10 +12,10 @@ class Element;
 
 class MenuDirector : public DisplayDirector {
 public:
-	MenuDirector(DocumentSource* docSourceIn, CoordPoint stemPointIn,
+	MenuDirector(DocumentSource* docSourceIn, BPoint stemPointIn,
              WindowDirector* windowDirectorIn);
 	~MenuDirector();
-	void            	Draw(Rectangle updateRect);
+	void            	Draw(BRect updateRect);
 	void            	KeyDown(string_slice key);
 	void            	MouseMoved();
 	void            	ScreenChanged();
@@ -24,25 +24,25 @@ public:
 	int             	DisplayWidth();
 	View*           	DrawingView();
 	View*           	WindowView();
-	CoordPoint      	ViewToDoc(CoordPoint viewPoint);
-	CoordPoint      	DocToView(CoordPoint docPoint);
-	Rectangle       	ViewToDoc(Rectangle rect);
-	Rectangle       	DocToView(Rectangle rect);
-	Rectangle       	DocRect();
+	BPoint      	ViewToDoc(BPoint viewPoint);
+	BPoint      	DocToView(BPoint docPoint);
+	BRect       	ViewToDoc(BRect rect);
+	BRect       	DocToView(BRect rect);
+	BRect       	DocRect();
 	void            	StartRefreshCycle();
 	void            	FinishRefreshCycle();
-	void            	RefreshViewRect(Rectangle rect);
+	void            	RefreshViewRect(BRect rect);
 	void            	RefreshDocAfter(int y);
 	void            	RefreshAll();
-	void            	DoDocAction(DOMString action);
+	void            	DoDocAction(String action);
 	void            	DocTypeChanged();
-	DOMString       	GetScriptProperty(DOMString property);
-	Rectangle       	Bounds();
-	static DOMString	MakeKeyName(string_slice key, int modifiers);
-	static DOMString	FindKeyActionIn(DOMString keyName, Element* element);
+	String       	GetScriptProperty(String property);
+	BRect       	Bounds();
+	static String	MakeKeyName(string_slice key, int modifiers);
+	static String	FindKeyActionIn(String keyName, Element* element);
 
 protected:
-	CoordPoint        	stemPoint;
+	BPoint        	stemPoint;
 	WindowDirector*   	windowDirector;
 	EditStylesheet*   	stylesheet;
 	Validator*        	validator;

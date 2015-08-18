@@ -383,7 +383,7 @@ void MessageParser::FillBlock(Element* element, LinesList* lines)
 	Element* newElement;
 	char c;
 
-	DOMString linesText;
+	String linesText;
 	for (LinesList::iterator l = lines->begin(); l != lines->end(); ++l) {
 //***		linesText += *l;
 		string_slice line = *l;
@@ -441,7 +441,7 @@ void MessageParser::FillBlock(Element* element, LinesList* lines)
 						linesText.erase();
 						}
 					// build the URL
-					DOMString url;
+					String url;
 					if (isEmailAddress && !trimmedWord.startsWith("mailto:")) {
 						url = "mailto:";
 						url += trimmedWord;

@@ -4,9 +4,9 @@
 #define _H_Destination_
 
 #include <GraphicsDefs.h>
+#include <Rect.h>
 
-#include "Rectangle.h"
-#include "CoordPoint.h"
+#include <Point.h>
 
 class Selection;
 class View;
@@ -16,8 +16,8 @@ class Destination {
 public:
 	Destination(Selection* selectionIn);
 	virtual~Destination();
-	virtual Rectangle	ArrowBounds() = 0;
-	virtual void     	DrawArrow(View* view, CoordPoint origin) = 0;
+	virtual BRect	ArrowBounds() = 0;
+	virtual void     	DrawArrow(View* view, BPoint origin) = 0;
 	virtual Action*  	GetMoveAction() = 0;
 	virtual Action*  	GetCopyAction() = 0;
 

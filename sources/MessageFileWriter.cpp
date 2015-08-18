@@ -36,8 +36,8 @@ void MessageFileWriter::Write()
 		if (header == NULL)
 			continue;
 
-		DOMString tagName = header->TagName();
-		DOMString headerName;
+		String tagName = header->TagName();
+		String headerName;
 		if (tagName == "from")
 			headerName = "From: ";
 		else if (tagName == "title")
@@ -69,7 +69,7 @@ void MessageFileWriter::Write()
 		Element* element = dynamic_cast<Element*>(childNode);
 		if (element == NULL)
 			continue;
-		DOMString tagName = element->TagName();
+		String tagName = element->TagName();
 
 		// put space after the last block
 		if (started)
@@ -122,7 +122,7 @@ void MessageFileWriter::WriteContents(Node* node)
 			case ELEMENT_NODE:
 				{
 				Element* element = dynamic_cast<Element*>(childNode);
-				DOMString tagName = element->TagName();
+				String tagName = element->TagName();
 				bool italicize = (tagName == "i" || tagName == "cite");
 				if (italicize)
 					out->WriteText("_");

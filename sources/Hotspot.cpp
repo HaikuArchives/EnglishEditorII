@@ -12,7 +12,7 @@ Hotspot::~Hotspot()
 }
 
 
-void Hotspot::FadeDocument(View* view, CoordPoint origin)
+void Hotspot::FadeDocument(View* view, BPoint origin)
 {
 	// I've decided I don't like this
 	return;
@@ -24,14 +24,14 @@ void Hotspot::FadeDocument(View* view, CoordPoint origin)
 	view->PushState();
 
 	// set up
-	Rectangle bounds = Bounds();
+	BRect bounds = Bounds();
 	bounds.OffsetBy(origin);
-	Rectangle viewBounds = view->Bounds();
+	BRect viewBounds = view->Bounds();
 	view->SetDrawingMode(B_OP_ALPHA);
 	view->SetHighColor(fadeColor);
 
 	// draw the four rectangles
-	Rectangle rect = viewBounds;
+	BRect rect = viewBounds;
 	rect.bottom = bounds.top;
 	view->FillRect(rect);
 	rect.top = bounds.top;

@@ -12,21 +12,21 @@ class BetweenBlocksSelection : public TagSelection {
 public:
 	BetweenBlocksSelection(BlockableDisplayNode* parentNodeIn,
                        BlockableDisplayNode* beforeNodeIn);
-	void      	Draw(View* view, CoordPoint origin);
+	void      	Draw(View* view, BPoint origin);
 	void      	AcceptKey(string_slice key, DisplayDirector* director);
-	Rectangle 	Bounds();
-	bool      	IsVisible(Rectangle pageRect);
+	BRect 	Bounds();
+	bool      	IsVisible(BRect pageRect);
 	bool      	NeedsClip();
 	void      	Promote(DisplayDirector* director);
-	Selection*	ExtendTo(CoordPoint point);
+	Selection*	ExtendTo(BPoint point);
 	Action*   	GetRestoreAction();
 	bool      	CanPaste();
 	void      	Paste(String pasteText, DisplayDirector* director);
-	DOMString 	TagName();
-	Rectangle 	TagSpecRect();
-	void      	TagNameChanged(DOMString newTagName, DisplayDirector* director);
+	String 	TagName();
+	BRect 	TagSpecRect();
+	void      	TagNameChanged(String newTagName, DisplayDirector* director);
 	void      	TagEditDone(DisplayDirector* director);
-	CoordPoint	Point();
+	BPoint	Point();
 	Node*     	DocParentNode();
 	Node*     	DocBeforeNode();
 	void      	SelectForward(DisplayDirector* director);

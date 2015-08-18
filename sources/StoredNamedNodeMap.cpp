@@ -4,7 +4,7 @@
 #include "Node.h"
 #include <map>
 
-class NodeMapMap : public map<DOMString, Node*> {};
+class NodeMapMap : public map<String, Node*> {};
 class NodeMapMapIter : public NodeMapMap::iterator {
 public:
 	NodeMapMapIter(const NodeMapMap::iterator& otherIter)
@@ -29,7 +29,7 @@ StoredNamedNodeMap::~StoredNamedNodeMap()
 }
 
 
-Node* StoredNamedNodeMap::GetNamedItem(DOMString name)
+Node* StoredNamedNodeMap::GetNamedItem(String name)
 {
 	return (*map)[name];
 }
@@ -44,7 +44,7 @@ Node* StoredNamedNodeMap::SetNamedItem(Node* arg)
 }
 
 
-Node* StoredNamedNodeMap::RemoveNamedItem(DOMString name)
+Node* StoredNamedNodeMap::RemoveNamedItem(String name)
 {
 	Node* item = (*map)[name];
 	map->erase(name);

@@ -27,7 +27,7 @@ public:
 	void           	Post();
 	void           	Send();
 	void           	Trash();
-	DOMString      	FunctionCall(DOMString function, DOMString arg, StyleScriptable* target);
+	String      	FunctionCall(String function, String arg, StyleScriptable* target);
 	static void    	InitStatics();
 
 protected:

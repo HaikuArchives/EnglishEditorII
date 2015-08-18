@@ -23,7 +23,7 @@ EmptyPlaceholderSelection::EmptyPlaceholderSelection(PlaceholderTextDisplayNode*
 }
 
 
-void EmptyPlaceholderSelection::Draw(View* view, CoordPoint origin)
+void EmptyPlaceholderSelection::Draw(View* view, BPoint origin)
 {
 	// create the tagEditor if there isn't one yet
 	// we'd do this in the ctor, except stupid C++ can't call derived virtual
@@ -85,7 +85,7 @@ void EmptyPlaceholderSelection::Paste(String pasteText, DisplayDirector* directo
 }
 
 
-void EmptyPlaceholderSelection::InsertTag(DOMString tagName, DisplayDirector* director)
+void EmptyPlaceholderSelection::InsertTag(String tagName, DisplayDirector* director)
 {
 	HideTag(director);	// for safety
 	ChangeElementTagNameAction* changeTagAction =
@@ -94,7 +94,7 @@ void EmptyPlaceholderSelection::InsertTag(DOMString tagName, DisplayDirector* di
 }
 
 
-DOMString EmptyPlaceholderSelection::TagName()
+String EmptyPlaceholderSelection::TagName()
 {
 	return GetElement()->TagName();
 }

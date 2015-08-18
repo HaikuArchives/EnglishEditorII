@@ -16,7 +16,7 @@ public:
 	bool            	IsDisposable();
 	void            	Load(DisplayDirector* director);
 	void            	UpdateProperties();
-	DOMString       	GetProperty(string_slice propertyName);
+	String       	GetProperty(string_slice propertyName);
 	Font*           	CurFont();
 	int             	Width();
 	int             	LeftSpace();

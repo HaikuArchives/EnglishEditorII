@@ -12,7 +12,7 @@ class FrameRateControl : public Control {
 public:
 	FrameRateControl(WindowDirector* directorIn);
 	~FrameRateControl();
-	Rectangle	GetRect();
+	BRect	GetRect();
 	void     	Draw(DisplayDirector* directorIn);
 	void     	MouseDown(int x, int y, DisplayDirector* director);
 

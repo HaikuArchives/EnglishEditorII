@@ -11,8 +11,8 @@ public:
 	Node*        	Item(unsigned long index);
 	unsigned long	Length();
 	Node*        	AppendChild(Node* newChild);
-	NodeList*    	GetElementsByTagName(DOMString name);
-	Element*     	GetElementByTagName(DOMString name);
+	NodeList*    	GetElementsByTagName(String name);
+	Element*     	GetElementByTagName(String name);
 	NodeList*    	Clone();
 };
 

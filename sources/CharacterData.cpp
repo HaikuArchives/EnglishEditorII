@@ -6,19 +6,19 @@
 
 
 
-CharacterData::CharacterData(DOMString dataIn)
+CharacterData::CharacterData(String dataIn)
 	: data(dataIn)
 {
 }
 
 
-DOMString CharacterData::Data()
+String CharacterData::Data()
 {
 	return data;
 }
 
 
-void CharacterData::SetData(DOMString arg)
+void CharacterData::SetData(String arg)
 {
 	data = arg;
 
@@ -33,13 +33,13 @@ unsigned long CharacterData::Length()
 }
 
 
-DOMString CharacterData::SubstringData(unsigned long offset, unsigned long count)
+String CharacterData::SubstringData(unsigned long offset, unsigned long count)
 {
 	return data.substr(offset, count);
 }
 
 
-void CharacterData::AppendData(DOMString arg)
+void CharacterData::AppendData(String arg)
 {
 	unsigned long position = data.length();
 
@@ -50,7 +50,7 @@ void CharacterData::AppendData(DOMString arg)
 }
 
 
-void CharacterData::InsertData(unsigned long offset, DOMString arg)
+void CharacterData::InsertData(unsigned long offset, String arg)
 {
 	data.insert(offset, arg);
 
@@ -68,7 +68,7 @@ void CharacterData::DeleteData(unsigned long offset, unsigned long count)
 }
 
 
-void CharacterData::ReplaceData(unsigned long offset, unsigned long count, DOMString arg)
+void CharacterData::ReplaceData(unsigned long offset, unsigned long count, String arg)
 {
 	DeleteData(offset, count);
 	InsertData(offset, arg);

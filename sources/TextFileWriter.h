@@ -3,7 +3,7 @@
 #ifndef _H_TextFileWriter_
 #define _H_TextFileWriter_
 
-#include "DOMString.h"
+#include "String.h"
 #include "string_slice.h"
 #include <stdio.h>
 
@@ -11,17 +11,17 @@ class TextFileWriter {
 public:
 	TextFileWriter(string_slice filePathIn);
 	~TextFileWriter();
-	void	WriteText(DOMString text);
-	void	WriteRawText(DOMString text);
+	void	WriteText(String text);
+	void	WriteRawText(String text);
 	void	NewLine();
-	void	SetLinePrefix(DOMString newPrefix);
+	void	SetLinePrefix(String newPrefix);
 	bool	AtLineStart();
 
 protected:
 	FILE*                    	file;
-	DOMString                	curLine;
+	String                	curLine;
 	bool                     	whitespaceAtEndOfLine;
-	DOMString                	linePrefix;
+	String                	linePrefix;
 	static const unsigned int	lineLength;
 };
 

@@ -24,7 +24,7 @@
 #include "FrameRateControl.h"
 #include "XMLFileSource.h"
 #include "Confirmer.h"
-#include "Region.h"
+#include <Region.h>
 #include "Message.h"
 #include "System.h"
 #include "Messages.h"
@@ -75,11 +75,11 @@ WindowDirector::WindowDirector(DocumentSource* docSourceIn, EnglishEditorView* v
 		vMargin = vMarginPref;
 
 	// restore the window position
-	Rectangle frame = wind->Frame();
+	BRect frame = wind->Frame();
 	Element* docElement = documentNode->DocumentElement();
 	if (docElement) {
 		// window frame
-		DOMString attr = docElement->GetAttribute("ee2:wind-left");
+		String attr = docElement->GetAttribute("ee2:wind-left");
 		if (!attr.empty())
 			frame.left = string_slice(attr).asInt();
 		attr = docElement->GetAttribute("ee2:wind-top");
@@ -126,14 +126,14 @@ WindowDirector::~WindowDirector()
 }
 
 
-void WindowDirector::Draw(Rectangle updateRect)
+void WindowDirector::Draw(BRect updateRect)
 {
 	Microseconds startTime = Timing::SystemTime();
 
-	CoordPoint origin = DocToView(CoordPoint(0, 0));
+	BPoint origin = DocToView(BPoint(0, 0));
 
 	// calculate the visible page (in document coordinates)
-	Rectangle pageRect = view->Bounds();
+	BRect pageRect = view->Bounds();
 	pageRect.InsetBy(hMargin, vMargin);
 	bool drawingWholeDoc = updateRect.Contains(pageRect);
 	pageRect.OffsetBy(-hMargin, -vMargin + scrollPos);
@@ -153,7 +153,7 @@ void WindowDirector::Draw(Rectangle updateRect)
 		bool needsClip = selection->NeedsClip();
 		if (needsClip) {
 			bitmapView->PushState();
-			Rectangle clipRect = DocToView(pageRect);
+			BRect clipRect = DocToView(pageRect);
 			// don't clip top if scrolled to top, or bottom if scrolled to bottom
 			if (scrollPos == 0)
 				clipRect.top = view->Bounds().top;
@@ -161,7 +161,7 @@ void WindowDirector::Draw(Rectangle updateRect)
 				clipRect.bottom = view->Bounds().bottom;
 			clipRect.left = view->Bounds().left;
 			clipRect.right = view->Bounds().right;
-			Region clipRgn;
+			BRegion clipRgn;
 			clipRgn.Include(clipRect);
 			bitmapView->ConstrainClippingRegion(&clipRgn);
 			}
@@ -200,7 +200,7 @@ void WindowDirector::Draw(Rectangle updateRect)
 
 /***
 	// TEST: draw border
-	Rectangle borderRect = view->Bounds();
+	BRect borderRect = view->Bounds();
 	borderRect.InsetBy(hMargin, vMargin);
 	bitmap->GetView()->StrokeRect(borderRect);
 ***/
@@ -294,10 +294,10 @@ void WindowDirector::KeyDown(string_slice key)
 				DocumentSource* menuDocSource = docSource->MakeMenuDocSource();
 				if (menuDocSource == NULL)
 					break;
-				DOMString keyName = MenuDirector::MakeKeyName(key, view->CurModifiers());
+				String keyName = MenuDirector::MakeKeyName(key, view->CurModifiers());
 				Element* menuDocElement =
 					menuDocSource->GetDocument()->DocumentElement();
-				DOMString action =
+				String action =
 					MenuDirector::FindKeyActionIn(keyName, menuDocElement).detach();
 				delete menuDocSource;
 				if (!action.empty())
@@ -325,7 +325,7 @@ void WindowDirector::MouseDown(int x, int y)
 {
 	try {
 
-	CoordPoint mousePoint(x, y);
+	BPoint mousePoint(x, y);
 
 	// menu
 	if (menu) {
@@ -376,17 +376,17 @@ void WindowDirector::MouseMoved()
 }
 
 
-void WindowDirector::FrameChanged(Rectangle newFrame)
+void WindowDirector::FrameChanged(BRect newFrame)
 {
 	// record the change in the document
 	Element* docElement = docSource->GetDocument()->DocumentElement();
 	docElement->SetAttribute("xmlns:ee2", "http://folta.net/steve/EnglishEditorII");
-	docElement->SetAttribute("ee2:wind-left", DOMString(newFrame.left));
-	docElement->SetAttribute("ee2:wind-top", DOMString(newFrame.top));
-	docElement->SetAttribute("ee2:wind-width", DOMString(newFrame.Width()));
-	docElement->SetAttribute("ee2:wind-height", DOMString(newFrame.Height()));
-	docElement->SetAttribute("ee2:h-margin", DOMString(hMargin));
-	docElement->SetAttribute("ee2:v-margin", DOMString(vMargin));
+	docElement->SetAttribute("ee2:wind-left", String(newFrame.left));
+	docElement->SetAttribute("ee2:wind-top", String(newFrame.top));
+	docElement->SetAttribute("ee2:wind-width", String(newFrame.Width()));
+	docElement->SetAttribute("ee2:wind-height", String(newFrame.Height()));
+	docElement->SetAttribute("ee2:h-margin", String(hMargin));
+	docElement->SetAttribute("ee2:v-margin", String(vMargin));
 
 	// size might have changed, so update bitmap
 	ScreenChanged();
@@ -445,7 +445,7 @@ bool WindowDirector::CloseRequested()
 }
 
 
-void WindowDirector::DoDocAction(DOMString action)
+void WindowDirector::DoDocAction(String action)
 {
 	HideMenu();
 
@@ -520,11 +520,11 @@ void WindowDirector::SetScrollTarget(float newScrollTarget)		// *must* be called
 }
 
 
-bool WindowDirector::Autoscroll(CoordPoint point)
+bool WindowDirector::Autoscroll(BPoint point)
 {
 	static const float AutoscrollMultiplier = 5;
 
-	Rectangle pageRect = view->Bounds();
+	BRect pageRect = view->Bounds();
 	pageRect.InsetBy(hMargin, vMargin);
 
 	// up
@@ -548,13 +548,13 @@ void WindowDirector::ScrollToSelection()
 		return;
 
 	// if the selection is visible, don't scroll
-	Rectangle visibleRect = ViewToDoc(DocRect());
+	BRect visibleRect = ViewToDoc(DocRect());
 	if (selection->IsVisible(visibleRect))
 		return;
 
 	// need to scroll
 	// if the selection fits on the screen, scroll it to the middle
-	Rectangle selectionRect = selection->Bounds();
+	BRect selectionRect = selection->Bounds();
 	if (selectionRect.Height() <= visibleRect.Height())
 		SetScrollTarget((selectionRect.top + selectionRect.bottom - visibleRect.Height()) / 2);
 	// otherwise, scroll to the top of the selection
@@ -706,8 +706,8 @@ void WindowDirector::ShowMenu()
 
 	StartRefreshCycle();
 
-	Rectangle menuControlRect = menuControl->GetRect();
-	CoordPoint stemPoint((menuControlRect.left + menuControlRect.right) / 2,
+	BRect menuControlRect = menuControl->GetRect();
+	BPoint stemPoint((menuControlRect.left + menuControlRect.right) / 2,
 	                     menuControlRect.bottom);
 	menu = new MenuDirector(menuDocSource, stemPoint, this);
 
@@ -751,7 +751,7 @@ void WindowDirector::SetHMargin(int newHMargin)
 
 	// record the change
 	Element* docElement = docSource->GetDocument()->DocumentElement();
-	docElement->SetAttribute("ee2:h-margin", DOMString(hMargin));
+	docElement->SetAttribute("ee2:h-margin", String(hMargin));
 }
 
 
@@ -768,7 +768,7 @@ void WindowDirector::SetVMargin(int newVMargin)
 
 	// record the change
 	Element* docElement = docSource->GetDocument()->DocumentElement();
-	docElement->SetAttribute("ee2:v-margin", DOMString(vMargin));
+	docElement->SetAttribute("ee2:v-margin", String(vMargin));
 }
 
 
@@ -790,7 +790,7 @@ int WindowDirector::DisplayWidth()
 }
 
 
-Rectangle WindowDirector::ViewBounds()
+BRect WindowDirector::ViewBounds()
 {
 	return view->Bounds();
 }
@@ -842,37 +842,37 @@ float WindowDirector::GetVisibleProportion()
 }
 
 
-CoordPoint WindowDirector::ViewToDoc(CoordPoint viewPoint)
+BPoint WindowDirector::ViewToDoc(BPoint viewPoint)
 {
-	return CoordPoint(viewPoint.x - hMargin, viewPoint.y - vMargin + scrollPos);
+	return BPoint(viewPoint.x - hMargin, viewPoint.y - vMargin + scrollPos);
 }
 
 
-CoordPoint WindowDirector::DocToView(CoordPoint docPoint)
+BPoint WindowDirector::DocToView(BPoint docPoint)
 {
-	return CoordPoint(docPoint.x + hMargin, docPoint.y + vMargin - scrollPos);
+	return BPoint(docPoint.x + hMargin, docPoint.y + vMargin - scrollPos);
 }
 
 
-Rectangle WindowDirector::ViewToDoc(Rectangle rect)
+BRect WindowDirector::ViewToDoc(BRect rect)
 {
-	Rectangle docRect = rect;
+	BRect docRect = rect;
 	docRect.OffsetBy(-hMargin, -(vMargin - scrollPos));
 	return docRect;
 }
 
 
-Rectangle WindowDirector::DocToView(Rectangle rect)
+BRect WindowDirector::DocToView(BRect rect)
 {
-	Rectangle viewRect = rect;
+	BRect viewRect = rect;
 	viewRect.OffsetBy(hMargin, vMargin - scrollPos);
 	return viewRect;
 }
 
 
-Rectangle WindowDirector::DocRect()
+BRect WindowDirector::DocRect()
 {
-	Rectangle rect = view->Bounds();
+	BRect rect = view->Bounds();
 	rect.InsetBy(hMargin, vMargin);
 	return rect;
 }
@@ -882,7 +882,7 @@ void WindowDirector::StartRefreshCycle()
 {
 	refreshCycleNesting++;
 	if (refreshRegion == NULL)
-		refreshRegion = new Region();
+		refreshRegion = new BRegion();
 }
 
 
@@ -915,7 +915,7 @@ void WindowDirector::FinishRefreshCycle()
 }
 
 
-void WindowDirector::RefreshViewRect(Rectangle rect)
+void WindowDirector::RefreshViewRect(BRect rect)
 {
 	if (refreshRegion)
 		refreshRegion->Include(rect);
@@ -929,7 +929,7 @@ void WindowDirector::RefreshViewRect(Rectangle rect)
 
 void WindowDirector::RefreshDocAfter(int y)
 {
-	Rectangle rect = view->Bounds();
+	BRect rect = view->Bounds();
 	rect.InsetBy(hMargin, vMargin);
 	rect.top += y - scrollPos;
 	RefreshViewRect(rect);
@@ -942,7 +942,7 @@ void WindowDirector::RefreshAll()
 }
 
 
-DOMString WindowDirector::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String WindowDirector::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "actionAllowed") {
 		arg = target->Eval(arg).trim();
@@ -959,7 +959,7 @@ DOMString WindowDirector::FunctionCall(DOMString function, DOMString arg, StyleS
 	else
 		return DisplayDirector::FunctionCall(function, arg, target);
 
-	return DOMString();
+	return String();
 }
 
 

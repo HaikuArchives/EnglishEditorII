@@ -9,7 +9,7 @@ Shape::Shape()
 }
 
 
-void Shape::MoveTo(CoordPoint point)
+void Shape::MoveTo(BPoint point)
 {
 	shape.MoveTo(point);
 	curPoint = point;
@@ -18,11 +18,11 @@ void Shape::MoveTo(CoordPoint point)
 
 void Shape::MoveTo(int x, int y)
 {
-	MoveTo(CoordPoint(x, y));
+	MoveTo(BPoint(x, y));
 }
 
 
-void Shape::LineTo(CoordPoint point)
+void Shape::LineTo(BPoint point)
 {
 	shape.LineTo(point);
 	curPoint = point;
@@ -31,11 +31,11 @@ void Shape::LineTo(CoordPoint point)
 
 void Shape::LineTo(int x, int y)
 {
-	LineTo(CoordPoint(x, y));
+	LineTo(BPoint(x, y));
 }
 
 
-void Shape::HorizontalCornerTo(CoordPoint point)
+void Shape::HorizontalCornerTo(BPoint point)
 {
 	BPoint controlPoints[3];
 	controlPoints[0].x = (curPoint.x + point.x) / 2;
@@ -50,11 +50,11 @@ void Shape::HorizontalCornerTo(CoordPoint point)
 
 void Shape::HorizontalCornerTo(int x, int y)
 {
-	HorizontalCornerTo(CoordPoint(x, y));
+	HorizontalCornerTo(BPoint(x, y));
 }
 
 
-void Shape::VerticalCornerTo(CoordPoint point)
+void Shape::VerticalCornerTo(BPoint point)
 {
 	BPoint controlPoints[3];
 	controlPoints[0].Set(curPoint.x, (curPoint.y + point.y) / 2);
@@ -67,7 +67,7 @@ void Shape::VerticalCornerTo(CoordPoint point)
 
 void Shape::VerticalCornerTo(int x, int y)
 {
-	VerticalCornerTo(CoordPoint(x, y));
+	VerticalCornerTo(BPoint(x, y));
 }
 
 

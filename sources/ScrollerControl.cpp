@@ -15,9 +15,9 @@ ScrollerControl::ScrollerControl(WindowDirector* directorIn)
 }
 
 
-Rectangle ScrollerControl::GetRect()
+BRect ScrollerControl::GetRect()
 {
-	Rectangle rect = director->ViewBounds();
+	BRect rect = director->ViewBounds();
 	rect.bottom -= director->GetVMargin();
 	rect.top = rect.bottom - height;
 	rect.right -= (director->GetHMargin() - width) / 2;
@@ -36,7 +36,7 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	View* view = director->DrawingView();
 	view->PushState();
 	view->SetDrawingMode(B_OP_ALPHA);
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	rgb_color frameColor = controlColor;
 	frameColor.alpha = alpha;
 
@@ -44,7 +44,7 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	int scrollPos = director->GetScrollPos();
 	int docHeight = director->GetDocumentHeight();
 	float proportion = director->GetVisibleProportion();
-	Rectangle thumbRect = rect;
+	BRect thumbRect = rect;
 	thumbRect.top += (float) scrollPos / docHeight * height;
 	thumbRect.bottom = thumbRect.top + proportion * height;
 	view->SetHighColor(frameColor);
@@ -60,8 +60,8 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 	view->StrokeLine(rect.LeftTop(), rect.RightTop());
 	view->StrokeLine(rect.LeftBottom(), rect.RightBottom());
 	int xCenter = (int) ((rect.left + rect.right) / 2);
-	view->StrokeLine(CoordPoint(xCenter, rect.top), CoordPoint(xCenter, thumbRect.top - 1));
-	view->StrokeLine(CoordPoint(xCenter, thumbRect.bottom + 1), CoordPoint(xCenter, rect.bottom));
+	view->StrokeLine(BPoint(xCenter, rect.top), BPoint(xCenter, thumbRect.top - 1));
+	view->StrokeLine(BPoint(xCenter, thumbRect.bottom + 1), BPoint(xCenter, rect.bottom));
 
 	view->PopState();
 }
@@ -69,10 +69,10 @@ void ScrollerControl::Draw(DisplayDirector* directorIn)
 
 void ScrollerControl::MouseDown(int x, int y, DisplayDirector* directorIn)
 {
-	CoordPoint mousePoint(x, y);
+	BPoint mousePoint(x, y);
 
 	// figure out how we're scrolling
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	int lastScrollPos = director->GetScrollPos();
 	int docHeight = director->GetDocumentHeight();
 	float proportion = director->GetVisibleProportion();

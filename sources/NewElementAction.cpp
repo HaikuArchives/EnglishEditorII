@@ -13,7 +13,7 @@
 
 
 
-NewElementAction::NewElementAction(DOMString tagName, Node* parentNodeIn, Node* beforeNodeIn)
+NewElementAction::NewElementAction(String tagName, Node* parentNodeIn, Node* beforeNodeIn)
 	: parentNode(parentNodeIn), beforeNode(beforeNodeIn)
 {
 	Document* document = parentNode->OwnerDocument();

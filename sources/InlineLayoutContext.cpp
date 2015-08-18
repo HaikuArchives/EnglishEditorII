@@ -27,7 +27,7 @@ enum {
 
 
 
-InlineLayoutContext::InlineLayoutContext(int lineLengthIn, int textIndent, DOMString alignmentIn)
+InlineLayoutContext::InlineLayoutContext(int lineLengthIn, int textIndent, String alignmentIn)
 	: curX(textIndent), curY(0), curLine(0),
 	  lineLength(lineLengthIn), curLineHeight(0),
 	  haveStarted(false), haveStartedLine(false), inWhitespace(true), curWidth(0),

@@ -5,18 +5,18 @@
 
 #include <GraphicsDefs.h>
 
-#include "DOMString.h"
+#include "String.h"
 
 class StyleScriptable;
 
 class StyleParser {
 public:
-	static rgb_color           	ParseColor(DOMString stringIn);
+	static rgb_color           	ParseColor(String stringIn);
 	static unsigned long   	ParseHex(string_slice str);
 	static long            	ParseInt(string_slice str);
-	static StyleScriptable*	ParseObj(DOMString str);
-	static DOMString       	Eval(DOMString expr, StyleScriptable* target);
-	static DOMString       	NextArg(DOMString& args);
+	static StyleScriptable*	ParseObj(String str);
+	static String       	Eval(String expr, StyleScriptable* target);
+	static String       	NextArg(String& args);
 	static unsigned long   	DoubleHexDigit(unsigned long digit);
 	static int             	ParseColorComponent(string_slice component);
 	static const char*     	SkipQuote(const char* p, const char* stopper);

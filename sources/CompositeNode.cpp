@@ -178,7 +178,7 @@ bool CompositeNode::HasChildNodes()
 }
 
 
-NodeList* CompositeNode::GetElementsByTagName(DOMString name)
+NodeList* CompositeNode::GetElementsByTagName(String name)
 	/*** CALLER WILL OWN RETURNED LIST ***/
 	/*** DOESN'T RETURN A "LIVE" LIST AS THE DOM SPEC REQUIRES ***/
 {
@@ -188,7 +188,7 @@ NodeList* CompositeNode::GetElementsByTagName(DOMString name)
 }
 
 
-Element* CompositeNode::GetElementByTagName(DOMString name)
+Element* CompositeNode::GetElementByTagName(String name)
 {
 	// leech off ChildrenNodeList
 	ChildrenNodeList nodeList(this);

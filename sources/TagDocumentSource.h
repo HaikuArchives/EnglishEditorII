@@ -4,20 +4,20 @@
 #define _H_TagDocumentSource_
 
 #include "DocumentSource.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Text;
 
 
 class TagDocumentSource : public DocumentSource {
 public:
-	TagDocumentSource(DOMString tagName);
+	TagDocumentSource(String tagName);
 	~TagDocumentSource();
 	Document*   	GetDocument();
 	string_slice	GetWindowTitle();
 	void        	Save();
-	DOMString   	TagName();
-	void        	SetTagName(DOMString tagName);
+	String   	TagName();
+	void        	SetTagName(String tagName);
 	static void 	InitStatics();
 
 protected:

@@ -52,7 +52,7 @@ ElementDisplayNode* InlineElementSelection::GetDisplayNode()
 }
 
 
-void InlineElementSelection::Draw(View* view, CoordPoint origin)
+void InlineElementSelection::Draw(View* view, BPoint origin)
 {
 	// create the tagEditor if there isn't one yet
 	// we'd do this in the ctor, except stupid C++ can't call derived virtual
@@ -123,7 +123,7 @@ void InlineElementSelection::Promote(DisplayDirector* director)
 }
 
 
-Selection* InlineElementSelection::ExtendTo(CoordPoint point)
+Selection* InlineElementSelection::ExtendTo(BPoint point)
 {
 	if (hilite->ContainsPoint(point))
 		return this;
@@ -226,13 +226,13 @@ Action* InlineElementSelection::GetRestoreAction()
 }
 
 
-Rectangle InlineElementSelection::Bounds()
+BRect InlineElementSelection::Bounds()
 {
 	return hilite->Bounds();
 }
 
 
-bool InlineElementSelection::IsVisible(Rectangle pageRect)
+bool InlineElementSelection::IsVisible(BRect pageRect)
 {
 	return hilite->IsVisible(pageRect);
 }
@@ -244,7 +244,7 @@ bool InlineElementSelection::NeedsClip()
 }
 
 
-CoordPoint InlineElementSelection::DragStartPoint(CoordPoint destPoint)
+BPoint InlineElementSelection::DragStartPoint(BPoint destPoint)
 {
 	return hilite->DragStartPoint(destPoint);
 }
@@ -256,7 +256,7 @@ bool InlineElementSelection::CanCopy()
 }
 
 
-DOMString InlineElementSelection::GetXMLCopy()
+String InlineElementSelection::GetXMLCopy()
 {
 	XMLStringWriter writer(displayNode->GetElement());
 	writer.Write();
@@ -276,19 +276,19 @@ void InlineElementSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-DOMString InlineElementSelection::TagName()
+String InlineElementSelection::TagName()
 {
 	return displayNode->GetElement()->TagName();
 }
 
 
-Rectangle InlineElementSelection::TagSpecRect()
+BRect InlineElementSelection::TagSpecRect()
 {
 	return hilite->TagSpecRect();
 }
 
 
-void InlineElementSelection::TagNameChanged(DOMString newTagName, DisplayDirector* director)
+void InlineElementSelection::TagNameChanged(String newTagName, DisplayDirector* director)
 {
 	HideTag(director);	// this is going away; prevent surprises in TagEditDone()
 	Element* element = displayNode->GetElement();

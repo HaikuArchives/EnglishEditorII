@@ -5,7 +5,7 @@
 
 
 
-ProcessingInstruction::ProcessingInstruction(DOMString targetIn, DOMString dataIn)
+ProcessingInstruction::ProcessingInstruction(String targetIn, String dataIn)
 	: target(targetIn), data(dataIn)
 {
 }
@@ -17,13 +17,13 @@ ProcessingInstruction::ProcessingInstruction(const ProcessingInstruction& other)
 }
 
 
-DOMString ProcessingInstruction::NodeName()
+String ProcessingInstruction::NodeName()
 {
 	return Target();
 }
 
 
-DOMString ProcessingInstruction::NodeValue()
+String ProcessingInstruction::NodeValue()
 {
 	return Data();
 }
@@ -65,13 +65,13 @@ Node* ProcessingInstruction::CloneNode(bool deep)
 }
 
 
-DOMString ProcessingInstruction::Target()
+String ProcessingInstruction::Target()
 {
 	return target;
 }
 
 
-DOMString ProcessingInstruction::Data()
+String ProcessingInstruction::Data()
 {
 	return data;
 }

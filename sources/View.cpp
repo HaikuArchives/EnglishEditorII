@@ -25,7 +25,7 @@ void View::MovePenTo(int x, int y)
 }
 
 
-void View::MovePenTo(CoordPoint point)
+void View::MovePenTo(BPoint point)
 {
 	view->MovePenTo(point);
 }
@@ -61,7 +61,7 @@ void View::SetPenSize(int penSize)
 }
 
 
-void View::ConstrainClippingRegion(Region* region)
+void View::ConstrainClippingRegion(BRegion* region)
 {
 	view->ConstrainClippingRegion(region);
 }
@@ -91,31 +91,31 @@ void View::DrawString(string_slice str, int x, int y)
 }
 
 
-void View::ClearRect(Rectangle rect)
+void View::ClearRect(BRect rect)
 {
 	view->FillRect(rect, B_SOLID_LOW);
 }
 
 
-void View::StrokeRect(Rectangle rect)
+void View::StrokeRect(BRect rect)
 {
 	view->StrokeRect(rect);
 }
 
 
-void View::FillRect(Rectangle rect)
+void View::FillRect(BRect rect)
 {
 	view->FillRect(rect);
 }
 
 
-void View::StrokeLine(CoordPoint startPt, CoordPoint endPt)
+void View::StrokeLine(BPoint startPt, BPoint endPt)
 {
 	view->StrokeLine(startPt, endPt);
 }
 
 
-void View::StrokeBezier(CoordPoint points[4])
+void View::StrokeBezier(BPoint points[4])
 {
 	view->StrokeBezier(points);
 }
@@ -133,19 +133,19 @@ void View::FillShape(Shape* shape)
 }
 
 
-void View::StrokeEllipse(Rectangle rect)
+void View::StrokeEllipse(BRect rect)
 {
 	view->StrokeEllipse(rect);
 }
 
 
-void View::FillEllipse(Rectangle rect)
+void View::FillEllipse(BRect rect)
 {
 	view->FillEllipse(rect);
 }
 
 
-void View::DrawBitmap(Bitmap* bitmap, Rectangle rect)
+void View::DrawBitmap(Bitmap* bitmap, BRect rect)
 {
 	view->DrawBitmap(bitmap->NativeBitmap(), rect, rect);
 }
@@ -181,7 +181,7 @@ void View::MouseTrackingPause()
 }
 
 
-CoordPoint View::GetMousePoint()
+BPoint View::GetMousePoint()
 {
 	BPoint cursor;
 	uint32 buttons;
@@ -199,7 +199,7 @@ int View::GetMouseButtons()
 }
 
 
-void View::Draw(Rectangle updateRect)
+void View::Draw(BRect updateRect)
 {
 }
 
@@ -242,7 +242,7 @@ int View::Height()
 }
 
 
-Rectangle View::Bounds()
+BRect View::Bounds()
 {
 	return view->Bounds();
 }

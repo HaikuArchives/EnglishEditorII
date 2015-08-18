@@ -32,9 +32,9 @@ bool Selection::CanCopy()
 }
 
 
-DOMString Selection::GetXMLCopy()
+String Selection::GetXMLCopy()
 {
-	return DOMString();
+	return String();
 }
 
 
@@ -50,20 +50,20 @@ void Selection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-bool Selection::ContainsPoint(CoordPoint point)
+bool Selection::ContainsPoint(BPoint point)
 {
 	return Bounds().Contains(point);
 }
 
 
-CoordPoint Selection::DragStartPoint(CoordPoint destPoint)
+BPoint Selection::DragStartPoint(BPoint destPoint)
 {
 	/** pure virtual, but only for selections that can be dragged **/
-	return CoordPoint();
+	return BPoint();
 }
 
 
-CoordPoint Selection::BlockOrigin(DisplayNode* node)
+BPoint Selection::BlockOrigin(DisplayNode* node)
 {
 	// find the enclosing block
 	for (; node; node = node->Parent()) {
@@ -71,11 +71,11 @@ CoordPoint Selection::BlockOrigin(DisplayNode* node)
 			break;
 		}
 	if (node == NULL)	// shouldn't happen
-		return CoordPoint(0, 0);
+		return BPoint(0, 0);
 
 	// return the block's origin
 	BlockableDisplayNode* blockNode = dynamic_cast<BlockableDisplayNode*>(node);
-	return CoordPoint(blockNode->LeftSpace(), blockNode->Top());
+	return BPoint(blockNode->LeftSpace(), blockNode->Top());
 }
 
 

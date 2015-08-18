@@ -54,26 +54,26 @@ bool PointSelection::CaretOutRight()
 }
 
 
-void PointSelection::Draw(View* view, CoordPoint origin)
+void PointSelection::Draw(View* view, BPoint origin)
 {
 	view->PushState();
 	view->SetPenSize(2);
 	view->SetHighColor(selectionColor);
 
-	CoordPoint point = Point() + origin;
+	BPoint point = Point() + origin;
 	int xPoint = (int) point.x;
 	if (CaretOutLeft())
 		xPoint -= caretWidth;
-	view->StrokeLine(point, CoordPoint(xPoint, point.y + caretHeight + 1));
+	view->StrokeLine(point, BPoint(xPoint, point.y + caretHeight + 1));
 	xPoint = (int) point.x;
 	if (CaretOutRight())
 		xPoint += caretWidth;
-	view->StrokeLine(point, CoordPoint(xPoint, point.y + caretHeight));
+	view->StrokeLine(point, BPoint(xPoint, point.y + caretHeight));
 
 	if (tagEditor) {
-		Rectangle tagBounds = tagEditor->Bounds();
+		BRect tagBounds = tagEditor->Bounds();
 		view->SetPenSize(1);
-		view->StrokeLine(point, CoordPoint(point.x, tagBounds.bottom + origin.y));
+		view->StrokeLine(point, BPoint(point.x, tagBounds.bottom + origin.y));
 		tagEditor->Draw(view->Bounds());
 		}
 
@@ -87,10 +87,10 @@ void PointSelection::AcceptKey(string_slice key, DisplayDirector* director)
 }
 
 
-Rectangle PointSelection::Bounds()
+BRect PointSelection::Bounds()
 {
-	CoordPoint point = Point();
-	Rectangle bounds(point.x - caretWidth - 1, point.y - ascent,
+	BPoint point = Point();
+	BRect bounds(point.x - caretWidth - 1, point.y - ascent,
 	                 point.x + caretWidth + 1, point.y + caretHeight + 1);
 	if (tagEditor)
 		bounds = bounds | tagEditor->Bounds();
@@ -98,9 +98,9 @@ Rectangle PointSelection::Bounds()
 }
 
 
-bool PointSelection::IsVisible(Rectangle pageRect)
+bool PointSelection::IsVisible(BRect pageRect)
 {
-	CoordPoint point = Point();
+	BPoint point = Point();
 	pageRect.top += ascent;		// the line won't show if it can't show the top
 	                       		// of the characters, so don't show this either
 	return pageRect.Contains(point);
@@ -113,21 +113,21 @@ bool PointSelection::NeedsClip()
 }
 
 
-DOMString PointSelection::TagName()
+String PointSelection::TagName()
 {
 	return "";
 }
 
 
-Rectangle PointSelection::TagSpecRect()
+BRect PointSelection::TagSpecRect()
 {
-	CoordPoint point = Point();
+	BPoint point = Point();
 	int tagX = (int) point.x + tagXOffset;
-	return Rectangle(tagX, 0, tagX, point.y - ascent + tagYOffset);
+	return BRect(tagX, 0, tagX, point.y - ascent + tagYOffset);
 }
 
 
-void PointSelection::TagNameChanged(DOMString newTagName, DisplayDirector* director)
+void PointSelection::TagNameChanged(String newTagName, DisplayDirector* director)
 {
 	InsertTag(newTagName, director);
 }
@@ -262,7 +262,7 @@ void PointSelection::HandleReturn(unsigned long offset, DisplayDirector* directo
 
 	// look for special-split
 	EditStylesheet* stylesheet = director->GetStylesheet();
-	DOMString specialSplitSpec;
+	String specialSplitSpec;
 	for (Node* specialNode = splittingElement; specialNode; specialNode = specialNode->ParentNode()) {
 		if (specialNode->NodeType() != ELEMENT_NODE)
 			continue;

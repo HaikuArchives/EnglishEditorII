@@ -107,7 +107,7 @@ Node* StoredNodeList::AppendChild(Node* newChild)
 }
 
 
-NodeList* StoredNodeList::GetElementsByTagName(DOMString name)
+NodeList* StoredNodeList::GetElementsByTagName(String name)
 	/*** CALLER WILL OWN RETURNED LIST ***/
 {
 	StoredNodeList* elements = new StoredNodeList(false);	//*** should be a live list
@@ -122,7 +122,7 @@ NodeList* StoredNodeList::GetElementsByTagName(DOMString name)
 }
 
 
-Element* StoredNodeList::GetElementByTagName(DOMString name)
+Element* StoredNodeList::GetElementByTagName(String name)
 {
 	for (NodesVector::iterator n = nodes->begin(); n != nodes->end(); n++) {
 		Element* element = dynamic_cast<Element*>(*n);

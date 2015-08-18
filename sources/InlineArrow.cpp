@@ -12,7 +12,7 @@ const int InlineArrow::loopHeight = 16;
 const int InlineArrow::lineSlop = arrowLineWidth / 2;
 
 
-InlineArrow::InlineArrow(CoordPoint fromPointIn, CoordPoint toPointIn, bool above, int ascent)
+InlineArrow::InlineArrow(BPoint fromPointIn, BPoint toPointIn, bool above, int ascent)
 	: fromPoint(fromPointIn), toPoint(toPointIn)
 {
 	if (above) {
@@ -43,7 +43,7 @@ InlineArrow::InlineArrow(CoordPoint fromPointIn, CoordPoint toPointIn, bool abov
 }
 
 
-Rectangle InlineArrow::Bounds()
+BRect InlineArrow::Bounds()
 {
 	int left = (int) (fromPoint.x - lineSlop);
 	int arrowLeft = (int) (toPoint.x - arrowheadWidth / 2 - lineSlop);
@@ -77,11 +77,11 @@ Rectangle InlineArrow::Bounds()
 			bottom = (int) arrowBottom;
 		}
 
-	return Rectangle(left, top, right, bottom);
+	return BRect(left, top, right, bottom);
 }
 
 
-void InlineArrow::Draw(View* view, CoordPoint origin)
+void InlineArrow::Draw(View* view, BPoint origin)
 {
 	view->PushState();
 	view->SetPenSize(arrowLineWidth);
@@ -90,23 +90,23 @@ void InlineArrow::Draw(View* view, CoordPoint origin)
 	// line
 	BPoint points[4];
 	if (loops) {
-		CoordPoint center((fromPoint.x + toPoint.x) / 2,
+		BPoint center((fromPoint.x + toPoint.x) / 2,
 		                  toPoint.y + (arrowPointsDown ? -loopHeight : loopHeight));
 		points[0] = fromPoint + origin;
-		points[1] = CoordPoint(fromPoint.x, center.y) + origin;
+		points[1] = BPoint(fromPoint.x, center.y) + origin;
 		points[2] = points[1];
 		points[3] = center + origin;
 		view->StrokeBezier(points);
 		points[0] = center + origin;
-		points[1] = CoordPoint(toPoint.x, center.y) + origin;
+		points[1] = BPoint(toPoint.x, center.y) + origin;
 		points[2] = points[1];
 		points[3] = toPoint + origin;
 		view->StrokeBezier(points);
 		}
 	else {
 		points[0] = fromPoint + origin;
-		points[1] = CoordPoint(fromPoint.x, (fromPoint.y + toPoint.y) / 2) + origin;
-		points[2] = CoordPoint(toPoint.x, fromPoint.y) + origin;
+		points[1] = BPoint(fromPoint.x, (fromPoint.y + toPoint.y) / 2) + origin;
+		points[2] = BPoint(toPoint.x, fromPoint.y) + origin;
 		points[3] = toPoint + origin;
 		view->StrokeBezier(points);
 		}
@@ -117,17 +117,17 @@ void InlineArrow::Draw(View* view, CoordPoint origin)
 		// arrow points down
 		float arrowTop = toPoint.y - arrowheadHeight;
 		view->StrokeLine(toPoint + origin,
-		                 CoordPoint(toPoint.x - xOffset, arrowTop) + origin);
+		                 BPoint(toPoint.x - xOffset, arrowTop) + origin);
 		view->StrokeLine(toPoint + origin,
-		                 CoordPoint(toPoint.x + xOffset, arrowTop) + origin);
+		                 BPoint(toPoint.x + xOffset, arrowTop) + origin);
 		}
 	else {
 		// arrow points up
 		float arrowBottom = toPoint.y + arrowheadHeight;
 		view->StrokeLine(toPoint + origin,
-		                 CoordPoint(toPoint.x - xOffset, arrowBottom) + origin);
+		                 BPoint(toPoint.x - xOffset, arrowBottom) + origin);
 		view->StrokeLine(toPoint + origin,
-		                 CoordPoint(toPoint.x + xOffset, arrowBottom) + origin);
+		                 BPoint(toPoint.x + xOffset, arrowBottom) + origin);
 		}
 
 	view->PopState();

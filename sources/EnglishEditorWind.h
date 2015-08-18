@@ -3,7 +3,7 @@
 #ifndef _H_EnglishEditorWind_
 #define _H_EnglishEditorWind_
 
-#include "Rectangle.h"
+#include <Rect.h>
 #include <Window.h>
 
 class EnglishEditorView;
@@ -26,7 +26,7 @@ public:
 	void        	FrameMoved(BPoint screenPoint);
 	void        	FrameResized(float width, float height);
 	void        	RequestClose();
-	void        	SetFrame(Rectangle newFrame);
+	void        	SetFrame(BRect newFrame);
 	bool        	IsOnlyDocumentWind();
 	virtual void	FrameChanged();
 

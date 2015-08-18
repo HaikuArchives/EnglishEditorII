@@ -115,7 +115,7 @@ void BetweenGlyphsSelection::AcceptKey(string_slice key, DisplayDirector* direct
 }
 
 
-Selection* BetweenGlyphsSelection::ExtendTo(CoordPoint point)
+Selection* BetweenGlyphsSelection::ExtendTo(BPoint point)
 {
 	/***/
 	return this;
@@ -170,9 +170,9 @@ void BetweenGlyphsSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-CoordPoint BetweenGlyphsSelection::Point()
+BPoint BetweenGlyphsSelection::Point()
 {
-	CoordPoint point = BlockOrigin(textNode);
+	BPoint point = BlockOrigin(textNode);
 	Font* font = textNode->CurFont();
 	if (firstGlyph && !(firstGlyph->IsLineBreak() && secondGlyph)) {
 		// prefer the end of the firstGlyph, in case it's a space at the
@@ -223,7 +223,7 @@ CoordPoint BetweenGlyphsSelection::Point()
 }
 
 
-void BetweenGlyphsSelection::InsertTag(DOMString tagName, DisplayDirector* director)
+void BetweenGlyphsSelection::InsertTag(String tagName, DisplayDirector* director)
 {
 	CompositeAction* action = new CompositeAction();
 	action->AddAction(new RestoreSelectionAction());

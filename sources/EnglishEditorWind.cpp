@@ -188,7 +188,7 @@ void EnglishEditorWind::RequestClose()
 }
 
 
-void EnglishEditorWind::SetFrame(Rectangle newFrame)
+void EnglishEditorWind::SetFrame(BRect newFrame)
 {
 	MoveTo(newFrame.left, newFrame.top);
 	ResizeTo(newFrame.Width(), newFrame.Height());

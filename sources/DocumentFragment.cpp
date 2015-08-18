@@ -15,13 +15,13 @@ DocumentFragment::DocumentFragment(const DocumentFragment& other, bool deep)
 }
 
 
-DOMString DocumentFragment::NodeName()
+String DocumentFragment::NodeName()
 {
 	return "#document-fragment";
 }
 
 
-DOMString DocumentFragment::NodeValue()
+String DocumentFragment::NodeValue()
 {
 	return "";
 }

@@ -7,10 +7,10 @@
 
 class Text : public CharacterData {
 public:
-	Text(DOMString textIn);
+	Text(String textIn);
 	Text(const Text& other);
-	DOMString     	NodeName();
-	DOMString     	NodeValue();
+	String     	NodeName();
+	String     	NodeValue();
 	unsigned short	NodeType();
 	Node*         	CloneNode(bool deep);
 	virtual Text* 	SplitText(unsigned long offset);

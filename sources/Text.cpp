@@ -5,7 +5,7 @@
 #include "DOMException.h"
 
 
-Text::Text(DOMString textIn)
+Text::Text(String textIn)
 	: CharacterData(textIn)
 {
 }
@@ -17,13 +17,13 @@ Text::Text(const Text& other)
 }
 
 
-DOMString Text::NodeName()
+String Text::NodeName()
 {
 	return "#text";
 }
 
 
-DOMString Text::NodeValue()
+String Text::NodeValue()
 {
 	return data;
 }

@@ -10,8 +10,8 @@ public:
 	ChildrenNodeList(Node* parentIn);
 	Node*           	Item(unsigned long index);
 	unsigned long   	Length();
-	NodeList*       	GetElementsByTagName(DOMString name);
-	virtual Element*	GetElementByTagName(DOMString name);
+	NodeList*       	GetElementsByTagName(String name);
+	virtual Element*	GetElementByTagName(String name);
 	NodeList*       	Clone();
 
 protected:

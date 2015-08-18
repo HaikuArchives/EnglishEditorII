@@ -32,30 +32,30 @@ void DisplayNode::Load(DisplayDirector* director)
 }
 
 
-DOMString DisplayNode::GetProperty(string_slice propertyName)
+String DisplayNode::GetProperty(string_slice propertyName)
 {
 	return "";
 }
 
 
-DOMString DisplayNode::GetInheritedProperty(string_slice propertyName)
+String DisplayNode::GetInheritedProperty(string_slice propertyName)
 {
 	for (DisplayNode* node = this; node; node = node->Parent()) {
-		DOMString property = node->GetProperty(propertyName);
+		String property = node->GetProperty(propertyName);
 		if (property.length() > 0)
 			return property;
 		}
 
-	return DOMString();
+	return String();
 }
 
 
 int DisplayNode::GetPropertyInPixels(string_slice propertyName, bool inherited)
 {
-	DOMString propStr = GetProperty(propertyName);
+	String propStr = GetProperty(propertyName);
 	if (propStr.length() == 0)
 		return (inherited ? parent->GetPropertyInPixels(propertyName, true) : 0);
-	DOMString suffix = propStr.substr(propStr.length() - 2, 2);
+	String suffix = propStr.substr(propStr.length() - 2, 2);
 	double multiplier = 1;
 	if (suffix == "px" || suffix == "pt")
 		multiplier = 1;
@@ -85,7 +85,7 @@ int DisplayNode::GetPropertyInPixels(string_slice propertyName, bool inherited)
 	// read the number
 	double num = 0;
 	bool negative = false;
-	DOMString numStr = propStr.substr(0, propStr.length() - 2);
+	String numStr = propStr.substr(0, propStr.length() - 2);
 	for (DOMStringIter p = numStr.begin(); p != numStr.end(); ++p) {
 		char c = *p;
 		int digit;
@@ -204,7 +204,7 @@ DisplayDirector* DisplayNode::GetDisplayDirector()
 /* makes */ Font* DisplayNode::GetFont()
 {
 	// get the family name
-	DOMString familyName = GetInheritedProperty("font-family");
+	String familyName = GetInheritedProperty("font-family");
 	if (familyName.length() == 0)
 		throw InternalException("Couldn't find font-family.");
 

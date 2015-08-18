@@ -10,7 +10,7 @@ XMLStringWriter::XMLStringWriter(Node* rootNodeIn)
 }
 
 
-DOMString XMLStringWriter::GetString()
+String XMLStringWriter::GetString()
 {
 	return string;
 }

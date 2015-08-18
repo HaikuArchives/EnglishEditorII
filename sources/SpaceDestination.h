@@ -13,8 +13,8 @@ class SpaceDestination : public Destination {
 public:
 	SpaceDestination(Selection* selectionIn, TextDisplayNode* textNodeIn, Space* spaceIn);
 	~SpaceDestination();
-	Rectangle	ArrowBounds();
-	void     	DrawArrow(View* view, CoordPoint origin);
+	BRect	ArrowBounds();
+	void     	DrawArrow(View* view, BPoint origin);
 	Action*  	GetMoveAction();
 	Action*  	GetCopyAction();
 	Action*  	MakeMoveAction(bool copying);

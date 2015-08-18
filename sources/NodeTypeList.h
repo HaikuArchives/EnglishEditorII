@@ -3,7 +3,7 @@
 #ifndef _H_NodeTypeList_
 #define _H_NodeTypeList_
 
-#include "DOMString.h"
+#include "String.h"
 
 class Node;
 class NodeTypeInternalList;
@@ -13,14 +13,14 @@ public:
 	NodeTypeList();
 	NodeTypeList(const NodeTypeList& other);
 	~NodeTypeList();
-	void     	AppendNode(DOMString nodeType);
+	void     	AppendNode(String nodeType);
 	void     	AppendNode(Node* node);
 	int      	NumNodeTypes();
-	DOMString	NodeTypeAt(int index);
+	String	NodeTypeAt(int index);
 	void     	Rewind();
 	void     	Step();
 	bool     	IteratorValid();
-	DOMString	CurNodeType();
+	String	CurNodeType();
 
 protected:
 	NodeTypeInternalList*	nodeTypes;

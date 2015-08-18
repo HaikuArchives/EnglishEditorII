@@ -9,7 +9,7 @@
 
 
 
-Element::Element(DOMString nameIn)
+Element::Element(String nameIn)
 	: name(nameIn)
 {
 	attributes = new StoredNamedNodeMap();
@@ -32,7 +32,7 @@ Element::~Element()
 }
 
 
-DOMString Element::NodeName()
+String Element::NodeName()
 {
 	return name;
 }
@@ -56,20 +56,20 @@ Node* Element::CloneNode(bool deep)
 }
 
 
-DOMString Element::TagName()
+String Element::TagName()
 {
 	return name;
 }
 
 
-DOMString Element::GetAttribute(DOMString name)
+String Element::GetAttribute(String name)
 {
 	Attr* attr = dynamic_cast<Attr*>(attributes->GetNamedItem(name));
-	return (attr ? attr->Value() : DOMString());
+	return (attr ? attr->Value() : String());
 }
 
 
-void Element::SetAttribute(DOMString name, DOMString value)
+void Element::SetAttribute(String name, String value)
 {
 	Document* document = OwnerDocument();
 	Attr* newAttr = document->CreateAttribute(name);
@@ -80,7 +80,7 @@ void Element::SetAttribute(DOMString name, DOMString value)
 }
 
 
-Attr* Element::GetAttributeNode(DOMString name)
+Attr* Element::GetAttributeNode(String name)
 {
 	return dynamic_cast<Attr*>(attributes->GetNamedItem(name));
 }

@@ -24,10 +24,10 @@ SpaceDestination::SpaceDestination(Selection* selectionIn, TextDisplayNode* text
 		throw InternalException("SpaceDestination ctor: textNode has no enclosing leaf block.");
 	Font* font = textNode->CurFont();
 
-	CoordPoint destPoint(leafBlock->LeftSpace(), leafBlock->Top());
+	BPoint destPoint(leafBlock->LeftSpace(), leafBlock->Top());
 	destPoint.x += space->GetX() + space->Width(font) / 2;
 	destPoint.y += space->GetY() + font->Ascent();
-	Rectangle sourceBounds = selection->Bounds();
+	BRect sourceBounds = selection->Bounds();
 	bool above = (destPoint.y < (sourceBounds.top + sourceBounds.bottom) / 2);
 	arrow = new InlineArrow(selection->DragStartPoint(destPoint), destPoint,
 	                        above, font->Ascent());
@@ -40,13 +40,13 @@ SpaceDestination::~SpaceDestination()
 }
 
 
-Rectangle SpaceDestination::ArrowBounds()
+BRect SpaceDestination::ArrowBounds()
 {
 	return arrow->Bounds();
 }
 
 
-void SpaceDestination::DrawArrow(View* view, CoordPoint origin)
+void SpaceDestination::DrawArrow(View* view, BPoint origin)
 {
 	arrow->Draw(view, origin);
 }

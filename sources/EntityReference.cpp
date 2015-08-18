@@ -5,7 +5,7 @@
 
 
 
-EntityReference::EntityReference(DOMString nameIn)
+EntityReference::EntityReference(String nameIn)
 	: name(nameIn)
 {
 }
@@ -17,7 +17,7 @@ EntityReference::EntityReference(const EntityReference& other)
 }
 
 
-DOMString EntityReference::NodeName()
+String EntityReference::NodeName()
 {
 	return name;
 }

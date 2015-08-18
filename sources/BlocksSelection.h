@@ -10,17 +10,17 @@ class BlockableDisplayNode;
 class BlocksSelection : public Selection {
 public:
 	BlocksSelection(BlockableDisplayNode* firstNodeIn, BlockableDisplayNode* lastNodeIn);
-	void                 	Draw(View* view, CoordPoint origin);
+	void                 	Draw(View* view, BPoint origin);
 	void                 	AcceptKey(string_slice key, DisplayDirector* director);
 	void                 	Promote(DisplayDirector* director);
-	Selection*           	ExtendTo(CoordPoint point);
+	Selection*           	ExtendTo(BPoint point);
 	Action*              	GetRestoreAction();
-	Rectangle            	Bounds();
-	bool                 	IsVisible(Rectangle pageRect);
+	BRect            	Bounds();
+	bool                 	IsVisible(BRect pageRect);
 	bool                 	NeedsClip();
-	CoordPoint           	DragStartPoint(CoordPoint destPoint);
+	BPoint           	DragStartPoint(BPoint destPoint);
 	bool                 	CanCopy();
-	DOMString            	GetXMLCopy();
+	String            	GetXMLCopy();
 	BlockableDisplayNode*	FirstNode();
 	BlockableDisplayNode*	LastNode();
 

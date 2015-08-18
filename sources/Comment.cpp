@@ -6,7 +6,7 @@
 
 
 
-Comment::Comment(DOMString commentIn)
+Comment::Comment(String commentIn)
 	: CharacterData(commentIn)
 {
 }
@@ -18,13 +18,13 @@ Comment::Comment(const Comment& other)
 }
 
 
-DOMString Comment::NodeName()
+String Comment::NodeName()
 {
 	return "#comment";
 }
 
 
-DOMString Comment::NodeValue()
+String Comment::NodeValue()
 {
 	return comment;
 }
@@ -66,13 +66,13 @@ Node* Comment::CloneNode(bool deep)
 }
 
 
-DOMString Comment::Data()
+String Comment::Data()
 {
 	return comment;
 }
 
 
-void Comment::SetData(DOMString arg)
+void Comment::SetData(String arg)
 {
 	comment = arg;
 
@@ -87,13 +87,13 @@ unsigned long Comment::Length()
 }
 
 
-DOMString Comment::SubstringData(unsigned long offset, unsigned long count)
+String Comment::SubstringData(unsigned long offset, unsigned long count)
 {
 	return comment.substr(offset, count);
 }
 
 
-void Comment::AppendData(DOMString arg)
+void Comment::AppendData(String arg)
 {
 	unsigned long position = Length();
 
@@ -104,7 +104,7 @@ void Comment::AppendData(DOMString arg)
 }
 
 
-void Comment::InsertData(unsigned long offset, DOMString arg)
+void Comment::InsertData(unsigned long offset, String arg)
 {
 	comment.insert(offset, arg);
 
@@ -122,7 +122,7 @@ void Comment::DeleteData(unsigned long offset, unsigned long count)
 }
 
 
-void Comment::ReplaceData(unsigned long offset, unsigned long count, DOMString arg)
+void Comment::ReplaceData(unsigned long offset, unsigned long count, String arg)
 {
 	DeleteData(offset, count);
 	InsertData(offset, arg);

@@ -4,21 +4,21 @@
 #define _H_InlineArrow_
 
 #include <GraphicsDefs.h>
+#include <Rect.h>
 
-#include "CoordPoint.h"
-#include "Rectangle.h"
+#include <Point.h>
 
 class View;
 
 class InlineArrow {
 public:
-	InlineArrow(CoordPoint fromPointIn, CoordPoint toPointIn, bool above, int ascent);
-	Rectangle	Bounds();
-	void     	Draw(View* view, CoordPoint origin);
+	InlineArrow(BPoint fromPointIn, BPoint toPointIn, bool above, int ascent);
+	BRect	Bounds();
+	void     	Draw(View* view, BPoint origin);
 
 protected:
-	CoordPoint        	fromPoint;
-	CoordPoint        	toPoint;
+	BPoint        	fromPoint;
+	BPoint        	toPoint;
 	bool              	loops;
 	bool              	arrowPointsDown;
 	static const rgb_color	arrowColor;

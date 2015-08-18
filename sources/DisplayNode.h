@@ -4,7 +4,7 @@
 #define _H_DisplayNode_
 
 #include "DisplayType.h"
-#include "DOMString.h"
+#include "String.h"
 #include "string_slice.h"
 
 class Font;
@@ -23,8 +23,8 @@ public:
 	virtual bool                 	IsDisposable() = 0;
 	virtual void                 	Load(DisplayDirector* director);
 	virtual void                 	UpdateProperties() = 0;
-	virtual DOMString            	GetProperty(string_slice propertyName);
-	DOMString                    	GetInheritedProperty(string_slice propertyName);
+	virtual String            	GetProperty(string_slice propertyName);
+	String                    	GetInheritedProperty(string_slice propertyName);
 	virtual int                  	GetPropertyInPixels(string_slice propertyName, bool inherited);
 	virtual BlockableDisplayNode*	AsBlockableDisplayNode() = 0;
 	virtual Selection*           	StartSelection() = 0;

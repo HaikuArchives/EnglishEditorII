@@ -7,9 +7,9 @@
 
 class EntityReference : public Node {
 public:
-	EntityReference(DOMString nameIn);
+	EntityReference(String nameIn);
 	EntityReference(const EntityReference& other);
-	DOMString     	NodeName();
+	String     	NodeName();
 	unsigned short	NodeType();
 	Node*         	CloneNode(bool deep);
 	Node*         	InsertBefore(Node* newChild, Node* refChild);
@@ -18,7 +18,7 @@ public:
 	Node*         	AppendChild(Node* newChild);
 
 protected:
-	DOMString	name;
+	String	name;
 };
 
 

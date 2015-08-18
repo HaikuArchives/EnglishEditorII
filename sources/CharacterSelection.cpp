@@ -44,7 +44,7 @@ void CharacterSelection::AcceptKey(string_slice key, DisplayDirector* director)
 	else if (key == "\b") {
 		// step back one character, accounting for UTF8
 		offset -= 1;
-		DOMString textData = text->Data();
+		String textData = text->Data();
 		const char* str = textData.begin();
 		while (offset > 0 && !UTF8Utils::IsFirstByte(str[offset]))
 			--offset;
@@ -76,7 +76,7 @@ void CharacterSelection::AcceptKey(string_slice key, DisplayDirector* director)
 		else {
 			// forward one char, accounting for UTF8
 			offset += 1;
-			DOMString textData = text->Data();
+			String textData = text->Data();
 			const char* str = textData.begin();
 			int len = textData.length();
 			while (offset < len && !UTF8Utils::IsFirstByte(str[offset]))
@@ -107,7 +107,7 @@ void CharacterSelection::AcceptKey(string_slice key, DisplayDirector* director)
 }
 
 
-Selection* CharacterSelection::ExtendTo(CoordPoint point)
+Selection* CharacterSelection::ExtendTo(BPoint point)
 {
 	/***/
 	return this;
@@ -146,9 +146,9 @@ void CharacterSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-CoordPoint CharacterSelection::Point()
+BPoint CharacterSelection::Point()
 {
-	CoordPoint point = BlockOrigin(textNode);
+	BPoint point = BlockOrigin(textNode);
 	Font* font = textNode->CurFont();
 	point.x += word->GetX() +
 		font->WidthOf(word->GetDisplayWord().substr(0, word->DocToDisplayOffset(charIndex)));
@@ -157,7 +157,7 @@ CoordPoint CharacterSelection::Point()
 }
 
 
-void CharacterSelection::InsertTag(DOMString tagName, DisplayDirector* director)
+void CharacterSelection::InsertTag(String tagName, DisplayDirector* director)
 {
 	CompositeAction* action = new CompositeAction();
 	action->AddAction(new RestoreSelectionAction());

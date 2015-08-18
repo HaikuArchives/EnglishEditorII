@@ -5,7 +5,7 @@
 
 
 
-Attr::Attr(DOMString nameIn)
+Attr::Attr(String nameIn)
 	: name(nameIn)
 {
 }
@@ -19,13 +19,13 @@ Attr::Attr(const Attr& other, bool deep)
 }
 
 
-DOMString Attr::NodeName()
+String Attr::NodeName()
 {
 	return name;
 }
 
 
-DOMString Attr::NodeValue()
+String Attr::NodeValue()
 {
 	return Value();
 }
@@ -37,7 +37,7 @@ unsigned short Attr::NodeType()
 }
 
 
-DOMString Attr::Name()
+String Attr::Name()
 {
 	return name;
 }
@@ -49,9 +49,9 @@ bool Attr::Specified()
 }
 
 
-DOMString Attr::Value()
+String Attr::Value()
 {
-	DOMString value;
+	String value;
 	for (Node* child = firstChild; child; child = child->NextSibling()) {
 		if (child->NodeType() == ENTITY_REFERENCE_NODE) {
 			for (Node* grandchild = child->FirstChild(); grandchild; grandchild = grandchild->NextSibling())

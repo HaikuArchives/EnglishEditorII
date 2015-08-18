@@ -4,7 +4,7 @@
 #define _H_Validator_
 
 #include "NodeTypeList.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Element;
 

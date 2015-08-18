@@ -7,7 +7,7 @@
 
 
 
-LineBreak::LineBreak(DOMString text)
+LineBreak::LineBreak(String text)
 	: numCharsInText(text.length())
 {
 }

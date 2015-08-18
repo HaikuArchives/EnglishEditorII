@@ -4,11 +4,11 @@
 #define _H_LineBreak_
 
 #include "Glyph.h"
-#include "DOMString.h"
+#include "String.h"
 
 class LineBreak : public Glyph {
 public:
-	LineBreak(DOMString text);
+	LineBreak(String text);
 	int       	Width(Font* font);
 	void      	Draw(GlyphDrawContext* context);
 	bool      	IsWhitespace();

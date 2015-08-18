@@ -11,12 +11,12 @@ class Element;
 class EmptyPlaceholderSelection : public BetweenGlyphsSelection {
 public:
 	EmptyPlaceholderSelection(PlaceholderTextDisplayNode* textNodeIn);
-	void     	Draw(View* view, CoordPoint origin);
+	void     	Draw(View* view, BPoint origin);
 	void     	AcceptKey(string_slice key, DisplayDirector* director);
 	Action*  	GetRestoreAction();
 	void     	Paste(String pasteText, DisplayDirector* director);
-	void     	InsertTag(DOMString tagName, DisplayDirector* director);
-	DOMString	TagName();
+	void     	InsertTag(String tagName, DisplayDirector* director);
+	String	TagName();
 	Element* 	GetElement();
 };
 

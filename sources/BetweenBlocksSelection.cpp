@@ -32,20 +32,20 @@ BetweenBlocksSelection::BetweenBlocksSelection(BlockableDisplayNode* parentNodeI
 }
 
 
-void BetweenBlocksSelection::Draw(View* view, CoordPoint origin)
+void BetweenBlocksSelection::Draw(View* view, BPoint origin)
 {
 	view->PushState();
 	view->SetPenSize(caretLineWidth);
 	view->SetHighColor(selectionColor);
 
-	CoordPoint point = Point() + origin;
-	view->StrokeLine(point, CoordPoint(point.x - caretWidth, point.y - caretHeight));
-	view->StrokeLine(point, CoordPoint(point.x - caretWidth, point.y + caretHeight));
+	BPoint point = Point() + origin;
+	view->StrokeLine(point, BPoint(point.x - caretWidth, point.y - caretHeight));
+	view->StrokeLine(point, BPoint(point.x - caretWidth, point.y + caretHeight));
 
 	if (tagEditor) {
-		Rectangle tagBounds = tagEditor->Bounds();
+		BRect tagBounds = tagEditor->Bounds();
 		view->SetPenSize(1);
-		view->StrokeLine(point, CoordPoint(tagBounds.left + origin.x, point.y));
+		view->StrokeLine(point, BPoint(tagBounds.left + origin.x, point.y));
 		tagEditor->Draw(view->Bounds());
 		}
 
@@ -73,11 +73,11 @@ void BetweenBlocksSelection::AcceptKey(string_slice key, DisplayDirector* direct
 }
 
 
-Rectangle BetweenBlocksSelection::Bounds()
+BRect BetweenBlocksSelection::Bounds()
 {
-	CoordPoint point = Point();
+	BPoint point = Point();
 	const int lineSpill = caretLineWidth - 1;
-	Rectangle bounds(point.x - caretWidth - lineSpill, point.y - caretHeight - lineSpill,
+	BRect bounds(point.x - caretWidth - lineSpill, point.y - caretHeight - lineSpill,
 	                 point.x + lineSpill, point.y + caretHeight + lineSpill);
 	if (tagEditor)
 		bounds = bounds | tagEditor->Bounds();
@@ -85,7 +85,7 @@ Rectangle BetweenBlocksSelection::Bounds()
 }
 
 
-bool BetweenBlocksSelection::IsVisible(Rectangle pageRect)
+bool BetweenBlocksSelection::IsVisible(BRect pageRect)
 {
 	return pageRect.Contains(Point());
 }
@@ -103,7 +103,7 @@ void BetweenBlocksSelection::Promote(DisplayDirector* director)
 }
 
 
-Selection* BetweenBlocksSelection::ExtendTo(CoordPoint point)
+Selection* BetweenBlocksSelection::ExtendTo(BPoint point)
 {
 	/***/
 	return this;
@@ -128,21 +128,21 @@ void BetweenBlocksSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-DOMString BetweenBlocksSelection::TagName()
+String BetweenBlocksSelection::TagName()
 {
 	return "";
 }
 
 
-Rectangle BetweenBlocksSelection::TagSpecRect()
+BRect BetweenBlocksSelection::TagSpecRect()
 {
-	CoordPoint point = Point();
+	BPoint point = Point();
 	int tagX = (int) (point.x + tagXOffset);
-	return Rectangle(tagX, 0, tagX, point.y + tagYOffset);
+	return BRect(tagX, 0, tagX, point.y + tagYOffset);
 }
 
 
-void BetweenBlocksSelection::TagNameChanged(DOMString newTagName, DisplayDirector* director)
+void BetweenBlocksSelection::TagNameChanged(String newTagName, DisplayDirector* director)
 {
 	CompositeAction* action = new CompositeAction();
 	action->AddAction(new RestoreSelectionAction());
@@ -157,7 +157,7 @@ void BetweenBlocksSelection::TagEditDone(DisplayDirector* director)
 }
 
 
-CoordPoint BetweenBlocksSelection::Point()
+BPoint BetweenBlocksSelection::Point()
 {
 	BlockableDisplayNode* afterNode = dynamic_cast<BlockableDisplayNode*>(
 			beforeNode ? beforeNode->PreviousSibling() : parentNode->LastChild()
@@ -185,7 +185,7 @@ CoordPoint BetweenBlocksSelection::Point()
 		x = parentNode->DisplayLeft();
 		y = parentNode->Top();
 		}
-	return CoordPoint(x, y);
+	return BPoint(x, y);
 }
 
 

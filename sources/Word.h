@@ -4,13 +4,13 @@
 #define _H_Word_
 
 #include "Glyph.h"
-#include "DOMString.h"
+#include "String.h"
 
 class qstring;
 
 class Word : public Glyph {
 public:
-	Word(DOMString wordIn, bool isPunctuationIn = false);
+	Word(String wordIn, bool isPunctuationIn = false);
 	int                 	Width(Font* font);
 	void                	UncacheWidth();
 	void                	Draw(GlyphDrawContext* context);
@@ -27,7 +27,7 @@ public:
 	virtual int         	DisplayToDocOffset(int displayOffset);
 
 protected:
-	DOMString	word;
+	String	word;
 	short    	width;
 	bool     	isPunctuation;
 };

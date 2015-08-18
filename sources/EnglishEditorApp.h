@@ -23,7 +23,7 @@ public:
 	void       	OpenFile(BFile* file, const BEntry* entry, BMessage* message = NULL);
 	void       	NewFile();
 	void       	WindowClosing(BWindow* window);
-	DOMString  	FunctionCall(DOMString function, DOMString arg, StyleScriptable* target);
+	String  	FunctionCall(String function, String arg, StyleScriptable* target);
 
 protected:
 	bool              	haveOpenedFiles;

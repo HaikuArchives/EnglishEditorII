@@ -26,10 +26,10 @@ StatusControl::~StatusControl()
 }
 
 
-Rectangle StatusControl::GetRect()
+BRect StatusControl::GetRect()
 {
-	Rectangle viewBounds = director->ViewBounds();
-	Rectangle rect;
+	BRect viewBounds = director->ViewBounds();
+	BRect rect;
 	rect.right = viewBounds.right - xPos;
 	rect.left = rect.right - font->WidthOf(string_slice(changedStr));
 	rect.top = viewBounds.top + yPos;
@@ -43,7 +43,7 @@ void StatusControl::Draw(DisplayDirector* director)
 	View* view = director->DrawingView();
 	view->PushState();
 	view->SetHighColor(controlColor);
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	view->SetFont(font);
 	int y = (int) (rect.top + font->Ascent());
 	int lineHeight = font->LineHeight();

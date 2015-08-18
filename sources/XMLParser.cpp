@@ -166,7 +166,7 @@ Element* XMLParser::ParseElement()
 void XMLParser::ParseTextInto(Node* node, char terminator)
 {
 	const char* stopper = text.end();
-	DOMString data;
+	String data;
 
 	const char* textStart = p;
 	while (p < stopper) {
@@ -458,7 +458,7 @@ long XMLParser::ParseHex(string_slice hexStr)
 }
 
 
-DOMString XMLParser::CharToUTF8(int c)
+String XMLParser::CharToUTF8(int c)
 {
 	char result[8];
 	char* p = &result[0];

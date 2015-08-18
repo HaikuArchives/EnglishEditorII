@@ -12,7 +12,7 @@
 
 
 
-Word::Word(DOMString wordIn, bool isPunctuationIn)
+Word::Word(String wordIn, bool isPunctuationIn)
 	: word(wordIn), width(0), isPunctuation(isPunctuationIn)
 {
 }

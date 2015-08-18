@@ -6,7 +6,7 @@
 #include "InternalException.h"
 #include <vector>
 
-class NodeTypeInternalList : public vector<DOMString> {
+class NodeTypeInternalList : public vector<String> {
 public:
 	int	refCount;
 };
@@ -35,7 +35,7 @@ NodeTypeList::~NodeTypeList()
 }
 
 
-void NodeTypeList::AppendNode(DOMString nodeType)
+void NodeTypeList::AppendNode(String nodeType)
 {
 	nodeTypes->push_back(nodeType);
 }
@@ -43,7 +43,7 @@ void NodeTypeList::AppendNode(DOMString nodeType)
 
 void NodeTypeList::AppendNode(Node* node)
 {
-	DOMString nodeName;
+	String nodeName;
 	switch (node->NodeType()) {
 		case ELEMENT_NODE:
 			nodeName = node->NodeName();
@@ -78,7 +78,7 @@ int NodeTypeList::NumNodeTypes()
 }
 
 
-DOMString NodeTypeList::NodeTypeAt(int index)
+String NodeTypeList::NodeTypeAt(int index)
 {
 	return (*nodeTypes)[index];
 }
@@ -106,7 +106,7 @@ bool NodeTypeList::IteratorValid()
 }
 
 
-DOMString NodeTypeList::CurNodeType()
+String NodeTypeList::CurNodeType()
 {
 	if (curIndex < 0)
 		throw InternalException("Attempt to access NodeTypeList::CurNodeType() with invalid iterator.");

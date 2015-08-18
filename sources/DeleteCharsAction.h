@@ -4,7 +4,7 @@
 #define _H_DeleteCharsAction_
 
 #include "Action.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Text;
 
@@ -18,7 +18,7 @@ protected:
 	Text*        	text;
 	unsigned long	offset;
 	unsigned long	length;
-	DOMString    	data;
+	String    	data;
 };
 
 

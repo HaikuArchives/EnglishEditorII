@@ -12,9 +12,9 @@ class InlineElementHotspot : public ElementHotspot {
 public:
 	InlineElementHotspot(ElementDisplayNode* displayNodeIn);
 	~InlineElementHotspot();
-	Rectangle	Bounds();
-	bool     	ContainsPoint(CoordPoint point);
-	void     	Draw(View* view, CoordPoint origin);
+	BRect	Bounds();
+	bool     	ContainsPoint(BPoint point);
+	void     	Draw(View* view, BPoint origin);
 
 protected:
 	GlyphsHilite*	hilite;

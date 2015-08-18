@@ -26,7 +26,7 @@ BetweenGlyphsDestination::BetweenGlyphsDestination(Selection* selectionIn, TextD
 		throw InternalException("SpaceDestination ctor: textNode has no enclosing leaf block.");
 	Font* font = textNode->CurFont();
 
-	CoordPoint destPoint(leafBlock->LeftSpace(), leafBlock->Top());
+	BPoint destPoint(leafBlock->LeftSpace(), leafBlock->Top());
 	if (firstGlyph) {
 		destPoint.x += firstGlyph->GetX() + firstGlyph->Width(font);
 		destPoint.y += firstGlyph->GetY() + font->Ascent();
@@ -35,7 +35,7 @@ BetweenGlyphsDestination::BetweenGlyphsDestination(Selection* selectionIn, TextD
 		destPoint.x += secondGlyph->GetX();
 		destPoint.y += secondGlyph->GetY() + font->Ascent();
 		}
-	Rectangle sourceBounds = selection->Bounds();
+	BRect sourceBounds = selection->Bounds();
 	bool above = (destPoint.y < (sourceBounds.top + sourceBounds.bottom) / 2);
 	arrow = new InlineArrow(selection->DragStartPoint(destPoint), destPoint,
 	                        above, font->Ascent());
@@ -48,13 +48,13 @@ BetweenGlyphsDestination::~BetweenGlyphsDestination()
 }
 
 
-Rectangle BetweenGlyphsDestination::ArrowBounds()
+BRect BetweenGlyphsDestination::ArrowBounds()
 {
 	return arrow->Bounds();
 }
 
 
-void BetweenGlyphsDestination::DrawArrow(View* view, CoordPoint origin)
+void BetweenGlyphsDestination::DrawArrow(View* view, BPoint origin)
 {
 	arrow->Draw(view, origin);
 }

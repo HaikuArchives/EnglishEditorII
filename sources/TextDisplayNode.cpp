@@ -106,7 +106,7 @@ void TextDisplayNode::UpdateProperties()
 		(*g)->UncacheWidth();
 
 	// color
-	DOMString colorStr = GetInheritedProperty("color");
+	String colorStr = GetInheritedProperty("color");
 	color = StyleParser::ParseColor(colorStr);
 
 	// pre-space
@@ -385,7 +385,7 @@ GlyphRef TextDisplayNode::LastGlyph()
 }
 
 
-void TextDisplayNode::DataInserted(unsigned long offset, DOMString arg)
+void TextDisplayNode::DataInserted(unsigned long offset, String arg)
 {
 	ClearGlyphs();
 	CreateGlyphs();
@@ -409,7 +409,7 @@ void TextDisplayNode::DataDeleted(unsigned long offset, unsigned long count)
 }
 
 
-void TextDisplayNode::DataSet(DOMString newData)
+void TextDisplayNode::DataSet(String newData)
 {
 	ClearGlyphs();
 	CreateGlyphs();
@@ -517,7 +517,7 @@ Selection* TextDisplayNode::GetSelectionAtOffset(int offset)
 }
 
 
-Glyph* TextDisplayNode::GlyphAtPoint(CoordPoint point)
+Glyph* TextDisplayNode::GlyphAtPoint(BPoint point)
 	// NOTE: returns the NON-WHITESPACE glyph nearest the point
 {
 	int lineHeight = font->LineHeight();
@@ -577,7 +577,7 @@ Glyph* TextDisplayNode::GlyphAtOffset(unsigned long offset)
 
 void TextDisplayNode::CreateGlyphs()
 {
-	DOMString data = text->Data();
+	String data = text->Data();
 	const char* p = data.begin();
 	const char* stopper = data.end();
 	const char* glyphStart = p;

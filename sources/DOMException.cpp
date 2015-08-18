@@ -20,7 +20,7 @@ const char* DOMException::Name()
 {
 	static const char* const errNames[] = {
 		"Invalid index or size",
-		"Text too big for DOMString",
+		"Text too big for String",
 		"Hierarchy request error",
 		"Wrong document error",
 		"Invalid character error",

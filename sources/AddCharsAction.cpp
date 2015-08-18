@@ -18,7 +18,7 @@ void AddCharsAction::Do(DisplayDirector* director)
 {
 	director->SetSelection(NULL);
 
-	text->InsertData(atChar, DOMString(chars));
+	text->InsertData(atChar, String(chars));
 
 	// move the selection
 	TextDisplayNode* displayNode =

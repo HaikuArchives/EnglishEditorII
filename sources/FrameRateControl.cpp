@@ -32,12 +32,12 @@ FrameRateControl::~FrameRateControl()
 }
 
 
-Rectangle FrameRateControl::GetRect()
+BRect FrameRateControl::GetRect()
 {
 	static const char* maxString = "00.0d/0.00s/0.00b";
 
-	Rectangle viewBounds = director->ViewBounds();
-	Rectangle rect;
+	BRect viewBounds = director->ViewBounds();
+	BRect rect;
 	rect.left = viewBounds.left + xPos;
 	rect.right = rect.left + font->WidthOf(string_slice(maxString));
 	rect.bottom = viewBounds.bottom - yPos;
@@ -71,7 +71,7 @@ void FrameRateControl::Draw(DisplayDirector* directorIn)
 		}
 
 	// draw it
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	view->SetFont(font);
 	view->DrawString(str, rect.left, rect.top + font->Ascent());
 

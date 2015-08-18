@@ -23,7 +23,7 @@ void DOMChangeClient::NodeDying()
 }
 
 
-void DOMChangeClient::DataInserted(unsigned long offset, DOMString arg)
+void DOMChangeClient::DataInserted(unsigned long offset, String arg)
 {
 }
 
@@ -33,7 +33,7 @@ void DOMChangeClient::DataDeleted(unsigned long offset, unsigned long count)
 }
 
 
-void DOMChangeClient::DataSet(DOMString newData)
+void DOMChangeClient::DataSet(String newData)
 {
 }
 

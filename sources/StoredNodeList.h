@@ -17,8 +17,8 @@ public:
 	Node*        	ReplaceChild(Node* newChild, Node* oldChild);
 	Node*        	RemoveChild(Node* oldChild);
 	Node*        	AppendChild(Node* newChild);
-	NodeList*    	GetElementsByTagName(DOMString name);
-	Element*     	GetElementByTagName(DOMString name);
+	NodeList*    	GetElementsByTagName(String name);
+	Element*     	GetElementByTagName(String name);
 	NodeList*    	Clone();
 
 protected:

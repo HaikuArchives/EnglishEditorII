@@ -13,7 +13,7 @@ class CompositeStylesheet : public EditStylesheet {
 public:
 	CompositeStylesheet(string_slice documentType);
 	~CompositeStylesheet();
-	DOMString  	PropertyForElement(string_slice propertyName, string_slice elementName);
+	String  	PropertyForElement(string_slice propertyName, string_slice elementName);
 	Element*   	ContentsTemplateForElement(string_slice elementName);
 	static void	InitStatics();
 

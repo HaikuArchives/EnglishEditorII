@@ -19,8 +19,8 @@ public:
 	Node*    	RemoveChild(Node* oldChild);
 	Node*    	AppendChild(Node* newChild);
 	bool     	HasChildNodes();
-	NodeList*	GetElementsByTagName(DOMString name);
-	Element* 	GetElementByTagName(DOMString name);
+	NodeList*	GetElementsByTagName(String name);
+	Element* 	GetElementByTagName(String name);
 	void     	CloneChildrenFrom(const CompositeNode* other);
 	void     	SetParents(Node* firstNewChild, Node* lastNewChild);
 

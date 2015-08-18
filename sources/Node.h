@@ -3,7 +3,7 @@
 #ifndef _H_Node_
 #define _H_Node_
 
-#include "DOMString.h"
+#include "String.h"
 
 class Document;
 class NodeList;
@@ -30,8 +30,8 @@ class Node {
 public:
 	Node();
 	virtual~Node();
-	virtual DOMString     	NodeName() = 0;
-	virtual DOMString     	NodeValue();
+	virtual String     	NodeName() = 0;
+	virtual String     	NodeValue();
 	virtual unsigned short	NodeType() = 0;
 	inline Node*          	ParentNode();
 	virtual NodeList*     	ChildNodes();

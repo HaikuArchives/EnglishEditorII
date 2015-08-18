@@ -14,13 +14,13 @@ public:
                        Glyph* firstGlyphIn, Glyph* secondGlyphIn,
                        bool promoteBeforeIn);
 	void              	AcceptKey(string_slice key, DisplayDirector* director);
-	virtual Selection*	ExtendTo(CoordPoint point);
+	virtual Selection*	ExtendTo(BPoint point);
 	Action*           	GetRestoreAction();
 	void              	Promote(DisplayDirector* director);
 	bool              	CanPaste();
 	void              	Paste(String pasteText, DisplayDirector* director);
-	CoordPoint        	Point();
-	void              	InsertTag(DOMString tagName, DisplayDirector* director);
+	BPoint        	Point();
+	void              	InsertTag(String tagName, DisplayDirector* director);
 	bool              	CaretOutLeft();
 	bool              	CaretOutRight();
 	void              	SelectForward(DisplayDirector* director);

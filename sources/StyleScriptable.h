@@ -3,16 +3,16 @@
 #ifndef _H_StyleScriptable_
 #define _H_StyleScriptable_
 
-#include "DOMString.h"
+#include "String.h"
 
 class StyleScriptable {
 public:
 	virtual~StyleScriptable();
-	virtual DOMString	GetScriptProperty(DOMString property);
-	virtual DOMString	FunctionCall(DOMString function, DOMString arg, StyleScriptable* target);
-	DOMString        	Eval(DOMString expr);
-	static DOMString 	NextArg(DOMString& args);
-	DOMString        	AsString();
+	virtual String	GetScriptProperty(String property);
+	virtual String	FunctionCall(String function, String arg, StyleScriptable* target);
+	String        	Eval(String expr);
+	static String 	NextArg(String& args);
+	String        	AsString();
 };
 
 

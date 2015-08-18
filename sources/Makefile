@@ -56,15 +56,12 @@ SRCS = Action.cpp \
 	CompositeStylesheet.cpp \
 	Confirmer.cpp \
 	Control.cpp \
-	CoordPoint.cpp \
 	CopyCharsAction.cpp \
 	CopyNodesAction.cpp \
 	DOMChangeClient.cpp \
 	DOMEditStylesheet.cpp \
 	DOMException.cpp \
 	DOMLiveNode.cpp \
-	DOMString.cpp \
-	DOMStringIter.cpp \
 	DOMUtils.cpp \
 	DefaultValidator.cpp \
 	DeleteCharsAction.cpp \
@@ -76,7 +73,6 @@ SRCS = Action.cpp \
 	DisplayTextNode.cpp \
 	DisplayType.cpp \
 	DisplayableException.cpp \
-	Docs.cpp \
 	Document.cpp \
 	DocumentDisplayNode.cpp \
 	DocumentFragment.cpp \
@@ -149,8 +145,6 @@ SRCS = Action.cpp \
 	PrefsChangeClient.cpp \
 	ProcessingInstruction.cpp \
 	QuoterDict.cpp \
-	Rectangle.cpp \
-	Region.cpp \
 	RemoveNodesAction.cpp \
 	RestoreBetweenBlocksSelectionAction.cpp \
 	RestoreBetweenWordsSelectionAction.cpp \

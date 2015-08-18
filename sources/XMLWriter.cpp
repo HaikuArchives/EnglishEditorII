@@ -129,7 +129,7 @@ void XMLWriter::WriteElement(Element* element)
 
 void XMLWriter::WriteText(Text* text)
 {
-	DOMString data = text->Data();
+	String data = text->Data();
 	DOMStringIter p = data.begin();
 	DOMStringIter stopper = data.end();
 	int startPos = 0;

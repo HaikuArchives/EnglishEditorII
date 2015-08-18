@@ -3,7 +3,7 @@
 #include "PreSpace.h"
 
 
-PreSpace::PreSpace(DOMString textIn)
+PreSpace::PreSpace(String textIn)
 	: Word(textIn)
 {
 }

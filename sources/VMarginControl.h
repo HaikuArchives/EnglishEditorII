@@ -8,7 +8,7 @@
 class VMarginControl : public MarginControl {
 public:
 	VMarginControl(WindowDirector* directorIn);
-	Rectangle	GetRect();
+	BRect	GetRect();
 	void     	Draw(DisplayDirector* directorIn);
 	void     	MouseDown(int x, int y, DisplayDirector* directorIn);
 };

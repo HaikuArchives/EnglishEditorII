@@ -7,7 +7,7 @@
 
 class SmartenedWord : public Word {
 public:
-	SmartenedWord(DOMString wordIn);
+	SmartenedWord(String wordIn);
 	int         	Width(Font* font);
 	void        	Draw(GlyphDrawContext* context);
 	string_slice	GetDisplayWord();
@@ -15,7 +15,7 @@ public:
 	virtual int 	DisplayToDocOffset(int displayOffset);
 
 protected:
-	DOMString	displayWord;
+	String	displayWord;
 };
 
 

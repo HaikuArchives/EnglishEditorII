@@ -10,9 +10,9 @@ class ElementDisplayNode;
 class BlockElementHotspot : public ElementHotspot {
 public:
 	BlockElementHotspot(ElementDisplayNode* displayNodeIn);
-	Rectangle	Bounds();
-	bool     	ContainsPoint(CoordPoint point);
-	void     	Draw(View* view, CoordPoint origin);
+	BRect	Bounds();
+	bool     	ContainsPoint(BPoint point);
+	void     	Draw(View* view, BPoint origin);
 
 protected:
 	static const int	lineWidth;

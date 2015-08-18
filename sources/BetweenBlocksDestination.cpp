@@ -41,9 +41,9 @@ BetweenBlocksDestination::BetweenBlocksDestination(Selection* selectionIn, Block
 }
 
 
-Rectangle BetweenBlocksDestination::ArrowBounds()
+BRect BetweenBlocksDestination::ArrowBounds()
 {
-	Rectangle bounds;
+	BRect bounds;
 
 	bounds.left = fromPoint.x - arrowLoopWidth - lineSlop;
 	float toLeft = toPoint.x - arrowStem - arrowLoopWidth - lineSlop;
@@ -69,7 +69,7 @@ Rectangle BetweenBlocksDestination::ArrowBounds()
 }
 
 
-void BetweenBlocksDestination::DrawArrow(View* view, CoordPoint origin)
+void BetweenBlocksDestination::DrawArrow(View* view, BPoint origin)
 {
 	view->PushState();
 	view->SetPenSize(arrowLineWidth);
@@ -77,16 +77,16 @@ void BetweenBlocksDestination::DrawArrow(View* view, CoordPoint origin)
 
 	// line
 	const int loopWidth = arrowLoopWidth - arrowStem;
-	CoordPoint loopTo(toPoint.x - arrowStem, toPoint.y);
-	CoordPoint midPoint((fromPoint.x + loopTo.x) / 2 - loopWidth,
+	BPoint loopTo(toPoint.x - arrowStem, toPoint.y);
+	BPoint midPoint((fromPoint.x + loopTo.x) / 2 - loopWidth,
 	                    (fromPoint.y + loopTo.y) / 2);
-	CoordPoint points[4];
+	BPoint points[4];
 	points[0] = fromPoint + origin;
-	points[1] = CoordPoint(fromPoint.x - loopWidth, fromPoint.y) + origin;
+	points[1] = BPoint(fromPoint.x - loopWidth, fromPoint.y) + origin;
 	points[2] = points[3] = midPoint + origin;
 	view->StrokeBezier(points);
 	points[0] = points[1] = midPoint + origin;
-	points[2] = CoordPoint(loopTo.x - loopWidth, loopTo.y) + origin;
+	points[2] = BPoint(loopTo.x - loopWidth, loopTo.y) + origin;
 	points[3] = loopTo + origin;
 	view->StrokeBezier(points);
 	view->StrokeLine(loopTo + origin, toPoint + origin);
@@ -94,9 +94,9 @@ void BetweenBlocksDestination::DrawArrow(View* view, CoordPoint origin)
 	// arrowhead
 	int arrowheadLeft = (int) (toPoint.x - arrowheadWidth);
 	view->StrokeLine(toPoint + origin,
-	                 CoordPoint(arrowheadLeft, toPoint.y - arrowheadHeight / 2) + origin);
+	                 BPoint(arrowheadLeft, toPoint.y - arrowheadHeight / 2) + origin);
 	view->StrokeLine(toPoint + origin,
-	                 CoordPoint(arrowheadLeft, toPoint.y + arrowheadHeight / 2) + origin);
+	                 BPoint(arrowheadLeft, toPoint.y + arrowheadHeight / 2) + origin);
 
 	view->PopState();
 }

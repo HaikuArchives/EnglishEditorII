@@ -27,13 +27,13 @@ Node* EmptyNodeList::AppendChild(Node* newChild)
 }
 
 
-NodeList* EmptyNodeList::GetElementsByTagName(DOMString name)
+NodeList* EmptyNodeList::GetElementsByTagName(String name)
 {
 	return Clone();		// not "this", since caller will own the NodeList
 }
 
 
-Element* EmptyNodeList::GetElementByTagName(DOMString name)
+Element* EmptyNodeList::GetElementByTagName(String name)
 {
 	return NULL;
 }

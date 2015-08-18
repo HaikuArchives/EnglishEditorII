@@ -4,13 +4,13 @@
 #define _H_ChangeElementTagNameAction_
 
 #include "Action.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Element;
 
 class ChangeElementTagNameAction : public Action {
 public:
-	ChangeElementTagNameAction(Element* element, DOMString newTagName);
+	ChangeElementTagNameAction(Element* element, String newTagName);
 	~ChangeElementTagNameAction();
 	void	Do(DisplayDirector* director);
 	void	Undo(DisplayDirector* director);

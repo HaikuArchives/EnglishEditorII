@@ -3,7 +3,7 @@
 #ifndef _H_Shape_
 #define _H_Shape_
 
-#include "CoordPoint.h"
+#include <Point.h>
 #include <Shape.h>
 
 /*
@@ -14,13 +14,13 @@
 class Shape {
 public:
 	Shape();
-	void   	MoveTo(CoordPoint point);
+	void   	MoveTo(BPoint point);
 	void   	MoveTo(int x, int y);
-	void   	LineTo(CoordPoint point);
+	void   	LineTo(BPoint point);
 	void   	LineTo(int x, int y);
-	void   	HorizontalCornerTo(CoordPoint point);
+	void   	HorizontalCornerTo(BPoint point);
 	void   	HorizontalCornerTo(int x, int y);
-	void   	VerticalCornerTo(CoordPoint point);
+	void   	VerticalCornerTo(BPoint point);
 	void   	VerticalCornerTo(int x, int y);
 	void   	Close();
 	void   	Clear();
@@ -28,7 +28,7 @@ public:
 
 protected:
 	BShape    	shape;
-	CoordPoint	curPoint;
+	BPoint	curPoint;
 };
 
 

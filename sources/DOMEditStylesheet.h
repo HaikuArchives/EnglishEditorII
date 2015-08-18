@@ -12,7 +12,7 @@ class DOMEditStylesheet : public EditStylesheet {
 public:
 	DOMEditStylesheet(Document* document);
 	~DOMEditStylesheet();
-	DOMString	PropertyForElement(string_slice propertyName, string_slice elementName);
+	String	PropertyForElement(string_slice propertyName, string_slice elementName);
 	Element* 	ContentsTemplateForElement(string_slice elementName);
 
 protected:

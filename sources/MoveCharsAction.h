@@ -4,7 +4,7 @@
 #define _H_MoveCharsAction_
 
 #include "Action.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Text;
 
@@ -23,7 +23,7 @@ protected:
 	unsigned long	srcLen;
 	Text*        	destText;
 	unsigned long	destOffset;
-	DOMString    	destDeleted;
+	String    	destDeleted;
 	bool         	addPreSpace;
 	bool         	addPostSpace;
 	bool         	select;

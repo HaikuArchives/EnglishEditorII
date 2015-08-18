@@ -21,10 +21,10 @@ Node::~Node()
 }
 
 
-DOMString Node::NodeValue()
+String Node::NodeValue()
 {
 	/* to be overridden */
-	return DOMString();
+	return String();
 }
 
 

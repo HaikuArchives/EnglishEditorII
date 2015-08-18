@@ -4,7 +4,7 @@
 #define _H_XMLParser_
 
 #include "string_slice.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Document;
 class Node;
@@ -32,7 +32,7 @@ public:
 	void                  	SkipWhitespace();
 	bool                  	AtWhitespace();
 	long                  	ParseHex(string_slice hexStr);
-	DOMString             	CharToUTF8(int c);
+	String             	CharToUTF8(int c);
 
 protected:
 	string_slice	text;

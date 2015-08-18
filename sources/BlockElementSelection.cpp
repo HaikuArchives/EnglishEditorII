@@ -42,7 +42,7 @@ ElementDisplayNode* BlockElementSelection::GetDisplayNode()
 }
 
 
-void BlockElementSelection::Draw(View* view, CoordPoint origin)
+void BlockElementSelection::Draw(View* view, BPoint origin)
 {
 	// create the tagEditor if there isn't one yet
 	// we'd do this in the ctor, except stupid C++ can't call derived virtual
@@ -58,17 +58,17 @@ void BlockElementSelection::Draw(View* view, CoordPoint origin)
 
 	// clip out the tagEditor
 	if (tagEditor) {
-		Rectangle allRect(0, 0, 32767, 32767);
-		Region clipRegion;
+		BRect allRect(0, 0, 32767, 32767);
+		BRegion clipRegion;
 		clipRegion.Set(allRect);
-		Rectangle tagBounds = tagEditor->Bounds();
+		BRect tagBounds = tagEditor->Bounds();
 		tagBounds.OffsetBy(origin);
 		clipRegion.Exclude(tagBounds);
 		view->ConstrainClippingRegion(&clipRegion);
 		}
 
 	// draw
-	Rectangle rect = HiliteBounds();
+	BRect rect = HiliteBounds();
 	rect.InsetBy(lineSpill, lineSpill);
 	Shape shape;
 	shape.MoveTo(rect.left, rect.top + cornerRadius);
@@ -149,7 +149,7 @@ void BlockElementSelection::Promote(DisplayDirector* director)
 }
 
 
-Selection* BlockElementSelection::ExtendTo(CoordPoint point)
+Selection* BlockElementSelection::ExtendTo(BPoint point)
 {
 	DisplayNode* parent = displayNode->Parent();
 	if (parent == NULL)
@@ -207,9 +207,9 @@ Action* BlockElementSelection::GetRestoreAction()
 }
 
 
-Rectangle BlockElementSelection::Bounds()
+BRect BlockElementSelection::Bounds()
 {
-	Rectangle bounds = HiliteBounds();
+	BRect bounds = HiliteBounds();
 	if (tagEditor)
 		bounds = bounds | tagEditor->Bounds();
 
@@ -217,7 +217,7 @@ Rectangle BlockElementSelection::Bounds()
 }
 
 
-bool BlockElementSelection::IsVisible(Rectangle pageRect)
+bool BlockElementSelection::IsVisible(BRect pageRect)
 {
 	return pageRect.Intersects(Bounds());
 }
@@ -229,10 +229,10 @@ bool BlockElementSelection::NeedsClip()
 }
 
 
-CoordPoint BlockElementSelection::DragStartPoint(CoordPoint destPoint)
+BPoint BlockElementSelection::DragStartPoint(BPoint destPoint)
 {
-	Rectangle bounds = Bounds();
-	return CoordPoint(bounds.left, (bounds.top + bounds.bottom) / 2);
+	BRect bounds = Bounds();
+	return BPoint(bounds.left, (bounds.top + bounds.bottom) / 2);
 }
 
 
@@ -242,7 +242,7 @@ bool BlockElementSelection::CanCopy()
 }
 
 
-DOMString BlockElementSelection::GetXMLCopy()
+String BlockElementSelection::GetXMLCopy()
 {
 	XMLStringWriter writer(displayNode->GetElement());
 	writer.Write();
@@ -262,21 +262,21 @@ void BlockElementSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-DOMString BlockElementSelection::TagName()
+String BlockElementSelection::TagName()
 {
 	return displayNode->GetElement()->TagName();
 }
 
 
-Rectangle BlockElementSelection::TagSpecRect()
+BRect BlockElementSelection::TagSpecRect()
 {
-	Rectangle bounds = HiliteBounds();
-	return Rectangle(bounds.left + tagXInset, 0, bounds.right - tagXInset,
+	BRect bounds = HiliteBounds();
+	return BRect(bounds.left + tagXInset, 0, bounds.right - tagXInset,
 	                 bounds.top + tagYInset);
 }
 
 
-void BlockElementSelection::TagNameChanged(DOMString newTagName, DisplayDirector* director)
+void BlockElementSelection::TagNameChanged(String newTagName, DisplayDirector* director)
 {
 	HideTag(director);	// so it won't cause trouble when the selection changes
 	Element* element = displayNode->GetElement();
@@ -288,9 +288,9 @@ void BlockElementSelection::TagNameChanged(DOMString newTagName, DisplayDirector
 }
 
 
-Rectangle BlockElementSelection::HiliteBounds()
+BRect BlockElementSelection::HiliteBounds()
 {
-	Rectangle bounds;
+	BRect bounds;
 	bounds.top = displayNode->Top();
 	bounds.bottom = bounds.top + displayNode->Height();
 	bounds.left = displayNode->DisplayLeft();

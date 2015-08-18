@@ -10,7 +10,7 @@
 
 
 
-EncloseTextAction::EncloseTextAction(Text* textIn, DOMString tagNameIn)
+EncloseTextAction::EncloseTextAction(Text* textIn, String tagNameIn)
 	: text(textIn), tagName(tagNameIn)
 {
 }

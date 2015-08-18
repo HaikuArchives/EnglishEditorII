@@ -3,7 +3,7 @@
 #include "Control.h"
 #include "DisplayDirector.h"
 #include "View.h"
-#include "CoordPoint.h"
+#include <Point.h>
 
 const rgb_color Control::controlColor = { 0, 0xBA, 255, 255 };
 const float Control::visibleZone = 64;
@@ -18,12 +18,12 @@ int Control::CurAlpha(DisplayDirector* director)
 {
 	// find out where the mouse is and make sure it's in the window
 	View* windowView = director->WindowView();
-	CoordPoint mousePoint = windowView->GetMousePoint();
+	BPoint mousePoint = windowView->GetMousePoint();
 	if (!windowView->Bounds().BRect::Contains(mousePoint))
 		return 0;
 
 	// calculate the alpha
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	int xDistance = 0;
 	if (mousePoint.x < rect.left)
 		xDistance = (int) (rect.left - mousePoint.x);

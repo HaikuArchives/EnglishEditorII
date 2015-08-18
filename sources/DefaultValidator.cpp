@@ -31,8 +31,8 @@ bool DefaultValidator::AllowsContents(Element* parentNode, NodeTypeList nodeType
 
 	// check
 	for (nodeTypes.Rewind(); nodeTypes.IteratorValid(); nodeTypes.Step()) {
-		DOMString curNodeType = nodeTypes.CurNodeType();
-		DOMString curDisplayType;
+		String curNodeType = nodeTypes.CurNodeType();
+		String curDisplayType;
 		if (curNodeType == "#text")
 			curDisplayType = "inline";
 		else

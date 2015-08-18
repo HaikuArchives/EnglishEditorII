@@ -72,7 +72,7 @@ void ElementDisplayNode::Load(DisplayDirector* director)
 #ifdef MOVED_TO_CompositeDisplayNode
 	// if empty, use placeholder text
 	if (firstChild == NULL) {
-		DOMString placeholderText = GetProperty("placeholder-text");
+		String placeholderText = GetProperty("placeholder-text");
 		if (true /*** !placeholderText.empty() ***/) {
 			PlaceholderTextDisplayNode* placeholderNode =
 				new PlaceholderTextDisplayNode(placeholderText);
@@ -98,7 +98,7 @@ void ElementDisplayNode::UpdateProperties()
 }
 
 
-DOMString ElementDisplayNode::GetProperty(string_slice propertyName)
+String ElementDisplayNode::GetProperty(string_slice propertyName)
 {
 	DisplayDirector* director = GetDisplayDirector();
 	if (director == NULL)
@@ -141,20 +141,20 @@ Hotspot* ElementDisplayNode::GetHotspot(DisplayDirector* director)
 	// first, make sure it's really hot
 	EditStylesheet* stylesheet = director->GetStylesheet();
 	string_slice tagName = element->TagName();
-	DOMString linkProperty = stylesheet->PropertyForElement("link", tagName);
+	String linkProperty = stylesheet->PropertyForElement("link", tagName);
 	if (!linkProperty.empty()) {
 		if (linkProperty.startsWith("attr(")) {
-			DOMString attrName = linkProperty.substr(5, linkProperty.length() - 6);
+			String attrName = linkProperty.substr(5, linkProperty.length() - 6);
 			if (element->GetAttribute(attrName).empty())
 				return NULL;
 			}
 		}
 	else {
-		DOMString actionProperty = Eval(stylesheet->PropertyForElement("action", tagName));
+		String actionProperty = Eval(stylesheet->PropertyForElement("action", tagName));
 		if (actionProperty.empty())
 			return NULL;
 		if (actionProperty.startsWith("attr(")) {
-			DOMString attrName = actionProperty.substr(5, actionProperty.length() - 6);
+			String attrName = actionProperty.substr(5, actionProperty.length() - 6);
 			if (element->GetAttribute(attrName).empty())
 				return NULL;
 			}
@@ -195,7 +195,7 @@ bool ElementDisplayNode::CanSelectAcross()
 }
 
 
-DOMString ElementDisplayNode::GetScriptProperty(DOMString property)
+String ElementDisplayNode::GetScriptProperty(String property)
 {
 	if (property == "tag-name")
 		return element->TagName();
@@ -208,7 +208,7 @@ DOMString ElementDisplayNode::GetScriptProperty(DOMString property)
 }
 
 
-DOMString ElementDisplayNode::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String ElementDisplayNode::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "attr")
 		return element->GetAttribute(arg);

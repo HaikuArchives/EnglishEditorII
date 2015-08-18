@@ -15,7 +15,7 @@ CompositeStylesheet::CompositeStylesheet(string_slice documentType)
 {
 	InitStatics();
 
-	DOMString filePath = System::AppDirectory();
+	String filePath = System::AppDirectory();
 	filePath += "Stylesheets/";
 	filePath += documentType;
 	try {
@@ -35,9 +35,9 @@ CompositeStylesheet::~CompositeStylesheet()
 }
 
 
-DOMString CompositeStylesheet::PropertyForElement(string_slice propertyName, string_slice elementName)
+String CompositeStylesheet::PropertyForElement(string_slice propertyName, string_slice elementName)
 {
-	DOMString result;
+	String result;
 	if (docStylesheet)
 		result = docStylesheet->PropertyForElement(propertyName, elementName);
 	if (result.empty() && defaultStylesheet)
@@ -60,7 +60,7 @@ Element* CompositeStylesheet::ContentsTemplateForElement(string_slice elementNam
 void CompositeStylesheet::InitStatics()
 {
 	if (defaultStylesheet == NULL) {
-		DOMString filePath = System::AppDirectory();
+		String filePath = System::AppDirectory();
 		filePath += "Stylesheets/#default";
 		try {
 			defaultStylesheetSource = new XMLFileSource(filePath);

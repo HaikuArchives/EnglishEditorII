@@ -11,23 +11,23 @@ class BlockElementSelection : public TagSelection {
 public:
 	BlockElementSelection(ElementDisplayNode* displayNodeIn);
 	ElementDisplayNode*	GetDisplayNode();
-	void               	Draw(View* view, CoordPoint origin);
+	void               	Draw(View* view, BPoint origin);
 	void               	AcceptKey(string_slice key, DisplayDirector* director);
 	void               	Promote(DisplayDirector* director);
-	Selection*         	ExtendTo(CoordPoint point);
+	Selection*         	ExtendTo(BPoint point);
 	Action*            	GetRestoreAction();
-	Rectangle          	Bounds();
-	bool               	IsVisible(Rectangle pageRect);
+	BRect          	Bounds();
+	bool               	IsVisible(BRect pageRect);
 	bool               	NeedsClip();
-	CoordPoint         	DragStartPoint(CoordPoint destPoint);
+	BPoint         	DragStartPoint(BPoint destPoint);
 	bool               	CanCopy();
-	DOMString          	GetXMLCopy();
+	String          	GetXMLCopy();
 	bool               	CanPaste();
 	void               	Paste(String pasteText, DisplayDirector* director);
-	DOMString          	TagName();
-	Rectangle          	TagSpecRect();
-	void               	TagNameChanged(DOMString newTagName, DisplayDirector* director);
-	Rectangle          	HiliteBounds();
+	String          	TagName();
+	BRect          	TagSpecRect();
+	void               	TagNameChanged(String newTagName, DisplayDirector* director);
+	BRect          	HiliteBounds();
 	void               	ReplaceContents(String newContents, DisplayDirector* director);
 
 protected:

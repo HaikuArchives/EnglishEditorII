@@ -4,14 +4,14 @@
 #define _H_NewElementAction_
 
 #include "Action.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Node;
 class Element;
 
 class NewElementAction : public Action {
 public:
-	NewElementAction(DOMString tagName, Node* parentNodeIn, Node* beforeNodeIn);
+	NewElementAction(String tagName, Node* parentNodeIn, Node* beforeNodeIn);
 	~NewElementAction();
 	Element*	GetNewElement();
 	void    	Do(DisplayDirector* director);

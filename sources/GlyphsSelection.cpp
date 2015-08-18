@@ -85,7 +85,7 @@ Selection* GlyphsSelection::SelectionFromTo(GlyphRef firstGlyph, GlyphRef lastGl
 }
 
 
-void GlyphsSelection::Draw(View* view, CoordPoint origin)
+void GlyphsSelection::Draw(View* view, BPoint origin)
 {
 	if (tagEditor) {
 		tagEditor->Draw(view->Bounds());
@@ -249,7 +249,7 @@ void GlyphsSelection::Promote(DisplayDirector* director)
 }
 
 
-Selection* GlyphsSelection::ExtendTo(CoordPoint point)
+Selection* GlyphsSelection::ExtendTo(BPoint point)
 {
 	if (hilite->ContainsPoint(point))
 		return this;
@@ -353,13 +353,13 @@ Action* GlyphsSelection::GetRestoreAction()
 }
 
 
-Rectangle GlyphsSelection::Bounds()
+BRect GlyphsSelection::Bounds()
 {
 	return hilite->Bounds();
 }
 
 
-bool GlyphsSelection::IsVisible(Rectangle pageRect)
+bool GlyphsSelection::IsVisible(BRect pageRect)
 {
 	return hilite->IsVisible(pageRect);
 }
@@ -371,13 +371,13 @@ bool GlyphsSelection::NeedsClip()
 }
 
 
-bool GlyphsSelection::ContainsPoint(CoordPoint point)
+bool GlyphsSelection::ContainsPoint(BPoint point)
 {
 	return hilite->ContainsPoint(point);
 }
 
 
-CoordPoint GlyphsSelection::DragStartPoint(CoordPoint destPoint)
+BPoint GlyphsSelection::DragStartPoint(BPoint destPoint)
 {
 	return hilite->DragStartPoint(destPoint);
 }
@@ -389,7 +389,7 @@ bool GlyphsSelection::CanCopy()
 }
 
 
-DOMString GlyphsSelection::GetXMLCopy()
+String GlyphsSelection::GetXMLCopy()
 {
 	// handle single-text case
 	bool singleText = (firstGlyph.textNode == lastGlyph.textNode);
@@ -449,7 +449,7 @@ DOMString GlyphsSelection::GetXMLCopy()
 	if (startsWithText) {
 		Text* startText = firstGlyph.textNode->GetText();
 		int startOffset = firstGlyph.StartOffset();
-		DOMString startData =
+		String startData =
 			startText->SubstringData(startOffset, startText->Length() - startOffset);
 		writer.AppendString(startData);
 		}
@@ -461,7 +461,7 @@ DOMString GlyphsSelection::GetXMLCopy()
 	if (endsWithText) {
 		Text* endText = lastGlyph.textNode->GetText();
 		int endOffset = lastGlyph.EndOffset();
-		DOMString endData = endText->SubstringData(0, endOffset);
+		String endData = endText->SubstringData(0, endOffset);
 		writer.AppendString(endData);
 		}
 	return writer.GetString();
@@ -480,19 +480,19 @@ void GlyphsSelection::Paste(String pasteText, DisplayDirector* director)
 }
 
 
-DOMString GlyphsSelection::TagName()
+String GlyphsSelection::TagName()
 {
 	return "";
 }
 
 
-Rectangle GlyphsSelection::TagSpecRect()
+BRect GlyphsSelection::TagSpecRect()
 {
 	return hilite->TagSpecRect();
 }
 
 
-void GlyphsSelection::TagNameChanged(DOMString newTagName, DisplayDirector* director)
+void GlyphsSelection::TagNameChanged(String newTagName, DisplayDirector* director)
 {
 	CompositeAction* action = new CompositeAction();
 	action->AddAction(new RestoreSelectionAction());

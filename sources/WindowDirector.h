@@ -4,7 +4,7 @@
 #define _H_WindowDirector_
 
 #include "DisplayDirector.h"
-#include "Region.h"
+#include <Region.h>
 #include "Timing.h"
 
 class EnglishEditorView;
@@ -23,19 +23,19 @@ public:
 	WindowDirector(DocumentSource* docSourceIn, EnglishEditorView* viewIn,
                EnglishEditorWind* windIn);
 	~WindowDirector();
-	void           	Draw(Rectangle updateRect);
+	void           	Draw(BRect updateRect);
 	void           	KeyDown(string_slice key);
 	void           	MouseDown(int x, int y);
 	void           	MouseMoved();
-	void           	FrameChanged(Rectangle newFrame);
+	void           	FrameChanged(BRect newFrame);
 	void           	ScreenChanged();
 	bool           	CloseRequested();
-	void           	DoDocAction(DOMString action);
+	void           	DoDocAction(String action);
 	void           	DocTypeChanged();
 	void           	RequestClose();
 	void           	KillControls();
 	void           	SetScrollTarget(float newScrollTarget);
-	bool           	Autoscroll(CoordPoint point);
+	bool           	Autoscroll(BPoint point);
 	void           	ScrollToSelection();
 	bool           	DoScrollStep();
 	void           	ContinueScrolling();
@@ -53,7 +53,7 @@ public:
 	EditStylesheet*	GetStylesheet();
 	Validator*     	GetValidator();
 	int            	DisplayWidth();
-	Rectangle      	ViewBounds();
+	BRect      	ViewBounds();
 	View*          	DrawingView();
 	View*          	WindowView();
 	Microseconds   	LastScrollFrameTime();
@@ -61,17 +61,17 @@ public:
 	Microseconds   	LastBlitTime();
 	int            	GetScrollPos();
 	float          	GetVisibleProportion();
-	CoordPoint     	ViewToDoc(CoordPoint viewPoint);
-	CoordPoint     	DocToView(CoordPoint docPoint);
-	Rectangle      	ViewToDoc(Rectangle rect);
-	Rectangle      	DocToView(Rectangle rect);
-	Rectangle      	DocRect();
+	BPoint     	ViewToDoc(BPoint viewPoint);
+	BPoint     	DocToView(BPoint docPoint);
+	BRect      	ViewToDoc(BRect rect);
+	BRect      	DocToView(BRect rect);
+	BRect      	DocRect();
 	void           	StartRefreshCycle();
 	void           	FinishRefreshCycle();
-	void           	RefreshViewRect(Rectangle rect);
+	void           	RefreshViewRect(BRect rect);
 	void           	RefreshDocAfter(int y);
 	void           	RefreshAll();
-	DOMString      	FunctionCall(DOMString function, DOMString arg, StyleScriptable* target);
+	String      	FunctionCall(String function, String arg, StyleScriptable* target);
 
 protected:
 	EnglishEditorView*	view;
@@ -88,7 +88,7 @@ protected:
 	bool              	scrollStepPending;
 	bool              	scrollMessagePending;
 	int               	refreshCycleNesting;
-	Region*           	refreshRegion;
+	BRegion*           	refreshRegion;
 	Microseconds      	lastScrollFrameTime;
 	Microseconds      	lastScrollStepTime;
 	Microseconds      	lastDrawTime;

@@ -9,10 +9,10 @@ class ElementDisplayNode;
 
 class PlaceholderTextDisplayNode : public TextDisplayNode {
 public:
-	PlaceholderTextDisplayNode(DOMString placeholderText);
+	PlaceholderTextDisplayNode(String placeholderText);
 	~PlaceholderTextDisplayNode();
 	bool               	IsEmpty();
-	DOMString          	GetProperty(string_slice propertyName);
+	String          	GetProperty(string_slice propertyName);
 	Selection*         	StartSelection();
 	Selection*         	EndSelection();
 	void               	InlineLayout(InlineLayoutContext* layoutContext);

@@ -37,7 +37,7 @@ bool DisplayElementNode::IsDisposable()
 }
 
 
-DOMString DisplayElementNode::GetProperty(string_slice propertyName)
+String DisplayElementNode::GetProperty(string_slice propertyName)
 {
 	return templateElement->GetAttribute(propertyName);
 }
@@ -54,7 +54,7 @@ void DisplayElementNode::Load(DisplayDirector* director)
 		if (child->NodeType() == TEXT_NODE)
 			newDisplayNode = new DisplayTextNode(dynamic_cast<Text*>(child));
 		else if (child->NodeType() == ELEMENT_NODE) {
-			DOMString tagName = child->NodeName();
+			String tagName = child->NodeName();
 			if (tagName == "display-element") {
 				newDisplayNode =
 					new DisplayElementNode(dynamic_cast<Element*>(child), sourceElement);

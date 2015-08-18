@@ -66,7 +66,7 @@ void DocumentDisplayNode::UpdateProperties()
 }
 
 
-DOMString DocumentDisplayNode::GetProperty(string_slice propertyName)
+String DocumentDisplayNode::GetProperty(string_slice propertyName)
 {
 	// try "#default"
 	EditStylesheet* stylesheet = displayDirector->GetStylesheet();

@@ -4,7 +4,7 @@
 #include "StyleScriptable.h"
 
 
-rgb_color StyleParser::ParseColor(DOMString stringIn)
+rgb_color StyleParser::ParseColor(String stringIn)
 {
 	static const rgb_color aqua = { 0, 255, 255, 255 };
 	static const rgb_color black = { 0, 0, 0, 255 };
@@ -147,7 +147,7 @@ long StyleParser::ParseInt(string_slice str)
 }
 
 
-StyleScriptable* StyleParser::ParseObj(DOMString str)
+StyleScriptable* StyleParser::ParseObj(String str)
 {
 	if (str.startsWith("obj(")) {
 		int addr = string_slice(str.substr(4, str.length() - 5)).asInt();
@@ -158,21 +158,21 @@ StyleScriptable* StyleParser::ParseObj(DOMString str)
 }
 
 
-DOMString StyleParser::Eval(DOMString expr, StyleScriptable* target)
+String StyleParser::Eval(String expr, StyleScriptable* target)
 {
 	int pos;
 
 	StyleScriptable* obj = target;
 	const char* p = expr.begin();
 	const char* stopper = expr.end();
-	DOMString result;
+	String result;
 	while (p < stopper) {
 		char c = *p++;
 		if (c == '.') {
 			pos = p - expr.begin() - 1;
-			DOMString propertyName = expr.substr(0, pos).trim();
+			String propertyName = expr.substr(0, pos).trim();
 			expr = expr.substr(pos + 1, expr.length() - pos - 1);
-			DOMString propVal = obj->GetScriptProperty(propertyName);
+			String propVal = obj->GetScriptProperty(propertyName);
 			StyleScriptable* nextObj = ParseObj(propVal);
 			if (nextObj)
 				obj = nextObj;
@@ -183,7 +183,7 @@ DOMString StyleParser::Eval(DOMString expr, StyleScriptable* target)
 			}
 		else if (c == '(') {
 			int parenPos = p - expr.begin() - 1;
-			DOMString funcName = expr.substr(0, parenPos).trim();
+			String funcName = expr.substr(0, parenPos).trim();
 			// find the arg
 			int parenLevel = 1;
 			while (p < stopper) {
@@ -197,10 +197,10 @@ DOMString StyleParser::Eval(DOMString expr, StyleScriptable* target)
 					}
 				}
 			int pos = p - expr.begin() - 1;
-			DOMString arg = expr.substr(parenPos + 1, pos - parenPos - 1);
+			String arg = expr.substr(parenPos + 1, pos - parenPos - 1);
 			expr = expr.substr(pos + 1, expr.length() - pos - 1);
 			// call
-			DOMString funcResult = obj->FunctionCall(funcName, arg, target);
+			String funcResult = obj->FunctionCall(funcName, arg, target);
 			StyleScriptable* nextObj = ParseObj(funcResult);
 			if (nextObj)
 				obj = nextObj;
@@ -210,13 +210,13 @@ DOMString StyleParser::Eval(DOMString expr, StyleScriptable* target)
 		}
 
 	// at the last bit; treat it as a property
-	DOMString propVal = obj->GetScriptProperty(expr.trim());
+	String propVal = obj->GetScriptProperty(expr.trim());
 	result += propVal;
 	return result.trim();
 }
 
 
-DOMString StyleParser::NextArg(DOMString& args)
+String StyleParser::NextArg(String& args)
 {
 	const char* p = args.begin();
 	const char* stopper = args.end();
@@ -225,7 +225,7 @@ DOMString StyleParser::NextArg(DOMString& args)
 		char c = *p++;
 		if (c == ',' && parenLevel <= 0) {
 			int pos = p - args.begin() - 1;
-			DOMString result = args.substr(0, pos);
+			String result = args.substr(0, pos);
 			args = args.substr(pos + 1, args.length() - pos - 1);
 			return result;
 			}
@@ -236,7 +236,7 @@ DOMString StyleParser::NextArg(DOMString& args)
 		}
 
 	// fell thru; it's the last arg
-	DOMString result = args;
+	String result = args;
 	args = "";
 	return result;
 }

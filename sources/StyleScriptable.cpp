@@ -10,18 +10,18 @@ StyleScriptable::~StyleScriptable()
 }
 
 
-DOMString StyleScriptable::GetScriptProperty(DOMString property)
+String StyleScriptable::GetScriptProperty(String property)
 {
 	// default: no property of this type; return the property string
 	return property;
 }
 
 
-DOMString StyleScriptable::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String StyleScriptable::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "if") {
-		DOMString cond = NextArg(arg);
-		DOMString ifClause = NextArg(arg);
+		String cond = NextArg(arg);
+		String ifClause = NextArg(arg);
 		if (!target->Eval(cond).empty())
 			return target->Eval(ifClause);
 		else
@@ -32,7 +32,7 @@ DOMString StyleScriptable::FunctionCall(DOMString function, DOMString arg, Style
 		return arg;
 
 	else {
-		DOMString result = function;
+		String result = function;
 		result += "(";
 		result += arg;
 		result += ")";
@@ -41,23 +41,23 @@ DOMString StyleScriptable::FunctionCall(DOMString function, DOMString arg, Style
 }
 
 
-DOMString StyleScriptable::Eval(DOMString expr)
+String StyleScriptable::Eval(String expr)
 {
 	return StyleParser::Eval(expr, this);
 }
 
 
-DOMString StyleScriptable::NextArg(DOMString& args)
+String StyleScriptable::NextArg(String& args)
 {
 	return StyleParser::NextArg(args);
 }
 
 
-DOMString StyleScriptable::AsString()
+String StyleScriptable::AsString()
 {
 	char result[64];
 	sprintf(result, "obj(%d)", (int) this);
-	DOMString resultStr = result;
+	String resultStr = result;
 	resultStr.detach();
 	return resultStr;
 }

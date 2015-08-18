@@ -7,22 +7,22 @@
 
 class CharacterData : public Node {
 public:
-	CharacterData(DOMString dataIn);
-	DOMString    	Data();
-	void         	SetData(DOMString arg);
+	CharacterData(String dataIn);
+	String    	Data();
+	void         	SetData(String arg);
 	unsigned long	Length();
-	DOMString    	SubstringData(unsigned long offset, unsigned long count);
-	void         	AppendData(DOMString arg);
-	void         	InsertData(unsigned long offset, DOMString arg);
+	String    	SubstringData(unsigned long offset, unsigned long count);
+	void         	AppendData(String arg);
+	void         	InsertData(unsigned long offset, String arg);
 	void         	DeleteData(unsigned long offset, unsigned long count);
-	void         	ReplaceData(unsigned long offset, unsigned long count, DOMString arg);
+	void         	ReplaceData(unsigned long offset, unsigned long count, String arg);
 	Node*        	InsertBefore(Node* newChild, Node* refChild);
 	Node*        	ReplaceChild(Node* newChild, Node* oldChild);
 	Node*        	RemoveChild(Node* oldChild);
 	Node*        	AppendChild(Node* newChild);
 
 protected:
-	DOMString	data;
+	String	data;
 };
 
 

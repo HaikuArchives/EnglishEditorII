@@ -7,7 +7,7 @@
 
 class PreSpace : public Word {
 public:
-	PreSpace(DOMString textIn);
+	PreSpace(String textIn);
 	bool	IsWhitespace();
 	bool	IsPreSpace();
 };

@@ -26,7 +26,7 @@ TextFileWriter::~TextFileWriter()
 }
 
 
-void TextFileWriter::WriteText(DOMString text)
+void TextFileWriter::WriteText(String text)
 {
 	char c;
 
@@ -71,7 +71,7 @@ void TextFileWriter::WriteText(DOMString text)
 }
 
 
-void TextFileWriter::WriteRawText(DOMString text)
+void TextFileWriter::WriteRawText(String text)
 {
 	// finish any pending text
 	if (whitespaceAtEndOfLine) {
@@ -98,7 +98,7 @@ void TextFileWriter::NewLine()
 }
 
 
-void TextFileWriter::SetLinePrefix(DOMString newPrefix)
+void TextFileWriter::SetLinePrefix(String newPrefix)
 {
 	bool lineWasEmpty = (curLine == linePrefix || curLine.empty());
 	linePrefix = newPrefix;

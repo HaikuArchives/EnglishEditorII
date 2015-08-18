@@ -4,7 +4,7 @@
 #define _H_BetweenBlocksDestination_
 
 #include "Destination.h"
-#include "CoordPoint.h"
+#include <Point.h>
 
 class BlockableDisplayNode;
 
@@ -12,8 +12,8 @@ class BetweenBlocksDestination : public Destination {
 public:
 	BetweenBlocksDestination(Selection* selectionIn, BlockableDisplayNode* parentIn,
                          BlockableDisplayNode* afterNodeIn);
-	Rectangle	ArrowBounds();
-	void     	DrawArrow(View* view, CoordPoint origin);
+	BRect	ArrowBounds();
+	void     	DrawArrow(View* view, BPoint origin);
 	Action*  	GetMoveAction();
 	Action*  	GetCopyAction();
 	Action*  	MakeMoveAction(bool copying);
@@ -21,8 +21,8 @@ public:
 protected:
 	BlockableDisplayNode*	parent;
 	BlockableDisplayNode*	afterNode;
-	CoordPoint           	fromPoint;
-	CoordPoint           	toPoint;
+	BPoint           	fromPoint;
+	BPoint           	toPoint;
 	static const int     	arrowheadWidth;
 	static const int     	arrowheadHeight;
 	static const int     	arrowLoopWidth;

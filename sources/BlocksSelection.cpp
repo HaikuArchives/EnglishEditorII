@@ -33,7 +33,7 @@ BlocksSelection::BlocksSelection(BlockableDisplayNode* firstNodeIn, BlockableDis
 }
 
 
-void BlocksSelection::Draw(View* view, CoordPoint origin)
+void BlocksSelection::Draw(View* view, BPoint origin)
 {
 	// set up drawing
 	view->PushState();
@@ -42,7 +42,7 @@ void BlocksSelection::Draw(View* view, CoordPoint origin)
 	view->SetDrawingMode(B_OP_ALPHA);
 
 	// draw
-	Rectangle rect = Bounds();
+	BRect rect = Bounds();
 	rect.InsetBy(lineSpill, lineSpill);
 	Shape shape;
 	shape.MoveTo(rect.left, rect.top + cornerRadius);
@@ -142,7 +142,7 @@ void BlocksSelection::Promote(DisplayDirector* director)
 }
 
 
-Selection* BlocksSelection::ExtendTo(CoordPoint point)
+Selection* BlocksSelection::ExtendTo(BPoint point)
 {
 	DisplayNode* parent = firstNode->Parent();
 	if (parent == NULL)
@@ -210,9 +210,9 @@ Action* BlocksSelection::GetRestoreAction()
 }
 
 
-Rectangle BlocksSelection::Bounds()
+BRect BlocksSelection::Bounds()
 {
-	Rectangle bounds;
+	BRect bounds;
 	bounds.top = firstNode->Top();
 	bounds.bottom = lastNode->Top() + lastNode->Height();
 
@@ -241,7 +241,7 @@ Rectangle BlocksSelection::Bounds()
 }
 
 
-bool BlocksSelection::IsVisible(Rectangle pageRect)
+bool BlocksSelection::IsVisible(BRect pageRect)
 {
 	return pageRect.Intersects(Bounds());
 }
@@ -253,10 +253,10 @@ bool BlocksSelection::NeedsClip()
 }
 
 
-CoordPoint BlocksSelection::DragStartPoint(CoordPoint destPoint)
+BPoint BlocksSelection::DragStartPoint(BPoint destPoint)
 {
-	Rectangle bounds = Bounds();
-	return CoordPoint(bounds.left, (bounds.top + bounds.bottom) / 2);
+	BRect bounds = Bounds();
+	return BPoint(bounds.left, (bounds.top + bounds.bottom) / 2);
 }
 
 
@@ -266,7 +266,7 @@ bool BlocksSelection::CanCopy()
 }
 
 
-DOMString BlocksSelection::GetXMLCopy()
+String BlocksSelection::GetXMLCopy()
 {
 	ElementDisplayNode* firstElementNode =
 		dynamic_cast<ElementDisplayNode*>(firstNode);

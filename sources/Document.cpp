@@ -22,13 +22,13 @@ Document::Document(const Document& other, bool deep)
 }
 
 
-DOMString Document::NodeName()
+String Document::NodeName()
 {
 	return "#document";
 }
 
 
-DOMString Document::NodeValue()
+String Document::NodeValue()
 {
 	return "";
 }
@@ -58,43 +58,43 @@ Element* Document::DocumentElement()
 }
 
 
-Element* Document::CreateElement(DOMString tagName)
+Element* Document::CreateElement(String tagName)
 {
 	return new Element(tagName);
 }
 
 
-Text* Document::CreateTextNode(DOMString data)
+Text* Document::CreateTextNode(String data)
 {
 	return new Text(data);
 }
 
 
-Comment* Document::CreateComment(DOMString data)
+Comment* Document::CreateComment(String data)
 {
 	return new Comment(data);
 }
 
 
-CDATASection* Document::CreateCDATASection(DOMString data)
+CDATASection* Document::CreateCDATASection(String data)
 {
 	return new CDATASection(data);
 }
 
 
-ProcessingInstruction* Document::CreateProcessingInstruction(DOMString target, DOMString data)
+ProcessingInstruction* Document::CreateProcessingInstruction(String target, String data)
 {
 	return new ProcessingInstruction(target, data);
 }
 
 
-Attr* Document::CreateAttribute(DOMString name)
+Attr* Document::CreateAttribute(String name)
 {
 	return new Attr(name);
 }
 
 
-EntityReference* Document::CreateEntityReference(DOMString name)
+EntityReference* Document::CreateEntityReference(String name)
 {
 	return new EntityReference(name);
 }

@@ -337,7 +337,7 @@ Destination* CompositeDisplayNode::InlineFindDestination(FindDestinationContext*
 Hotspot* CompositeDisplayNode::InlineFindHotspot(FindHotspotContext* context)
 {
 	// if the mouse is in this node, see if there's a hotspot for it
-	CoordPoint mousePoint(context->mouseX - context->xIndent,
+	BPoint mousePoint(context->mouseX - context->xIndent,
 	                      context->mouseY - context->curY);
 	GlyphRef firstGlyph = FirstSelectableGlyph();
 	GlyphRef lastGlyph = LastSelectableGlyph();
@@ -529,7 +529,7 @@ void CompositeDisplayNode::LoadFromElement(Element* element, DisplayDirector* di
 
 	// if empty, use placeholder text
 	if (!hadChildren) {
-		DOMString placeholderText =
+		String placeholderText =
 			stylesheet->PropertyForElement("placeholder-text", element->NodeName());
 		if (true /*** !placeholderText.empty() ***/) {
 			PlaceholderTextDisplayNode* placeholderNode =
@@ -547,7 +547,7 @@ void CompositeDisplayNode::LoadFromContentsTemplate(Element* templateElement, El
 		if (child->NodeType() == TEXT_NODE)
 			newDisplayNode = new DisplayTextNode(dynamic_cast<Text*>(child));
 		else if (child->NodeType() == ELEMENT_NODE) {
-			DOMString tagName = child->NodeName();
+			String tagName = child->NodeName();
 			if (tagName == "display-element") {
 				newDisplayNode =
 					new DisplayElementNode(dynamic_cast<Element*>(child), sourceElement);

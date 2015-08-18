@@ -6,20 +6,20 @@
 #include <GraphicsDefs.h>
 
 #include "DisplayDirector.h"
-#include "DOMString.h"
+#include "String.h"
 
 class WindowDirector;
 class TagSelection;
 
 class TagEditor : public DisplayDirector {
 public:
-	TagEditor(DOMString tagName, TagSelection* ownerIn, WindowDirector* windowDirectorIn);
+	TagEditor(String tagName, TagSelection* ownerIn, WindowDirector* windowDirectorIn);
 	~TagEditor();
 	void           	Select();
 	void           	Deselect();
 	bool           	IsSelected();
-	void           	SetTagName(DOMString newTagName);
-	void           	Draw(Rectangle updateRect);
+	void           	SetTagName(String newTagName);
+	void           	Draw(BRect updateRect);
 	void           	KeyDown(string_slice key);
 	void           	MouseMoved();
 	void           	ScreenChanged();
@@ -28,19 +28,19 @@ public:
 	int            	DisplayWidth();
 	View*          	DrawingView();
 	View*          	WindowView();
-	CoordPoint     	ViewToDoc(CoordPoint viewPoint);
-	CoordPoint     	DocToView(CoordPoint docPoint);
-	Rectangle      	ViewToDoc(Rectangle rect);
-	Rectangle      	DocToView(Rectangle rect);
-	Rectangle      	DocRect();
+	BPoint     	ViewToDoc(BPoint viewPoint);
+	BPoint     	DocToView(BPoint docPoint);
+	BRect      	ViewToDoc(BRect rect);
+	BRect      	DocToView(BRect rect);
+	BRect      	DocRect();
 	void           	StartRefreshCycle();
 	void           	FinishRefreshCycle();
-	void           	RefreshViewRect(Rectangle rect);
+	void           	RefreshViewRect(BRect rect);
 	void           	RefreshDocAfter(int y);
 	void           	RefreshAll();
 	void           	DocTypeChanged();
-	Rectangle      	Bounds();
-	DOMString      	TagName();
+	BRect      	Bounds();
+	String      	TagName();
 
 protected:
 	WindowDirector* 	windowDirector;

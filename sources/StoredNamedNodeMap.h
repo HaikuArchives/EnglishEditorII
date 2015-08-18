@@ -12,9 +12,9 @@ class StoredNamedNodeMap : public NamedNodeMap {
 public:
 	StoredNamedNodeMap();
 	~StoredNamedNodeMap();
-	Node*        	GetNamedItem(DOMString name);
+	Node*        	GetNamedItem(String name);
 	Node*        	SetNamedItem(Node* arg);
-	Node*        	RemoveNamedItem(DOMString name);
+	Node*        	RemoveNamedItem(String name);
 	Node*        	Item(unsigned long index);
 	unsigned long	Length();
 	NamedNodeMap*	Clone();

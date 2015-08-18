@@ -12,7 +12,7 @@ class MenuControl : public Control {
 public:
 	MenuControl(WindowDirector* directorIn);
 	~MenuControl();
-	Rectangle	GetRect();
+	BRect	GetRect();
 	void     	Draw(DisplayDirector* directorIn);
 	void     	MouseDown(int x, int y, DisplayDirector* directorIn);
 

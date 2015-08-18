@@ -181,10 +181,10 @@ void EnglishEditorApp::WindowClosing(BWindow* window)
 }
 
 
-DOMString EnglishEditorApp::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String EnglishEditorApp::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "NewDocument") {
-		DOMString protoPath = System::AppDirectory();
+		String protoPath = System::AppDirectory();
 		protoPath += "Prototype Documents/";
 		protoPath += target->Eval(arg);
 		new EnglishEditorWind(new XMLFileSource(protoPath, true));
@@ -193,7 +193,7 @@ DOMString EnglishEditorApp::FunctionCall(DOMString function, DOMString arg, Styl
 		return "";
 		}
 	else if (function == "NewMessage") {
-		DOMString protoPath = System::AppDirectory();
+		String protoPath = System::AppDirectory();
 		protoPath += "Prototype Documents/";
 		protoPath += arg;
 		new EnglishEditorWind(new MessageFileSource(protoPath, true));

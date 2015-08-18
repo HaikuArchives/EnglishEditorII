@@ -14,18 +14,18 @@ class PointSelection : public TagSelection {
 public:
 	PointSelection(TextDisplayNode* textNodeIn);
 	~PointSelection();
-	virtual CoordPoint	Point() = 0;
-	virtual void      	InsertTag(DOMString tagName, DisplayDirector* director) = 0;
+	virtual BPoint	Point() = 0;
+	virtual void      	InsertTag(String tagName, DisplayDirector* director) = 0;
 	virtual bool      	CaretOutLeft();
 	virtual bool      	CaretOutRight();
-	void              	Draw(View* view, CoordPoint origin);
+	void              	Draw(View* view, BPoint origin);
 	void              	AcceptKey(string_slice key, DisplayDirector* director);
-	Rectangle         	Bounds();
-	bool              	IsVisible(Rectangle pageRect);
+	BRect         	Bounds();
+	bool              	IsVisible(BRect pageRect);
 	bool              	NeedsClip();
-	DOMString         	TagName();
-	Rectangle         	TagSpecRect();
-	void              	TagNameChanged(DOMString newTagName, DisplayDirector* director);
+	String         	TagName();
+	BRect         	TagSpecRect();
+	void              	TagNameChanged(String newTagName, DisplayDirector* director);
 	void              	TagEditDone(DisplayDirector* director);
 	void              	SelectPastText(DisplayDirector* director);
 	void              	SelectBeforeText(DisplayDirector* director);

@@ -175,7 +175,7 @@ void MessageFileSource::Save()
 			isNews = true;
 
 		// get the title
-		DOMString title;
+		String title;
 		if (head) {
 			Element* subjectElement = head->GetElementByTagName("title");
 			if (subjectElement) {
@@ -210,7 +210,7 @@ void MessageFileSource::Save()
 
 	// update the date
 	strftime(dateStr, 128, "%a, %d %b %Y %X %Z", localtime(&curTime));
-	DOMString date(dateStr);
+	String date(dateStr);
 	date.detach();
 	Element* dateElement = head->GetElementByTagName("date");
 	if (dateElement == NULL) {
@@ -271,9 +271,9 @@ void MessageFileSource::Reply(bool toNews)
 	Node* subject = head->AppendChild(replyDoc->CreateElement("title"));
 	Element* origSubjectNode = (origHead ? origHead->GetElementByTagName("title") : NULL);
 	if (origSubjectNode) {
-		DOMString origSubject = origSubjectNode->FirstChild()->NodeValue().trim();
+		String origSubject = origSubjectNode->FirstChild()->NodeValue().trim();
 		if (!origSubject.empty()) {
-			DOMString newSubject;
+			String newSubject;
 			if (!origSubject.startsWith("Re:") && !origSubject.startsWith("re:"))
 				newSubject = "Re: ";
 			newSubject += origSubject;
@@ -286,13 +286,13 @@ void MessageFileSource::Reply(bool toNews)
 		Node* newsgroups = head->AppendChild(replyDoc->CreateElement("newsgroups"));
 		Element* origGroupsNode = origHead->GetElementByTagName("newsgroups");
 		if (origGroupsNode) {
-			DOMString groups = origGroupsNode->FirstChild()->NodeValue().detach();
+			String groups = origGroupsNode->FirstChild()->NodeValue().detach();
 			newsgroups->AppendChild(replyDoc->CreateTextNode(groups));
 			}
 		}
 	// to
 	if (!toNews && origHead) {
-		DOMString replyTo;
+		String replyTo;
 		Element* replyToNode = origHead->GetElementByTagName("reply-to");
 		if (replyToNode)
 			replyTo = DOMUtils::NodeContents(replyToNode).trim();
@@ -309,7 +309,7 @@ void MessageFileSource::Reply(bool toNews)
 	// references
 	if (toNews && origHead) {
 		// build the references
-		DOMString refsList;
+		String refsList;
 		Element* origRefs = origHead->GetElementByTagName("references");
 		if (origRefs) {
 			refsList = DOMUtils::NodeContents(origRefs).trim().detach();
@@ -330,7 +330,7 @@ void MessageFileSource::Reply(bool toNews)
 	if (origHead) {
 		Element* origFromNode = origHead->GetElementByTagName("from");
 		if (origFromNode) {
-			DOMString from = origFromNode->FirstChild()->NodeValue().detach();
+			String from = origFromNode->FirstChild()->NodeValue().detach();
 			from += " wrote:";
 			Element* attributionNode = replyDoc->CreateElement("attribution");
 			attributionNode->AppendChild(replyDoc->CreateTextNode(from));
@@ -381,7 +381,7 @@ Node* MessageFileSource::CloneNode(Node* origNode, Document* replyDoc)
 	int i;
 
 	// create the node
-	DOMString nodeName = origNode->NodeName();
+	String nodeName = origNode->NodeName();
 	nodeName.detach();
 	Node* newNode = NULL;
 	bool copyChildren = true;
@@ -482,7 +482,7 @@ void MessageFileSource::Trash()
 }
 
 
-DOMString MessageFileSource::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String MessageFileSource::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "actionAllowed") {
 		bool result = false;
@@ -508,7 +508,7 @@ DOMString MessageFileSource::FunctionCall(DOMString function, DOMString arg, Sty
 	else
 		return StyleScriptable::FunctionCall(function, arg, target);
 
-	return DOMString();
+	return String();
 }
 
 

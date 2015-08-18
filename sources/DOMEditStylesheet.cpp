@@ -8,7 +8,7 @@
 #include "NodeList.h"
 #include <map>
 
-class DOMEditStyleDict : public map<DOMString, Element*> {};
+class DOMEditStyleDict : public map<String, Element*> {};
 
 
 
@@ -46,11 +46,11 @@ DOMEditStylesheet::~DOMEditStylesheet()
 }
 
 
-DOMString DOMEditStylesheet::PropertyForElement(string_slice propertyName, string_slice elementName)
+String DOMEditStylesheet::PropertyForElement(string_slice propertyName, string_slice elementName)
 {
 	DOMEditStyleDict::const_iterator e = dict->find(elementName);
 	if (e == dict->end())
-		return DOMString();
+		return String();
 	Element* element = e->second;
 	return element->GetAttribute(propertyName);
 }

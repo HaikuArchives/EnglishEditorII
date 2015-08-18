@@ -7,21 +7,21 @@
 
 class Attr : public CompositeNode {
 public:
-	Attr(DOMString nameIn);
+	Attr(String nameIn);
 	Attr(const Attr& other, bool deep);
-	DOMString     	NodeName();
-	DOMString     	NodeValue();
+	String     	NodeName();
+	String     	NodeValue();
 	unsigned short	NodeType();
-	DOMString     	Name();
+	String     	Name();
 	bool          	Specified();
-	DOMString     	Value();
+	String     	Value();
 	Node*         	InsertBefore(Node* newChild, Node* refChild);
 	Node*         	ReplaceChild(Node* newChild, Node* oldChild);
 	Node*         	AppendChild(Node* newChild);
 	Node*         	CloneNode(bool deep);
 
 protected:
-	DOMString	name;
+	String	name;
 };
 
 

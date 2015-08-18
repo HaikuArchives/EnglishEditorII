@@ -7,7 +7,7 @@
 
 #include "InlineableDisplayNode.h"
 #include "DOMChangeClient.h"
-#include "CoordPoint.h"
+#include <Point.h>
 
 class Text;
 class Text;
@@ -41,9 +41,9 @@ public:
 	GlyphRef             	LastSelectableGlyph();
 	GlyphRef             	FirstGlyph();
 	GlyphRef             	LastGlyph();
-	void                 	DataInserted(unsigned long offset, DOMString arg);
+	void                 	DataInserted(unsigned long offset, String arg);
 	void                 	DataDeleted(unsigned long offset, unsigned long count);
-	void                 	DataSet(DOMString newData);
+	void                 	DataSet(String newData);
 	void                 	NodeDying();
 	Text*                	GetText();
 	unsigned long        	TextOffset();
@@ -52,7 +52,7 @@ public:
 	Glyph*               	GlyphAfter(Glyph* whichGlyph);
 	bool                 	IsPreSpace();
 	Selection*           	GetSelectionAtOffset(int offset);
-	Glyph*               	GlyphAtPoint(CoordPoint point);
+	Glyph*               	GlyphAtPoint(BPoint point);
 	Glyph*               	GlyphAtOffset(unsigned long offset);
 	void                 	CreateGlyphs();
 	void                 	AddGlyph(string_slice glyphText, int glyphType, int prevGlyphType);

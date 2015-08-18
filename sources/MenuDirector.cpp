@@ -26,7 +26,7 @@ const int MenuDirector::hMargin = 12;
 const int MenuDirector::vMargin = 8;
 
 
-MenuDirector::MenuDirector(DocumentSource* docSourceIn, CoordPoint stemPointIn, WindowDirector* windowDirectorIn)
+MenuDirector::MenuDirector(DocumentSource* docSourceIn, BPoint stemPointIn, WindowDirector* windowDirectorIn)
 	: DisplayDirector(docSourceIn), stemPoint(stemPointIn),
 	  windowDirector(windowDirectorIn)
 {
@@ -53,13 +53,13 @@ MenuDirector::~MenuDirector()
 }
 
 
-void MenuDirector::Draw(Rectangle updateRect)
+void MenuDirector::Draw(BRect updateRect)
 {
 	View* drawView = DrawingView();
 	drawView->PushState();
 
 	// make the outline shape
-	Rectangle contentRect = DocRect();
+	BRect contentRect = DocRect();
 	int lineSpill = borderWidth / 2;
 	contentRect.InsetBy(-(hMargin + lineSpill), -(vMargin + lineSpill));
 	int shiftBy = (int) ((stemPoint.x - lineSpill) - contentRect.right);
@@ -78,7 +78,7 @@ void MenuDirector::Draw(Rectangle updateRect)
 	shape.Close();
 
 	// clear the outline
-	drawView->MovePenTo(CoordPoint(0, 0));
+	drawView->MovePenTo(BPoint(0, 0));
 	drawView->SetDrawingMode(B_OP_ALPHA);
 	drawView->SetHighColor(bgndColor);
 	drawView->FillShape(&shape);
@@ -95,7 +95,7 @@ void MenuDirector::Draw(Rectangle updateRect)
 	docDisplayNode->BlockDraw(&drawContext);
 
 	// draw selection
-	CoordPoint origin = contentRect.LeftTop();
+	BPoint origin = contentRect.LeftTop();
 	if (selection)
 		selection->Draw(drawView, origin);
 
@@ -104,7 +104,7 @@ void MenuDirector::Draw(Rectangle updateRect)
 		hotspot->Draw(drawView, origin);
 
 	// draw the outline
-	drawView->MovePenTo(CoordPoint(0, 0));
+	drawView->MovePenTo(BPoint(0, 0));
 	drawView->SetDrawingMode(B_OP_ALPHA);
 	drawView->SetPenSize(borderWidth);
 	drawView->SetHighColor(borderColor);
@@ -169,39 +169,39 @@ View* MenuDirector::WindowView()
 }
 
 
-CoordPoint MenuDirector::ViewToDoc(CoordPoint viewPoint)
+BPoint MenuDirector::ViewToDoc(BPoint viewPoint)
 {
-	Rectangle docRect = DocRect();
-	return CoordPoint(viewPoint.x - docRect.left, viewPoint.y - docRect.top);
+	BRect docRect = DocRect();
+	return BPoint(viewPoint.x - docRect.left, viewPoint.y - docRect.top);
 }
 
 
-CoordPoint MenuDirector::DocToView(CoordPoint docPoint)
+BPoint MenuDirector::DocToView(BPoint docPoint)
 {
-	Rectangle docRect = DocRect();
-	return CoordPoint(docPoint.x + docRect.left, docPoint.y + docRect.top);
+	BRect docRect = DocRect();
+	return BPoint(docPoint.x + docRect.left, docPoint.y + docRect.top);
 }
 
 
-Rectangle MenuDirector::ViewToDoc(Rectangle rect)
+BRect MenuDirector::ViewToDoc(BRect rect)
 {
-	Rectangle docRect = DocRect();
+	BRect docRect = DocRect();
 	rect.OffsetBy(-docRect.left, -docRect.top);
 	return rect;
 }
 
 
-Rectangle MenuDirector::DocToView(Rectangle rect)
+BRect MenuDirector::DocToView(BRect rect)
 {
-	Rectangle docRect = DocRect();
+	BRect docRect = DocRect();
 	rect.OffsetBy(docRect.left, docRect.top);
 	return rect;
 }
 
 
-Rectangle MenuDirector::DocRect()
+BRect MenuDirector::DocRect()
 {
-	Rectangle docRect;
+	BRect docRect;
 //***	int lineSpill = borderWidth / 2;	//*** was I supposed to use this?
 	docRect.top = stemPoint.y + stemHeight + cornerRadius + borderWidth + vMargin;
 	docRect.bottom = docRect.top + docDisplayNode->Height();
@@ -223,7 +223,7 @@ void MenuDirector::FinishRefreshCycle()
 }
 
 
-void MenuDirector::RefreshViewRect(Rectangle rect)
+void MenuDirector::RefreshViewRect(BRect rect)
 {
 	windowDirector->RefreshViewRect(rect);
 }
@@ -231,7 +231,7 @@ void MenuDirector::RefreshViewRect(Rectangle rect)
 
 void MenuDirector::RefreshDocAfter(int y)
 {
-	Rectangle rect = DocRect();
+	BRect rect = DocRect();
 	rect.top += y;
 	windowDirector->RefreshViewRect(rect);
 }
@@ -243,7 +243,7 @@ void MenuDirector::RefreshAll()
 }
 
 
-void MenuDirector::DoDocAction(DOMString action)
+void MenuDirector::DoDocAction(String action)
 {
 	// pass them to the windowDirector
 	windowDirector->DoDocAction(action);
@@ -256,7 +256,7 @@ void MenuDirector::DocTypeChanged()
 }
 
 
-DOMString MenuDirector::GetScriptProperty(DOMString property)
+String MenuDirector::GetScriptProperty(String property)
 {
 	if (property == "window-director")
 		return windowDirector->AsString();
@@ -265,18 +265,18 @@ DOMString MenuDirector::GetScriptProperty(DOMString property)
 }
 
 
-Rectangle MenuDirector::Bounds()
+BRect MenuDirector::Bounds()
 {
-	Rectangle bounds = DocRect();
+	BRect bounds = DocRect();
 	bounds.InsetBy(-(hMargin + borderWidth), -(vMargin + borderWidth));
 	bounds.top -= stemHeight + cornerRadius;
 	return bounds;
 }
 
 
-DOMString MenuDirector::MakeKeyName(string_slice key, int modifiers)
+String MenuDirector::MakeKeyName(string_slice key, int modifiers)
 {
-	DOMString keyName;
+	String keyName;
 
 	// modifiers
 	if ((modifiers & B_COMMAND_KEY) != 0)
@@ -327,27 +327,27 @@ DOMString MenuDirector::MakeKeyName(string_slice key, int modifiers)
 }
 
 
-DOMString MenuDirector::FindKeyActionIn(DOMString keyName, Element* element)
+String MenuDirector::FindKeyActionIn(String keyName, Element* element)
 {
 	for (Node* node = element->FirstChild(); node; node = node->NextSibling()) {
 		Element* child = dynamic_cast<Element*>(node);
 		if (child == NULL)
 			continue;
 
-		DOMString tagName = child->TagName();
+		String tagName = child->TagName();
 		if (tagName == "menu-item" || tagName == "long-menu-item") {
-			DOMString actionKey = child->GetAttribute("key");
+			String actionKey = child->GetAttribute("key");
 			if (actionKey == keyName)
 				return child->GetAttribute("action");
 			}
 		else {
-			DOMString action = FindKeyActionIn(keyName, child);
+			String action = FindKeyActionIn(keyName, child);
 			if (!action.empty())
 				return action;
 			}
 		}
 
-	return DOMString();
+	return String();
 }
 
 

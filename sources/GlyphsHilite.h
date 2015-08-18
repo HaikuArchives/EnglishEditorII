@@ -3,9 +3,10 @@
 #ifndef _H_GlyphsHilite_
 #define _H_GlyphsHilite_
 
+#include <Rect.h>
+
 #include "GlyphRef.h"
-#include "CoordPoint.h"
-#include "Rectangle.h"
+#include <Point.h>
 #include "Selection.h"
 
 class View;
@@ -14,12 +15,12 @@ class GlyphsHilite {
 public:
 	GlyphsHilite(GlyphRef firstGlyphIn, GlyphRef lastGlyphIn,
              rgb_color colorIn = Selection::selectionColor);
-	void      	Draw(View* view, CoordPoint origin, Rectangle tagBounds = Rectangle());
-	Rectangle 	Bounds();
-	bool      	IsVisible(Rectangle pageRect);
-	bool      	ContainsPoint(CoordPoint point);
-	CoordPoint	DragStartPoint(CoordPoint destPoint);
-	Rectangle 	TagSpecRect();
+	void      	Draw(View* view, BPoint origin, BRect tagBounds = BRect());
+	BRect 	Bounds();
+	bool      	IsVisible(BRect pageRect);
+	bool      	ContainsPoint(BPoint point);
+	BPoint	DragStartPoint(BPoint destPoint);
+	BRect 	TagSpecRect();
 
 protected:
 	GlyphRef          	firstGlyph;

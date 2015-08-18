@@ -11,11 +11,11 @@ VMarginControl::VMarginControl(WindowDirector* directorIn)
 }
 
 
-Rectangle VMarginControl::GetRect()
+BRect VMarginControl::GetRect()
 {
 	int top = (int) (director->ViewBounds().bottom - director->GetVMargin() + 1);
 	int left = director->GetHMargin();
-	Rectangle rect(left, top, left + barLength, top + arrowLength);
+	BRect rect(left, top, left + barLength, top + arrowLength);
 	return rect;
 }
 
@@ -35,16 +35,16 @@ void VMarginControl::Draw(DisplayDirector* directorIn)
 	view->SetHighColor(alphaColor);
 
 	// draw
-	Rectangle curRect = GetRect();
+	BRect curRect = GetRect();
 	// bar
 	view->StrokeLine(curRect.LeftTop(), curRect.RightTop());
 	// arrow
 	int arrowX = (int) ceil((curRect.left + curRect.right) / 2);
-	view->StrokeLine(CoordPoint(arrowX, curRect.top), CoordPoint(arrowX, curRect.bottom));
-	view->StrokeLine(CoordPoint(arrowX - arrowXOffset, curRect.top + arrowYOffset),
-	                 CoordPoint(arrowX, curRect.top));
-	view->StrokeLine(CoordPoint(arrowX + arrowXOffset, curRect.top + arrowYOffset),
-	                 CoordPoint(arrowX, curRect.top));
+	view->StrokeLine(BPoint(arrowX, curRect.top), BPoint(arrowX, curRect.bottom));
+	view->StrokeLine(BPoint(arrowX - arrowXOffset, curRect.top + arrowYOffset),
+	                 BPoint(arrowX, curRect.top));
+	view->StrokeLine(BPoint(arrowX + arrowXOffset, curRect.top + arrowYOffset),
+	                 BPoint(arrowX, curRect.top));
 
 	// clean up
 	view->PopState();
@@ -53,14 +53,14 @@ void VMarginControl::Draw(DisplayDirector* directorIn)
 
 void VMarginControl::MouseDown(int x, int y, DisplayDirector* directorIn)
 {
-	Rectangle rect = GetRect();
+	BRect rect = GetRect();
 	int offset = (int) (y - rect.top);
 	int lastVMargin = director->GetVMargin();
 	int viewBottom = (int) director->ViewBounds().bottom;
 	View* view = director->WindowView();
 	while (true) {
 		// get the mouse
-		CoordPoint mousePoint = view->GetMousePoint();
+		BPoint mousePoint = view->GetMousePoint();
 		int buttons = view->GetMouseButtons();
 		if (buttons == 0)
 			break;

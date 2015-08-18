@@ -12,7 +12,7 @@ class StatusControl : public Control {
 public:
 	StatusControl(WindowDirector* directorIn);
 	~StatusControl();
-	Rectangle	GetRect();
+	BRect	GetRect();
 	void     	Draw(DisplayDirector* director);
 	void     	MouseDown(int x, int y, DisplayDirector* director);
 

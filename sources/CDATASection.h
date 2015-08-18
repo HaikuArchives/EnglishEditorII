@@ -7,9 +7,9 @@
 
 class CDATASection : public Text {
 public:
-	CDATASection(DOMString cdata);
+	CDATASection(String cdata);
 	CDATASection(const CDATASection& other);
-	DOMString     	NodeName();
+	String     	NodeName();
 	unsigned short	NodeType();
 	Node*         	CloneNode(bool deep);
 	Text*         	SplitText(unsigned long offset);

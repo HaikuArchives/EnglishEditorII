@@ -25,7 +25,7 @@
 const unsigned long System::defaultDirPerms = (S_IRUSR | S_IWUSR | S_IXUSR | S_IRGRP | S_IXGRP);
 
 
-DOMString System::AppDirectory()
+String System::AppDirectory()
 {
 	// find out where the app lives
 	app_info appInfo;
@@ -33,16 +33,16 @@ DOMString System::AppDirectory()
 	BDirectory parentDir;
 	BEntry(&appInfo.ref).GetParent(&parentDir);
 	BPath parentPath(&parentDir, NULL);		// note: can't do this in the next expression, 'cause then it's destroyed before "result" has a chance to detach() itself (which happens during the "+=")
-	DOMString result = parentPath.Path();
+	String result = parentPath.Path();
 	result += "/";
 	return result;
 }
 
 
-DOMString System::DocumentsDirectory()
+String System::DocumentsDirectory()
 {
 	static const char* docDirName = "/boot/home/Documents";
-	static const DOMString docDirPath = "/boot/home/Documents/";
+	static const String docDirPath = "/boot/home/Documents/";
 
 	// make sure it exists
 	mkdir(docDirName, defaultDirPerms);
@@ -51,7 +51,7 @@ DOMString System::DocumentsDirectory()
 }
 
 
-DOMString System::OutgoingMailDirectory()
+String System::OutgoingMailDirectory()
 {
 	BPath path;
 	status_t result = find_directory(B_USER_DIRECTORY, &path, true);
@@ -70,12 +70,12 @@ DOMString System::OutgoingMailDirectory()
 }
 
 
-DOMString System::OutgoingNewsDirectory()
+String System::OutgoingNewsDirectory()
 {
 	static const char* newsDirName = "Usenet Posts";
 
 	// start setting up the path
-	DOMString newsDirPath = DocumentsDirectory();
+	String newsDirPath = DocumentsDirectory();
 	newsDirPath += newsDirName;
 
 	// make sure it exists
@@ -87,7 +87,7 @@ DOMString System::OutgoingNewsDirectory()
 }
 
 
-void System::SetFileMimeType(DOMString filePathIn, DOMString mimeTypeIn)
+void System::SetFileMimeType(String filePathIn, String mimeTypeIn)
 {
 	qstring filePath(filePathIn);
 	qstring mimeType(mimeTypeIn);
@@ -96,7 +96,7 @@ void System::SetFileMimeType(DOMString filePathIn, DOMString mimeTypeIn)
 }
 
 
-void System::OpenURL(DOMString url)
+void System::OpenURL(String url)
 {
 	// strip of beginning "URL:"
 	if (url.startsWith("URL:"))
@@ -254,7 +254,7 @@ void System::MarkMailMessageRead(String filePathIn)
 }
 
 
-void System::TrashFile(DOMString filePathIn)
+void System::TrashFile(String filePathIn)
 {
 	String filePath = filePathIn;
 	BEntry entry(filePath.c_str());
@@ -279,9 +279,9 @@ EnglishEditorApp* System::GetApplication()
 }
 
 
-DOMString System::AdjustFileName(DOMString fileNameIn)
+String System::AdjustFileName(String fileNameIn)
 {
-	DOMString adjustedFileName;
+	String adjustedFileName;
 	const char* p = fileNameIn.begin();
 	const char* stopper = fileNameIn.end();
 	const char* runStart = p;
@@ -299,7 +299,7 @@ DOMString System::AdjustFileName(DOMString fileNameIn)
 }
 
 
-void System::CopyToClipboard(DOMString xmlData, DOMString textData)
+void System::CopyToClipboard(String xmlData, String textData)
 {
 	if (!be_clipboard->Lock())
 		return;
@@ -335,10 +335,10 @@ String System::GetClipboardText()
 }
 
 
-DOMString System::BuildRecipients(DOMString toStr)
+String System::BuildRecipients(String toStr)
 {
 	// get the recipients, one-by-one
-	DOMString recipients;
+	String recipients;
 	const char* p = toStr.begin();
 	const char* stopper = toStr.end();
 	const char* recipientStart = p;
@@ -348,7 +348,7 @@ DOMString System::BuildRecipients(DOMString toStr)
 			if (!recipient.empty()) {
 				if (!recipients.empty())
 					recipients += ", ";
-				DOMString cookedRecipient = MakeRecipient(recipient);
+				String cookedRecipient = MakeRecipient(recipient);
 				if (cookedRecipient.empty())
 					throw InternalException("One of the recipients was invalid.");
 				recipients += cookedRecipient;
@@ -362,7 +362,7 @@ DOMString System::BuildRecipients(DOMString toStr)
 }
 
 
-DOMString System::MakeRecipient(DOMString address)
+String System::MakeRecipient(String address)
 {
 	// first, find a token with an '@' in it
 	const char* p = address.begin();
@@ -421,7 +421,7 @@ DOMString System::MakeRecipient(DOMString address)
 	ssize_t bytesRead = node.ReadAttr("META:email", B_STRING_TYPE, 0, email, bufLen);
 	if (bytesRead < 0)
 		return "";
-	return DOMString(email).detach();
+	return String(email).detach();
 }
 
 

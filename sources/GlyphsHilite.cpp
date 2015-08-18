@@ -26,7 +26,7 @@ GlyphsHilite::GlyphsHilite(GlyphRef firstGlyphIn, GlyphRef lastGlyphIn, rgb_colo
 }
 
 
-void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
+void GlyphsHilite::Draw(View* view, BPoint origin, BRect tagBounds)
 {
 	int top, bottom, startX, endX, farLeft, farRight, xRadius, yRadius;
 
@@ -43,8 +43,8 @@ void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
 
 	// clip out the tagBounds
 	if (tagBounds.IsValid()) {
-		Rectangle allRect(0, 0, 32767, 32767);
-		Region clipRegion;
+		BRect allRect(0, 0, 32767, 32767);
+		BRegion clipRegion;
 		clipRegion.Set(allRect);
 		tagBounds.OffsetBy(origin);
 		clipRegion.Exclude(tagBounds);
@@ -67,7 +67,7 @@ void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
 	endX = lastGlyph.GetGlyph()->GetX() + lastGlyph.GetGlyph()->Width(lastFont) + xOutset;
 	// other
 	BlockableDisplayNode* leafBlock = firstGlyph.GetTextNode()->EnclosingLeafBlock();
-	origin += CoordPoint(leafBlock->LeftSpace(), leafBlock->Top());
+	origin += BPoint(leafBlock->LeftSpace(), leafBlock->Top());
 	Shape shape;
 
 	// all on one line
@@ -207,7 +207,7 @@ void GlyphsHilite::Draw(View* view, CoordPoint origin, Rectangle tagBounds)
 }
 
 
-Rectangle GlyphsHilite::Bounds()
+BRect GlyphsHilite::Bounds()
 {
 	BlockableDisplayNode* leafBlock = firstGlyph.GetTextNode()->EnclosingLeafBlock();
 	Font* lastFont = lastGlyph.GetTextNode()->CurFont();
@@ -215,7 +215,7 @@ Rectangle GlyphsHilite::Bounds()
 	// all on one line
 	if (firstGlyph.GetGlyph()->GetLine() == lastGlyph.GetGlyph()->GetLine()) {
 		float endX = lastGlyph.GetGlyph()->GetX() + lastGlyph.GetGlyph()->Width(lastFont);
-		Rectangle boundsRect(firstGlyph.GetGlyph()->GetX() - lineSpill,
+		BRect boundsRect(firstGlyph.GetGlyph()->GetX() - lineSpill,
 		                     firstGlyph.GetGlyph()->GetY() - lineSpill,
 		                     endX + lineSpill,
 		                     lastGlyph.GetGlyph()->GetY() + lastFont->Ascent() + lastFont->Descent() + lineSpill);
@@ -226,7 +226,7 @@ Rectangle GlyphsHilite::Bounds()
 
 	// more than one line
 	else {
-		Rectangle boundsRect(0, firstGlyph.GetGlyph()->GetY(),
+		BRect boundsRect(0, firstGlyph.GetGlyph()->GetY(),
 		                    leafBlock->Width(),
 		                    lastGlyph.GetGlyph()->GetY() + lastFont->Ascent() + lastFont->Descent());
 		boundsRect.InsetBy(-(xOutset + lineSpill), -(yOutset + lineSpill));
@@ -236,7 +236,7 @@ Rectangle GlyphsHilite::Bounds()
 }
 
 
-bool GlyphsHilite::IsVisible(Rectangle pageRect)
+bool GlyphsHilite::IsVisible(BRect pageRect)
 {
 	int yOrigin = firstGlyph.GetTextNode()->EnclosingLeafBlock()->Top();
 	Font* firstFont = firstGlyph.GetTextNode()->CurFont();
@@ -246,7 +246,7 @@ bool GlyphsHilite::IsVisible(Rectangle pageRect)
 }
 
 
-bool GlyphsHilite::ContainsPoint(CoordPoint point)
+bool GlyphsHilite::ContainsPoint(BPoint point)
 {
 	int startX, endX;
 
@@ -288,11 +288,11 @@ bool GlyphsHilite::ContainsPoint(CoordPoint point)
 }
 
 
-CoordPoint GlyphsHilite::DragStartPoint(CoordPoint destPoint)
+BPoint GlyphsHilite::DragStartPoint(BPoint destPoint)
 {
 	BlockableDisplayNode* leafBlock = firstGlyph.GetTextNode()->EnclosingLeafBlock();
 	Font* lastFont = lastGlyph.GetTextNode()->CurFont();
-	CoordPoint blockOrigin(leafBlock->LeftSpace(), leafBlock->Top());
+	BPoint blockOrigin(leafBlock->LeftSpace(), leafBlock->Top());
 	int top = firstGlyph.GetGlyph()->GetY();
 	bool oneLine = (firstGlyph.GetGlyph()->GetLine() == lastGlyph.GetGlyph()->GetLine());
 	if (destPoint.y < top + blockOrigin.y) {
@@ -301,27 +301,27 @@ CoordPoint GlyphsHilite::DragStartPoint(CoordPoint destPoint)
 			oneLine ?
 			lastGlyph.GetGlyph()->GetX() + lastGlyph.GetGlyph()->Width(lastFont) :
 			leafBlock->Width();
-		return CoordPoint((firstGlyph.GetGlyph()->GetX() + lastX) / 2, top - yOutset) + blockOrigin;
+		return BPoint((firstGlyph.GetGlyph()->GetX() + lastX) / 2, top - yOutset) + blockOrigin;
 		}
 	else {
 		// below the selection (or on the same line)
 		int firstX = (oneLine ? firstGlyph.GetGlyph()->GetX() : 0);
 		int lastX = lastGlyph.GetGlyph()->GetX() + lastGlyph.GetGlyph()->Width(lastFont);
-		return CoordPoint((firstX + lastX) / 2,
+		return BPoint((firstX + lastX) / 2,
 		                  lastGlyph.GetGlyph()->GetY() + lastFont->Ascent() + lastFont->Descent())
 		       	+ blockOrigin;
 		}
 }
 
 
-Rectangle GlyphsHilite::TagSpecRect()
+BRect GlyphsHilite::TagSpecRect()
 {
-	Rectangle specRect;
+	BRect specRect;
 
 	int firstLine = firstGlyph.glyph->GetLine();
 	int lastLine = lastGlyph.glyph->GetLine();
 	if (firstLine == lastLine) {
-		Rectangle bounds = Bounds();
+		BRect bounds = Bounds();
 		specRect.Set(bounds.left + tagXInset, 0,
 		             bounds.right - tagXInset, bounds.top + tagYInset);
 		}

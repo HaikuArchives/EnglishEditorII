@@ -5,7 +5,7 @@
 #include "DOMException.h"
 
 
-CDATASection::CDATASection(DOMString cdata)
+CDATASection::CDATASection(String cdata)
 	: Text(cdata)
 {
 }
@@ -17,7 +17,7 @@ CDATASection::CDATASection(const CDATASection& other)
 }
 
 
-DOMString CDATASection::NodeName()
+String CDATASection::NodeName()
 {
 	return "#cdata-section";
 }

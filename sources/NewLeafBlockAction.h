@@ -4,13 +4,13 @@
 #define _H_NewLeafBlockAction_
 
 #include "Action.h"
-#include "DOMString.h"
+#include "String.h"
 
 class Element;
 
 class NewLeafBlockAction : public Action {
 public:
-	NewLeafBlockAction(Element* afterElementIn, DOMString tagName = DOMString());
+	NewLeafBlockAction(Element* afterElementIn, String tagName = String());
 	~NewLeafBlockAction();
 	void	Do(DisplayDirector* director);
 	void	Undo(DisplayDirector* director);

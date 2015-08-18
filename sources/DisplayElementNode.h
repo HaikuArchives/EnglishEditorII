@@ -14,7 +14,7 @@ public:
 	~DisplayElementNode();
 	DisplayType	DeclaredDisplayType();
 	bool       	IsDisposable();
-	DOMString  	GetProperty(string_slice propertyName);
+	String  	GetProperty(string_slice propertyName);
 	void       	Load(DisplayDirector* director);
 	bool       	CanSelectAcross();
 	Font*      	CurFont();

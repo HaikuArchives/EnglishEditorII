@@ -8,7 +8,7 @@
 
 
 
-ChangeElementTagNameAction::ChangeElementTagNameAction(Element* element, DOMString newTagName)
+ChangeElementTagNameAction::ChangeElementTagNameAction(Element* element, String newTagName)
 	: oldElement(element)
 {
 	newElement = oldElement->OwnerDocument()->CreateElement(newTagName);

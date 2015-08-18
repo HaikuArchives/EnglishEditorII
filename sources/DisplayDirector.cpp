@@ -134,7 +134,7 @@ DisplayNode* DisplayDirector::DisplayNodeFor(Node* nodeIn, bool create)
 
 void DisplayDirector::MouseDown(int x, int y)
 {
-	CoordPoint mousePoint(x, y);
+	BPoint mousePoint(x, y);
 	View* view = WindowView();
 
 	// hit the hotspot
@@ -167,7 +167,7 @@ void DisplayDirector::MouseDown(int x, int y)
 }
 
 
-void DisplayDirector::DoDocAction(DOMString action)
+void DisplayDirector::DoDocAction(String action)
 {
 	// default: ignore
 }
@@ -212,8 +212,8 @@ void DisplayDirector::FindSelection()
 {
 //***	be_app->HideCursor();
 	View* view = WindowView();
-	CoordPoint point;
-	CoordPoint lastPoint(-1000000, -1000000);
+	BPoint point;
+	BPoint lastPoint(-1000000, -1000000);
 	bool scrolling = false;
 	for (;; lastPoint = point) {
 		// get & check mouse state
@@ -229,7 +229,7 @@ void DisplayDirector::FindSelection()
 
 		// move the selection
 		StartRefreshCycle();
-		CoordPoint docPoint = ViewToDoc(point);
+		BPoint docPoint = ViewToDoc(point);
 		FindSelectionContext context(docPoint.x, docPoint.y);
 		Selection* newSelection = docDisplayNode->BlockFindSelection(&context);
 		SetSelection(newSelection);
@@ -247,7 +247,7 @@ void DisplayDirector::ExtendSelection()
 		return;
 
 	View* view = WindowView();
-	CoordPoint lastPoint;
+	BPoint lastPoint;
 	Selection* rootSelection = selection;
 	bool scrolling = false;
 	while (true) {
@@ -255,7 +255,7 @@ void DisplayDirector::ExtendSelection()
 		int buttons = view->GetMouseButtons();
 		if (buttons == 0)
 			break;
-		CoordPoint point = view->GetMousePoint();
+		BPoint point = view->GetMousePoint();
 		Autoscroll(point);
 		point = ViewToDoc(point);
 		if (point == lastPoint && !scrolling) {
@@ -288,19 +288,19 @@ void DisplayDirector::ExtendSelection()
 }
 
 
-void DisplayDirector::DragSelection(CoordPoint startPoint)
+void DisplayDirector::DragSelection(BPoint startPoint)
 {
 	if (selection == NULL)
 		return;
 
 	View* view = WindowView();
-	CoordPoint lastPoint = ViewToDoc(startPoint);
+	BPoint lastPoint = ViewToDoc(startPoint);
 	bool scrolling = false;
 	bool wasRightButton = false;
 	bool optionDown = false;
 	while (true) {
 		// get the mouse point and check if moved/finished
-		CoordPoint point = view->GetMousePoint();
+		BPoint point = view->GetMousePoint();
 		int buttons = view->GetMouseButtons();
 		if (buttons == 0)
 			break;
@@ -417,7 +417,7 @@ void DisplayDirector::CopyToClipboard()
 	if (selection == NULL)
 		return;
 
-	DOMString xmlData = selection->GetXMLCopy();
+	String xmlData = selection->GetXMLCopy();
 	System::CopyToClipboard(xmlData, xmlData);
 }
 
@@ -434,7 +434,7 @@ void DisplayDirector::SetDestination(Destination* newDestination)
 }
 
 
-void DisplayDirector::UpdateHotspot(CoordPoint mousePoint)
+void DisplayDirector::UpdateHotspot(BPoint mousePoint)
 {
 	mousePoint = ViewToDoc(mousePoint);
 
@@ -525,7 +525,7 @@ bool DisplayDirector::IsDirty()
 }
 
 
-bool DisplayDirector::Autoscroll(CoordPoint point)
+bool DisplayDirector::Autoscroll(BPoint point)
 {
 	// default: do nothing (scrolling not supported by default)
 	return false;
@@ -557,13 +557,13 @@ DocumentSource* DisplayDirector::GetDocSource()
 }
 
 
-void DisplayDirector::RefreshDocRect(Rectangle rect)
+void DisplayDirector::RefreshDocRect(BRect rect)
 {
 	RefreshViewRect(DocToView(rect));
 }
 
 
-DOMString DisplayDirector::FunctionCall(DOMString function, DOMString arg, StyleScriptable* target)
+String DisplayDirector::FunctionCall(String function, String arg, StyleScriptable* target)
 {
 	if (function == "actionAllowed") {
 		bool result = false;
@@ -597,11 +597,11 @@ DOMString DisplayDirector::FunctionCall(DOMString function, DOMString arg, Style
 	else
 		return StyleScriptable::FunctionCall(function, arg, target);
 
-	return DOMString();
+	return String();
 }
 
 
-DOMString DisplayDirector::GetScriptProperty(DOMString property)
+String DisplayDirector::GetScriptProperty(String property)
 {
 	if (property == "doc-source")
 		return docSource->AsString();

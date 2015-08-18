@@ -14,7 +14,7 @@ EnglishEditorView::EnglishEditorView(NativeView* nativeView)
 }
 
 
-void EnglishEditorView::Draw(Rectangle updateRect)
+void EnglishEditorView::Draw(BRect updateRect)
 {
 	if (director == NULL)
 		throw InternalException("Attempt to draw EEView without associated DisplayDirector!");

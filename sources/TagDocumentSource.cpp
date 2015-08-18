@@ -7,7 +7,7 @@
 
 
 
-TagDocumentSource::TagDocumentSource(DOMString tagName)
+TagDocumentSource::TagDocumentSource(String tagName)
 {
 	InitStatics();
 
@@ -44,13 +44,13 @@ void TagDocumentSource::Save()
 }
 
 
-DOMString TagDocumentSource::TagName()
+String TagDocumentSource::TagName()
 {
 	return tagText->Data();
 }
 
 
-void TagDocumentSource::SetTagName(DOMString tagName)
+void TagDocumentSource::SetTagName(String tagName)
 {
 	tagText->SetData(tagName);
 }
