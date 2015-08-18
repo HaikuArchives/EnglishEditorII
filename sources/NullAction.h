@@ -7,7 +7,7 @@
 
 class NullAction : public Action {
 public:
-	NullAction();
+	NullAction() {}
 };
 
 

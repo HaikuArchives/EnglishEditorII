@@ -66,18 +66,14 @@ SRCS = Action.cpp \
 	DefaultValidator.cpp \
 	DeleteCharsAction.cpp \
 	Destination.cpp \
-	DisplayContext.cpp \
 	DisplayDirector.cpp \
 	DisplayElementNode.cpp \
 	DisplayNode.cpp \
 	DisplayTextNode.cpp \
-	DisplayType.cpp \
-	DisplayableException.cpp \
 	Document.cpp \
 	DocumentDisplayNode.cpp \
 	DocumentFragment.cpp \
 	DocumentSource.cpp \
-	EditStylesheet.cpp \
 	Element.cpp \
 	ElementDisplayNode.cpp \
 	ElementHotspot.cpp \
@@ -89,7 +85,6 @@ SRCS = Action.cpp \
 	EnglishEditorWind.cpp \
 	EntityReference.cpp \
 	Error.cpp \
-	FindDestinationContext.cpp \
 	FindHotspotContext.cpp \
 	FindSelectionContext.cpp \
 	Font.cpp \
@@ -124,18 +119,14 @@ SRCS = Action.cpp \
 	MessageFileSource.cpp \
 	MessageFileWriter.cpp \
 	MessageParser.cpp \
-	Messages.cpp \
 	MoveCharsAction.cpp \
 	MoveNodesAction.cpp \
-	NamedNodeMap.cpp \
 	NativeView.cpp \
 	NewElementAction.cpp \
 	NewLeafBlockAction.cpp \
 	NewTextAction.cpp \
 	Node.cpp \
-	NodeList.cpp \
 	NodeTypeList.cpp \
-	NullAction.cpp \
 	OSException.cpp \
 	PlaceholderTextDisplayNode.cpp \
 	PointSelection.cpp \
@@ -185,7 +176,6 @@ SRCS = Action.cpp \
 	TextDisplayNode.cpp \
 	TextFileWriter.cpp \
 	TextSpan.cpp \
-	Timing.cpp \
 	Tweex.cpp \
 	UTF8Utils.cpp \
 	VMarginControl.cpp \
@@ -199,8 +189,7 @@ SRCS = Action.cpp \
 	XMLStringWriter.cpp \
 	XMLWriter.cpp \
 	qstring.cpp \
-	string_slice.cpp \
-	string_storage.cpp
+	string_slice.cpp
 
 #	Specify the resource definition files to use. Full or relative paths can be
 #	used.

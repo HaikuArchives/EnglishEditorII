@@ -8,7 +8,7 @@ class DisplayDirector;
 
 class DisplayContext {
 public:
-	DisplayContext(DisplayDirector* directorIn);
+	DisplayContext(DisplayDirector* directorIn) : director(directorIn) {}
 
 	DisplayDirector*	director;
 };

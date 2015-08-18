@@ -9,7 +9,7 @@ class Element;
 
 class EditStylesheet {
 public:
-	virtual~EditStylesheet();
+	virtual ~EditStylesheet() {}
 	virtual String	PropertyForElement(string_slice propertyName, string_slice elementName) = 0;
 	virtual Element* 	ContentsTemplateForElement(string_slice elementName) = 0;
 };

@@ -58,7 +58,7 @@ void FrameRateControl::Draw(DisplayDirector* directorIn)
 	// create the string
 	char str[64];
 	if (displaying == DisplayFrameRate) {
-		Microseconds frameTime = director->LastScrollFrameTime();
+		bigtime_t frameTime = director->LastScrollFrameTime();
 		if (frameTime == 0)
 			strcpy(str, "----");
 		else

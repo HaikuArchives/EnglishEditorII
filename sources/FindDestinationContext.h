@@ -8,7 +8,8 @@ class Selection;
 
 class FindDestinationContext {
 public:
-	FindDestinationContext(Selection* sourceIn, int mouseXIn, int mouseYIn);
+	FindDestinationContext(Selection* sourceIn, int mouseXIn, int mouseYIn)
+		: source(sourceIn), mouseX(mouseXIn), mouseY(mouseYIn) {}
 
 	Selection*	source;
 	int       	mouseX;

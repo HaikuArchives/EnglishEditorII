@@ -9,7 +9,7 @@ class Node;
 
 class NamedNodeMap {
 public:
-	virtual~NamedNodeMap();
+	virtual ~NamedNodeMap() {}
 	virtual Node*        	GetNamedItem(String name) = 0;
 	virtual Node*        	SetNamedItem(Node* arg) = 0;
 	virtual Node*        	RemoveNamedItem(String name) = 0;

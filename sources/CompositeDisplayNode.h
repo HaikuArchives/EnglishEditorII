@@ -3,11 +3,11 @@
 #ifndef _H_CompositeDisplayNode_
 #define _H_CompositeDisplayNode_
 
+#include <OS.h>
+
 #include "BlockableDisplayNode.h"
 #include "InlineableDisplayNode.h"
 #include "DOMChangeClient.h"
-
-#include "Timing.h"
 
 class Element;
 

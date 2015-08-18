@@ -128,7 +128,7 @@ WindowDirector::~WindowDirector()
 
 void WindowDirector::Draw(BRect updateRect)
 {
-	Microseconds startTime = Timing::SystemTime();
+	bigtime_t startTime = system_time();
 
 	BPoint origin = DocToView(BPoint(0, 0));
 
@@ -209,7 +209,7 @@ void WindowDirector::Draw(BRect updateRect)
 	bitmapView->Sync();
 
 	// finish timing draw
-	Microseconds curTime = Timing::SystemTime();
+	bigtime_t curTime = system_time();
 	lastDrawTime = curTime - startTime;
 
 	// copy to the screen
@@ -218,10 +218,10 @@ void WindowDirector::Draw(BRect updateRect)
 	bitmap->Unlock();
 
 	// finish timing blit
-	lastBlitTime = Timing::SystemTime() - curTime;
+	lastBlitTime = system_time() - curTime;
 
 	// time the frame rate
-	Microseconds now = Timing::SystemTime();
+	bigtime_t now = system_time();
 	if (lastScrollStepTime != 0 && drawingWholeDoc)
 		lastScrollFrameTime = now - lastScrollStepTime;
 	lastScrollStepTime = (scrollStepPending ? now : 0);
@@ -577,7 +577,7 @@ bool WindowDirector::DoScrollStep()		// true => still scrolling
 
 	StartRefreshCycle();
 
-//***	Microseconds startTime = Timing::SystemTime();
+//***	bigtime_t startTime = system_time();
 
 	// go a fraction of the distance
 	bool scrolling = true;
@@ -620,7 +620,7 @@ bool WindowDirector::DoScrollStep()		// true => still scrolling
 
 /***
 	// time the frame rate
-	Microseconds now = Timing::SystemTime();
+	bigtime_t now = system_time();
 	if (lastScrollStepTime != 0)
 		lastScrollFrameTime = now - lastScrollStepTime;
 	lastScrollStepTime = now;
@@ -808,19 +808,19 @@ View* WindowDirector::WindowView()
 }
 
 
-Microseconds WindowDirector::LastScrollFrameTime()
+bigtime_t WindowDirector::LastScrollFrameTime()
 {
 	return lastScrollFrameTime;
 }
 
 
-Microseconds WindowDirector::LastDrawTime()
+bigtime_t WindowDirector::LastDrawTime()
 {
 	return lastDrawTime;
 }
 
 
-Microseconds WindowDirector::LastBlitTime()
+bigtime_t WindowDirector::LastBlitTime()
 {
 	return lastBlitTime;
 }

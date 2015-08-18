@@ -3,9 +3,10 @@
 #ifndef _H_WindowDirector_
 #define _H_WindowDirector_
 
-#include "DisplayDirector.h"
 #include <Region.h>
-#include "Timing.h"
+#include <OS.h>
+
+#include "DisplayDirector.h"
 
 class EnglishEditorView;
 class EnglishEditorWind;
@@ -56,9 +57,9 @@ public:
 	BRect      	ViewBounds();
 	View*          	DrawingView();
 	View*          	WindowView();
-	Microseconds   	LastScrollFrameTime();
-	Microseconds   	LastDrawTime();
-	Microseconds   	LastBlitTime();
+	bigtime_t   	LastScrollFrameTime();
+	bigtime_t   	LastDrawTime();
+	bigtime_t   	LastBlitTime();
 	int            	GetScrollPos();
 	float          	GetVisibleProportion();
 	BPoint     	ViewToDoc(BPoint viewPoint);
@@ -89,10 +90,10 @@ protected:
 	bool              	scrollMessagePending;
 	int               	refreshCycleNesting;
 	BRegion*           	refreshRegion;
-	Microseconds      	lastScrollFrameTime;
-	Microseconds      	lastScrollStepTime;
-	Microseconds      	lastDrawTime;
-	Microseconds      	lastBlitTime;
+	bigtime_t      	lastScrollFrameTime;
+	bigtime_t      	lastScrollStepTime;
+	bigtime_t      	lastDrawTime;
+	bigtime_t      	lastBlitTime;
 	Action*           	lastAction;
 	Action*           	sentinalAction;
 	Action*           	lastSaveAction;
