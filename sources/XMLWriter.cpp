@@ -10,7 +10,7 @@
 #include "ProcessingInstruction.h"
 #include "Comment.h"
 #include "NamedNodeMap.h"
-#include "DOMStringIter.h"
+#include "Constants.h"
 #include "InternalException.h"
 
 

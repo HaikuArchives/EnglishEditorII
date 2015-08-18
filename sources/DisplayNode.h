@@ -3,7 +3,7 @@
 #ifndef _H_DisplayNode_
 #define _H_DisplayNode_
 
-#include "DisplayType.h"
+#include "Constants.h"
 #include "String.h"
 #include "string_slice.h"
 

@@ -3,7 +3,7 @@
 #include "EnglishEditorView.h"
 #include "WindowDirector.h"
 #include <Message.h>
-#include "Messages.h"
+#include "Constants.h"
 #include "InternalException.h"
 
 

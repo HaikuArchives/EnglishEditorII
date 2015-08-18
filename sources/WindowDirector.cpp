@@ -27,7 +27,7 @@
 #include <Region.h>
 #include <Message.h>
 #include "System.h"
-#include "Messages.h"
+#include "Constants.h"
 #include "Keys.h"
 #include "Preferences.h"
 #include "qstring.h"

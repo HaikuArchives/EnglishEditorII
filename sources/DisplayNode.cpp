@@ -6,7 +6,7 @@
 #include "DisplayDirector.h"
 #include "Font.h"
 #include "InternalException.h"
-#include "DOMStringIter.h"
+#include "Constants.h"
 #include "qstring.h"
 #include <memory>	// for auto_ptr
 
