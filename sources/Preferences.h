@@ -46,4 +46,10 @@ protected:
 };
 
 
+inline Preferences* Prefs()
+{
+	return Preferences::GetPreferences("English Editor II Prefs");
+}
+
+
 #endif

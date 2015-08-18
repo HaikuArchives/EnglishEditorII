@@ -7,7 +7,7 @@
 #include "WindowDirector.h"
 #include "View.h"
 #include "NativeView.h"
-#include "Prefs.h"
+#include "Preferences.h"
 #include "qstring.h"
 #include <Screen.h>
 
@@ -112,7 +112,7 @@ void EnglishEditorWind::DispatchMessage(BMessage* message, BHandler* handler)
 							*p = 0;
 							break;
 							}
-						
+
 						}
 					eeView->KeyDown(keyBytes, numBytes);
 					break;

@@ -29,7 +29,7 @@
 #include "System.h"
 #include "Messages.h"
 #include "Keys.h"
-#include "Prefs.h"
+#include "Preferences.h"
 #include "qstring.h"
 #include "InternalException.h"
 
@@ -334,7 +334,7 @@ void WindowDirector::MouseDown(int x, int y)
 			return;
 			}
 		else if (!menuControl->GetRect().Contains(mousePoint)) {
-			// sorta a hack--menuControl is just gonna re-show the menu if 
+			// sorta a hack--menuControl is just gonna re-show the menu if
 			// we hide it now; just let it hide it
 			HideMenu();
 			}

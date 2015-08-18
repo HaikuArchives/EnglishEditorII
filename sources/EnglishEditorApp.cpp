@@ -1,7 +1,7 @@
 /* EnglishEditorApp.cpp */
 
 #include "EnglishEditorApp.h"
-#include "Prefs.h"
+#include "Preferences.h"
 #include "EnglishEditorWind.h"
 #include "IntroDocWind.h"
 //*** #include "TextFileSource.h"

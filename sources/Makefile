@@ -147,7 +147,6 @@ SRCS = Action.cpp \
 	PointSelection.cpp \
 	PreSpace.cpp \
 	Preferences.cpp \
-	Prefs.cpp \
 	PrefsChangeClient.cpp \
 	ProcessingInstruction.cpp \
 	QuoterDict.cpp \
